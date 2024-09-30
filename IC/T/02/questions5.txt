@@ -1,0 +1,7 @@
+Q1. What is computation?
+R: Computation is the process of performing operations on data to produce a result. It involves manipulating
+
+Q2. Are there problems that computers cannot solve?
+R: Yes, there are problems that computers cannot solve. Some problems are inherently undecidable or require
+infinite computational resources to solve, making them unsolvable in practice. Examples of such problems include
+the halting problem, the busy beaver problem, and certain instances of the traveling salesman problem.

@@ -1,0 +1,14 @@
+Q1. What is data?
+R: Data is a collection of raw facts, figures, or descriptions, such as numbers, words, measurements, observations, or descriptions of things. It lacks context or meaning on its own but serves as the foundation for creating information.
+
+Q2. How do we measure the quantity of data?
+R: The quantity of data is measured in terms of bits and bytes, where a bit is the smallest unit of data (either 0 or 1), and a byte consists of 8 bits. Larger units include kilobytes (KB), megabytes (MB), gigabytes (GB), and so on.
+
+Q3. What is information?
+R: Information is data that has been processed, organized, or structured in such a way that it becomes meaningful and useful to the person who receives it. Information provides context, answers questions, and supports decision-making.
+
+Q4. How do we measure the quantity of information?
+R: The quantity of information is measured in terms of bits and bytes in digital systems, just like data. However, in information theory, it is also measured using Shannon entropy, which quantifies the unpredictability or complexity of the data source.
+
+Q5. What is the relationship between data and information?
+R: Data is the raw material from which information is produced. When data is processed, analyzed, or organized, it becomes information. In other words, information is data that has been given meaning and context, making it useful for decision-making or problem-solving.

@@ -1,0 +1,14 @@
+Discussion topic
+Alice told Bob that she found an image compression software that is able to reduce
+the size of every image in, at least, 50% of its original size - for example, if originally
+the image occupies 1 000 000 bytes, after compression it will require at most 500 000 bytes.
+Bob was not very impressed by Alice's statement. However, when Alice added that she would also
+be able to always recover the original image from its compressed version, Bob immedlately replied:
+"THAT IS IMPOSSIBLE Every lossless (I.e., reversible) compression method is limited, i.e.,
+it cannot compress all messages!" Is Bob correct? Why?
+
+R: Bob is correct in stating that every lossless compression method is limited and cannot compress all messages.
+This limitation is due to the nature of lossless compression, which aims to reduce the size of data without losing
+any information. In practice, lossless compression algorithms work by exploiting redundancies, patterns, or regularities
+in the data to achieve compression. However, not all data can be effectively compressed using these techniques, especially
+data that is highly entropic, random, or lacks any discernible patterns or redundancies.
