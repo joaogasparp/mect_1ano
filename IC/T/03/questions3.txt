@@ -1,0 +1,35 @@
+Q1. What is a decodable code, and why is it important in data compression?
+A: A decodable code is a coding scheme where the encoded message can be uniquely decoded
+back to the original message without ambiguity. Decodable codes are essential in data compression
+to ensure that the compressed data can be accurately reconstructed without loss, enabling
+efficient storage and transmission of information.
+
+Q2. What is a prefix code, and how does it ensure decodability?
+A: A prefix code is a type of code where no codeword is a prefix of another codeword in the
+coding scheme. This property ensures that the encoded message can be uniquely decoded by
+reading the codewords sequentially without ambiguity. Prefix codes guarantee decodability
+by eliminating the possibility of overlapping codewords, simplifying the decoding process.
+
+Q3. Why might we prefer prefix codes over other types od codes?
+A: Prefix codes are preferred over other types of codes in data compression due to their
+simplicity and efficiency in decoding. Since no codeword is a prefix of another codeword,
+prefix codes can be decoded unambiguously by reading the codewords sequentially. This
+simplifies the decoding process and reduces the likelihood of decoding errors, making
+prefix codes more reliable and practical for data compression applications.
+
+Q4. How does the structure of a code impact its efficiency and reliability?
+A: The structure of a code, such as whether it is a prefix code or not, can significantly
+impact its efficiency and reliability in data compression. Prefix codes, for example,
+simplify the decoding process and ensure decodability, leading to more efficient and reliable
+compression. In contrast, codes with overlapping codewords or complex structures may
+require more computational resources for decoding and increase the risk of decoding errors,
+affecting the overall efficiency and reliability of the compression scheme.
+
+Q5. Can a code be decodable but not a prefix code? if so, give an example.
+A: Yes, a code can be decodable but not a prefix code. An example of such a code is a
+sufficiently long fixed-length code, where each symbol is encoded using the same number
+of bits. While this code is decodable, it is not a prefix code because the codewords
+overlap, making the decoding process ambiguous. However, with additional information
+about the code structure, such as the fixed length of each codeword, the code can still
+be decoded uniquely, demonstrating that decodability does not necessarily require
+the prefix property.

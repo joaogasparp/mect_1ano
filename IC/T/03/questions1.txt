@@ -1,0 +1,95 @@
+Q1. What is the definition of information in the context of information theory?
+Pergunta 1 Resposta
+a. The number of bits in a message
+b. Data stored in a file
+c. Meaningful content that reduces uncertainty
+d. A sequence of symbols
+A: c
+
+Q2. What is computation in the context of information and coding theory?
+Pergunta 2 Resposta
+a. The method used to compress information for efficient storage
+b. A sequence of well-defined steps to process and transform data into a useful result
+c. Storing data in memory for later use
+d. The process of physically transmitting data over a network
+A: b
+
+Q3. What is the difference between analog and digital signals?
+Pergunta 3 Resposta
+a. Both are forms of digital data
+b. Digital signals are continuous, while analog signals are discrete
+c. Analog signals are continuous, while digital signals are discrete
+d. Analog signals are used in computers, and digital signals are used in human communication
+A: c
+
+Q4. What is the key relationship between data and information?
+Pergunta 4 Resposta
+a. Data is processed information
+b. Data and information are the same
+c. Data always contains useful information
+d. Information is processed data that provides context and reduces uncertainty
+A: d
+
+Q5. What is the entropy (in bits) of a fair coin toss?
+Pergunta 5 Resposta
+a. 2 bits
+b. 0.5 bits
+c. 1 bit
+d. 4 bits
+A: c
+
+Q6. What are the limitations of lossless compression?
+Pergunta 6 Resposta
+a. Lossless compression always reduces data size by a fixed percentage
+b. It cannot compress all data due to the lack of redundancy in some data types
+c. It can compress all data by 50%
+d. It can reduce the size of all data to zero
+A: b
+
+Q7. What is a signal?
+Pergunta 7 Resposta
+a. A function that conveys information about a phenomenon
+b. A message sent between two computers
+c. A tool for analyzing images
+d. A device that sends information
+A: a
+
+Q8. What is quantization in Digital Signal Processing?
+Pergunta 8 Resposta
+a. Increasing the amplitude of a signal
+b. Converting a signal into a continuous form
+c. Mapping a continuous range of values into a finite set of discrete levels
+d. Doubling the frequency of a digital signal
+A: c
+
+Q9. What is the Nyquist-Shannon Sampling Theorem?
+Pergunta 9 Resposta
+a. The frequency of a signal must be doubled after sampling
+b. The signal must be sampled at least once per second
+c. The number of bits required to represent a signal is twice its highest frequency
+d. A signal must be sampled at least twice the highest frequency present in the signal to reconstruct it accurately
+A: d
+
+Q10. Which of the following types of values can represent a signal?
+Pergunta 10 Resposta
+a. All of the above
+b. Vector values
+c. Scalar values
+d. Real and complex values
+A: a
+
+Q11. How is the quantity of information measured according to Shannon’s information theory?
+Pergunta 11 Resposta
+a. In bytes
+b. In letters
+c. In symbols
+d. In entropy, measured in bits
+A: d
+
+Q12. Which of the following is an example of a digital signal?
+Pergunta 12 Resposta
+a. Sound waves in the air
+b. Temperature measured by a thermometer
+c. Light from the sun
+d. An audio signal in an MP3 file
+A: d

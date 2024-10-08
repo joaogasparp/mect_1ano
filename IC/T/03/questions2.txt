@@ -1,0 +1,27 @@
+Q1. What is the relationship between modeling and coding?
+A: Modeling involves creating abstract representations of systems or processes, which 
+can then be used to design efficient coding schemes. Coding is the implementation of 
+these models to compress or transmit data effectively.
+
+Q2. How do probability models relate to coding efficiency?
+A: Probability models help in coding efficiency by predicting the likelihood of different
+symbols or sequences. This allows for the use of variable-length codes, where more probable
+symbols are assigned shorter codes, thus reducing the overall length of the encoded message.
+
+Q3: What is entropy, and how does it relate to coding?
+A: Entropy is a measure of the uncertainty or randomness in a set of data. In coding,
+entropy represents the minimum average number of bits needed to encode the data without
+loss. Lower entropy indicates more predictable data, which can be compressed more efficiently.
+
+Q4. What is a Markov model, and how does it help in coding?
+A: A Markov model is a statistical model that predicts future states based on the current
+state, assuming that the future state depends only on the current state and not on the sequence
+of events that preceded it. In coding, Markov models help by providing more accurate predictions
+of symbol sequences, leading to more efficient compression.
+
+Q5. What are the trade-offs between simple probability models and more complex models like Markov
+models in coding?
+A: Simple probability models are easier to implement and require less computational power,
+but they may not capture all the dependencies in the data, leading to less efficient coding.
+More complex models like Markov models can capture more dependencies and provide better compression,
+but they require more computational resources and can be more difficult to implement.

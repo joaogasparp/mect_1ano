@@ -1,12 +1,12 @@
 Q1. How does compression relate to information?
-R: Compression is a process that reduces the size of data by encoding it in a more efficient way.
+A: Compression is a process that reduces the size of data by encoding it in a more efficient way.
 This can be done by removing redundancies, using algorithms to represent data more compactly, or
 storing data in a more compressed format. In the context of information theory, compression can be
 seen as a way to reduce the amount of data needed to convey the same amount of information, thus
 increasing the efficiency of data storage and transmission.
 
 Q2. What are the limits of compression?
-R: While compression can significantly reduce the size of data, there are limits to how much compression
+A: While compression can significantly reduce the size of data, there are limits to how much compression
 can be achieved. Some forms of data are inherently more compressible than others, depending on their structure
 and content. For example, text data with repeated words or phrases can be compressed more effectively than
 random data with no patterns or redundancies. Additionally, lossless compression algorithms can only achieve
@@ -14,7 +14,7 @@ a certain level of compression without losing any information, while lossy compr
 higher compression ratios but at the cost of some data loss.
 
 Q3. Why are some forms of data more compressible that others?
-R: Some forms of data are more compressible than others because they contain more redundancies, patterns,
+A: Some forms of data are more compressible than others because they contain more redundancies, patterns,
 or predictable structures that can be exploited by compression algorithms. For example, text data often
 contains repeated words, phrases, or characters that can be encoded more efficiently using dictionary-based
 compression techniques. Similarly, images or videos with large areas of uniform color or patterns can be compressed

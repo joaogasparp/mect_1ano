@@ -3,7 +3,7 @@ Consider the set of all functions f: N → (0, 1).
 Alice told Bob that there are functions in that set that connot be calculated
 by any finite program, regardless of the programming language used to implement
 it. Bob thinks Alice is wrong. Is she wrong? Why?
-R: Alice is correct in stating that there are functions in the set of all functions f: N → (0, 1) that cannot be calculated
+A: Alice is correct in stating that there are functions in the set of all functions f: N → (0, 1) that cannot be calculated
 by any finite program, regardless of the programming language used to implement it. This result is known as the halting
 problem, which was proven by Alan Turing in the 1930s. The halting problem states that there exist functions for which it
 is undecidable to determine whether a given program will halt or run indefinitely. Since the set of all functions f: N → (0, 1)
