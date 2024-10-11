@@ -60,16 +60,18 @@ while TRANSPACKETS<P               % Stopping criterium
                 end
             end
         case DEPARTURE          % If first event is a DEPARTURE
-            if rand() < ((1-b)^PacketSize*8)
+
+            if isPacketCorrupted(PacketSize,b)
+                LOSTPACKETS = LOSTPACKETS + 1;
+            else
                 TRANSBYTES= TRANSBYTES + PacketSize;
                 DELAYS= DELAYS + (Clock - ArrInstant);
                 if Clock - ArrInstant > MAXDELAY
                     MAXDELAY= Clock - ArrInstant;
                 end
-            else
-                LOSTPACKETS= LOSTPACKETS + 1;
+                TRANSPACKETS= TRANSPACKETS + 1;
             end
-            TRANSPACKETS= TRANSPACKETS + 1;
+
             if QUEUEOCCUPATION > 0
                 EventList = [EventList; DEPARTURE, Clock + 8*QUEUE(1,1)/(C*10^6), QUEUE(1,1), QUEUE(1,2)];
                 QUEUEOCCUPATION= QUEUEOCCUPATION - QUEUE(1,1);
@@ -100,4 +102,10 @@ function out= GeneratePacketSize()
     else
         out = aux2(randi(length(aux2)));
     end
+end
+
+function isCorrupted = isPacketCorrupted(PacketSize,b)
+    nBits = PacketSize * 8;
+    pNoError = (1-b)^nBits;
+    isCorrupted = rand() > pNoError;
 end
