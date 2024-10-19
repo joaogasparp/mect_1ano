@@ -1,4 +1,4 @@
-function [PLdata, PLVoIP, APDdata, APDVoIP, MPDdata, MPDVoIP, TT] = Sim3(lambda, C, f, P, n)
+function [PLdata, PLVoIP, APDdata, APDVoIP, MPDdata, MPDVoIP, TT] = Sim4(lambda, C, f, P, n)
 % INPUT PARAMETERS:
 %  lambda - packet rate (packets/sec)
 %  C      - link bandwidth (Mbps)
@@ -108,7 +108,8 @@ while TRANSPACKETS_DATA + TRANSPACKETS_VOIP < P  % Stopping criterium
                 TRANSPACKETS_VOIP = TRANSPACKETS_VOIP + 1;
             end
             if QUEUEOCCUPATION > 0
-                % dar sort row a terceira coisinha
+                % dar sort row à queue por packet type
+                QUEUE = sortrows(QUEUE, 3, 'descend');
                 EventList = [EventList; DEPARTURE, Clock + 8*QUEUE(1,1)/(C*10^6), QUEUE(1,1), QUEUE(1,2), QUEUE(1,3)];
                 QUEUEOCCUPATION = QUEUEOCCUPATION - QUEUE(1,1);
                 QUEUE(1,:) = [];
