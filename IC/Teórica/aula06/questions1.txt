@@ -1,0 +1,39 @@
+Q: How does arithmetic encoding translate a sequence of symbols into a single number?
+A: Arithmetic encoding maps a sequence of symbols into a single number by dividing the 
+interval [0, 1] into subintervals, each corresponding to a symbol. The subinterval 
+corresponding to the first symbol is divided into subintervals corresponding to the 
+second symbol, and so on. The final subinterval corresponds to the entire sequence of
+symbols. The number is then chosen from the final subinterval.
+
+Q: What are the steps involved in encondig a sequence of symbols using arithmetic encoding?
+A: The steps involved in encoding a sequence of symbols using arithmetic encoding are as
+follows:
+1. Initialize the interval [0, 1] and the subintervals corresponding to each symbol.
+2. For each symbol in the sequence, update the interval based on the subinterval
+corresponding to the symbol.
+3. Repeat step 2 for each symbol in the sequence.
+4. Choose a number from the final subinterval to represent the encoded sequence.
+
+Q: How does it divide a number range based on symbol probabilities to represent
+the entire sequence?
+A: Arithmetic encoding divides the interval [0, 1] into subintervals based on the
+probabilities of the symbols in the sequence. The size of each subinterval is
+proportional to the probability of the corresponding symbol. This allows the entire
+sequence to be represented by a single number chosen from the final subinterval.
+
+Q: How can we decode a single number back into the original sequence of symbols in
+arithmetic encoding?
+A: To decode a single number back into the original sequence of symbols in arithmetic
+encoding, we reverse the process of encoding. We start with the single number and
+determine which subinterval it falls into. We then map this subinterval back to the
+corresponding symbol and remove it from the number. We repeat this process until we
+have decoded the entire sequence of symbols.
+
+Q: How does arithmetic encoding depend on accurate probability models for efficient
+compression?
+A: Arithmetic encoding depends on accurate probability models for efficient compression
+because the size of the subintervals is determined by the probabilities of the symbols
+in the sequence. If the probability model is inaccurate, the subintervals may not
+properly represent the sequence, leading to less efficient compression. Therefore, a
+good probability model is essential for arithmetic encoding to achieve optimal
+compression performance.
