@@ -1,0 +1,45 @@
+Oct 31 14:57:15.294 HYPERVISOR: Release 0.2.17-x86/Windows (tag 2017072410)
+Oct 31 14:57:15.294 HYPERVISOR: Started on IP = 127.0.0.1, TCP port = 56475.
+Oct 31 14:57:15.779 HYPERVISOR: exec_cmd: hypervisor version 
+Oct 31 14:57:15.779 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\joaog\OneDrive - Universidade de Aveiro\Desktop\UA\mect_1ano\AC\Pratica\guiao03\untitled\project-files\dynamips 
+Oct 31 14:57:15.779 GENERAL: working_dir=C:\Users\joaog\OneDrive - Universidade de Aveiro\Desktop\UA\mect_1ano\AC\Pratica\guiao03\untitled\project-files\dynamips
+Oct 31 14:57:15.779 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\joaog\OneDrive - Universidade de Aveiro\Desktop\UA\mect_1ano\AC\Pratica\guiao03\untitled\project-files\dynamips\bfed0013-4b7a-4aff-bf6a-0c50fe096f6a 
+Oct 31 14:57:15.784 GENERAL: working_dir=C:\Users\joaog\OneDrive - Universidade de Aveiro\Desktop\UA\mect_1ano\AC\Pratica\guiao03\untitled\project-files\dynamips\bfed0013-4b7a-4aff-bf6a-0c50fe096f6a
+Oct 31 14:57:15.784 HYPERVISOR: exec_cmd: vm create Router2 2 c7200 
+Oct 31 14:57:15.784 VM: VM Router2 created.
+Oct 31 14:57:15.784 HYPERVISOR: exec_cmd: vm set_con_tcp_port Router2 5002 
+Oct 31 14:57:15.784 HYPERVISOR: exec_cmd: c7200 get_mac_addr Router2 
+Oct 31 14:57:15.784 HYPERVISOR: exec_cmd: vm get_status Router2 
+Oct 31 14:57:15.784 HYPERVISOR: exec_cmd: vm slot_add_binding Router2 0 0 C7200-IO-FE 
+Oct 31 14:57:15.784 HYPERVISOR: exec_cmd: vm set_disk0 Router2 0 
+Oct 31 14:57:15.784 HYPERVISOR: exec_cmd: vm set_exec_area Router2 64 
+Oct 31 14:57:15.784 HYPERVISOR: exec_cmd: vm get_status Router2 
+Oct 31 14:57:15.784 HYPERVISOR: exec_cmd: vm set_idle_pc Router2 0x62cc83a0 
+Oct 31 14:57:15.784 HYPERVISOR: exec_cmd: vm set_ios Router2 C:/Users/joaog/GNS3/images/IOS/c7200-advipservicesk9-mz.152-4.S5.image 
+Oct 31 14:57:15.784 HYPERVISOR: exec_cmd: c7200 set_mac_addr Router2 ca02.120c.0000 
+Oct 31 14:57:15.784 HYPERVISOR: exec_cmd: vm set_nvram Router2 512 
+Oct 31 14:57:15.784 HYPERVISOR: exec_cmd: vm set_ram Router2 512 
+Oct 31 14:57:15.784 HYPERVISOR: exec_cmd: vm get_status Router2 
+Oct 31 14:57:15.784 HYPERVISOR: exec_cmd: vm slot_remove_binding Router2 0 0 
+Oct 31 14:57:15.784 HYPERVISOR: exec_cmd: vm get_status Router2 
+Oct 31 14:57:15.784 HYPERVISOR: exec_cmd: vm slot_add_binding Router2 0 0 C7200-IO-2FE 
+Oct 31 14:57:15.795 HYPERVISOR: exec_cmd: vm get_status Router2 
+Oct 31 14:57:15.795 HYPERVISOR: exec_cmd: vm slot_add_binding Router2 1 0 PA-2FE-TX 
+Oct 31 14:57:24.206 HYPERVISOR: exec_cmd: nio create_udp udp-8818de01-2d56-44cc-bf1a-5cb45e0df218 10034 127.0.0.1 10035 
+Oct 31 14:57:24.502 HYPERVISOR: exec_cmd: vm slot_add_nio_binding Router2 1 0 udp-8818de01-2d56-44cc-bf1a-5cb45e0df218 
+Oct 31 14:57:24.502 HYPERVISOR: exec_cmd: vm get_status Router2 
+Oct 31 14:57:24.554 HYPERVISOR: exec_cmd: nio create_udp udp-a9270692-6708-4363-b97a-db955ecf260a 10038 127.0.0.1 10039 
+Oct 31 14:57:24.554 HYPERVISOR: exec_cmd: vm slot_add_nio_binding Router2 0 1 udp-a9270692-6708-4363-b97a-db955ecf260a 
+Oct 31 14:57:24.554 HYPERVISOR: exec_cmd: vm get_status Router2 
+Oct 31 14:57:25.476 HYPERVISOR: exec_cmd: nio create_udp udp-e317008c-6b11-4f37-9502-a42bbf154a23 10058 127.0.0.1 10059 
+Oct 31 14:57:25.476 HYPERVISOR: exec_cmd: vm slot_add_nio_binding Router2 0 0 udp-e317008c-6b11-4f37-9502-a42bbf154a23 
+Oct 31 14:57:25.476 HYPERVISOR: exec_cmd: vm get_status Router2 
+Oct 31 15:08:39.386 HYPERVISOR: exec_cmd: vm get_status Router2 
+Oct 31 15:08:39.388 HYPERVISOR: exec_cmd: vm extract_config Router2 
+Oct 31 15:08:39.869 HYPERVISOR: exec_cmd: vm get_status Router2 
+Oct 31 15:08:39.870 HYPERVISOR: exec_cmd: vm extract_config Router2 
+Oct 31 15:08:39.871 HYPERVISOR: exec_cmd: vm delete Router2 
+Oct 31 15:08:39.871 VM: VM Router2 destroyed.
+Oct 31 15:08:39.873 HYPERVISOR: exec_cmd: hypervisor stop 
+Oct 31 15:08:40.253 HYPERVISOR: Stopped.
+Oct 31 15:08:40.253 GENERAL: reset done.
