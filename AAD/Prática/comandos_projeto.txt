@@ -1,0 +1,40 @@
+Transferir os Arquivos para o Servidor
+scp -r /home/joao/Desktop/AAD/aad_proj1 aad1d@banana.ua.pt:~
+
+Conectar ao Servidor Remoto
+ssh aad1d@banana.ua.pt
+CU2ydRxr7m
+
+Compilar o Código no Servidor
+cd aad_proj1/
+make deti_coins_intel
+
+Executar o Programa Durante 1 Hora
+nohup ./deti_coins_intel -s0 3600 0 > output.log 2>&1 &
+Nota: O nohup permite que o programa continue a ser 
+executado mesmo após a desconexão do utilizador. Para
+voltar e ver o programa a correr, basta executar o comando
+fg. Para voltar a sair e deixar a correr, basta pressionar 
+Ctrl + Z. Para terminar o programa, basta executar o comando
+killall deti_coins_intel.
+
+Ver o Output do Programa em Tempo Real
+tail -f output.log
+
+Ver o Output do Programa
+cat output.log
+
+Transferir o Output do Programa para o Computador
+scp
+
+Apagar o Output do Programa
+rm output.log
+
+Apagar o Programa
+make clean
+
+Apagar os Arquivos do Servidor
+rm -r aad_proj1/
+
+Sair do Servidor
+exit
