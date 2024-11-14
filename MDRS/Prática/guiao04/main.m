@@ -75,5 +75,3 @@ end
 %Output of performace values:
 fprintf('No. of generated solutions = %d\n',noCycles);
 fprintf('Avg. worst link load among all solutions= %.2f\n',avObjective);
-
-
