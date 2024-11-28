@@ -73,21 +73,29 @@ It's it's a coin. It's this of this type, and then I can place the text as a str
 
 So even if you make a mistake and you put here more than 32 bytes, it will only store 32 bytes here in the in the array. Actually, if you do this in this exactly way and if this thing has exactly 32 bytes, this this function will will attempt to write 33 bytes because it will have to also it will also attempt to write the string terminator. This one will not allow that, and in the end, you have to write exactly 32 characters, not including the terminator. So if it is not 32, you have not initialized everything. If it's more, you have you have more characters than than than what's what's what's supposed to be.
 
-If you have less, okay, you are ending earlier. So put your text here. This is good for custom Lety coins. Put your text here. Remember that you are going to try several patterns until you get a Lety coin.
+If you have less, okay, you are ending earlier. So put your text here. This is good for custom deti coins. Put your text here. Remember that you are going to try several patterns until you get a Lety coin.
 
 This is a simple way to do it. So you can utilize the coin in this way using a string, and then you can read it as integers. Okay. Of course, this thing here is you have you may have code to print or assign it to something else. This can be, for example, a comma.
 
-So this is the thing that assess assesses the the coin as integers. Okay? I think doing things in this way will make things easier for you. Okay. So it's now time to go over how we handle variations in the coins.
+So this is the thing that  assesses the  coin as integers. Okay? I think doing things in this way will make things easier for you. Okay. So it's now time to go over how we handle variations in the coins.
+
+
+
 ![alt text](image-2.png)
 So here, just to make things a little more complicated for you, I decided to initialize the coins, using a pointer to a character array.
 
 Initialize them 1 by 1. If you use this snprintf, you can do it all in one go. Okay? Easier. And then you have to do this several attempts.
 
-Okay? If you if you are doing this, for example, using AVX instruct is SIMD instructions, you are doing 4 at a time, so the number of attempts should grow, should go. Instead of adding 1, you should afford because in in each loop iteration, you will do 4 at a time. You will probably need to put here, this part. Come on.
+Okay? If you if you are doing this, for example, using AVX instruct is SIMD instructions, you are doing 4 at a time, so the number of attempts should grow. Instead of adding 1, you should afford because in each loop iteration, you will do 4 at a time. You will probably need to put here, this part.
+
 ![alt text](image.png)
-Sorry. I I actually, I am going to need this again. You have to to initialize this thing, this data structure. This this will be kind of a matrix with 13 lines and 4 columns. So but you can get inspiration from this thing.
+
+You have to to initialize this thing, this data structure. This this will be kind of a matrix with 13 lines and 4 columns. So but you can get inspiration from this thing.
+
 ![alt text](image-3.png)
-Right? Because this is done here. I I did it here with an unidimensional array, but I could have done it also as a bidirectional array, for example, something like this. Layout in memory would be the same, but actually it is easier for me to handle things using an unidirectional array, me doing the index computations, because in CUDA, it's easier to do it that way. So as I was saying, you have to put here something to to utilize the data structure in the appropriate way.
+
+Right? Because this is done here. I did it here with an unidimensional array, but I could have done it also as a bidirectional array, for example, something like this. Layout in memory would be the same, but actually it is easier for me to handle things using an unidirectional array, me doing the index computations, because in CUDA, it's easier to do it that way. So as I was saying, you have to put here something to to utilize the data structure in the appropriate way.
+
 ![alt text](image-4.png)
 I suggest that you have here somewhere, for example, here. Let me me do it in this way. For example, you you can have here 1 variable. I let's call them v 1 and v 2. You put here v 1, v 1, v 1, v 1, v 2, v 2, v 2, v 2.
 
