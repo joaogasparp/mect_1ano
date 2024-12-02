@@ -25,7 +25,7 @@ So this is an integer, but the integer actually this is is a vector, so an array
 
 The only thing we need to specify is how to enter a constant. We we need to enter a constant 4 times. Okay? This is an array of 4 elements, and in the end, I'm I make a cast to the property type so the compliant the compiler doesn't complain. We have to also to specify how to rotate, and here I am using a built in instruction that the GCC compiler and C lang compilers understand that rotates things.
 
-When you you when you adapt this to AVX 2, you will need to change here, perhaps 4 to 8, 16 to 32, and of course, 8 almost everywhere, 8 interleaved message, 8 interleaved MDC MD5 hashes. Here, we have to do you have to do it 8 times instead of 4, and the name of this thing will not be 128. It will probably be 256 256. The rest is almost the same. Actually, it's the same.
+When you you when you adapt this to AVX 2, you will need to change here, perhaps 4 to 8, 16 to 52, and of course, 8 almost everywhere, 8 interleaved message, 8 interleaved MDC MD5 hashes. Here, we have to do you have to do it 8 times instead of 4, and the name of this thing will not be 128. It will probably be 256 256. The rest is almost the same. Actually, it's the same.
 
 Of course, you need to change the name of the functions, and then you need to to change the code that confirms that your the computations are being done correctly. Okay. Neon code is almost exactly the same. If you compare them, you will see differences are mostly cosmetic. So I am changing the name of the function, changing the name of the define.
 
@@ -47,92 +47,119 @@ After doing this one, this one and this one are almost the same. This one, as I 
 ![alt text](image.png)
 So when you do when you are doing only 1 computation at a time, so, for example, in a processor without SIMD instructions, by the way, that's more or less how we are going to do it with CUDA. You specify exactly what's going on what's going on in one lane and the and the other lanes are dealt with automatically. You have to put the string deticoins, etcetera, in in your coin. Okay? And this will be come on.
 
-This will be 13 integers index 0 to 12. This part is fixed. The rest is arbitrary. But when you when you do it using SIMD instructions, you have, for example, using AVX. You have 4 lanes, you have to put the same information in each lane, but then you have to make variation.
-
-It cannot be exactly the same information because if it's exactly the same information, you you would be computing the same thing several times. So that's not a good idea. So my suggestion, and I'm going to, in a few moments explain how you can put this information in a very simple way. You can, for example, the first 10 bytes are mandatory, this is a space, this is, sorry, this is wrong, the end it's n space and not space n. My suggestion is the following.
-
-The next character, this one is the first one that is arbitrary, could be, for example, the lane number, lane 0, lane 1, lane 2, lane 3. So what you could put here ASCII code ASCII code for 0, for 1, for 2, and for 3. And if you are using, for example, AVX 2, 01234567. Okay? But I am also asking you to do it using OpenMP or p threads.
-
-K? So you will have a multi threaded implementation. So if you have several threads, I also suggest that you place in the next the next character the number of the thread. Okay? For example, if you have 4 cores, the first thread will be, for example, thread number 0.
-
-You place here 0 0 0 0. Okay? For the 1st thread. For the 2nd thread, you place here 1111. If you do things in that in in this way, each thread  will be drawing coins that are different because this specific character will be different from thread to thread.
-
-And this one, of course, will be different from lane to lane. Okay? The rest is almost arbitrary. Okay? But as I said, please try to use ASCII or UTF 8 characters.
-
-To finish this part, let me explain then how you can enter the information. Let me put here this again. How you can enter the information here in a simple way. In in in in this week's classes, I suggest that you enter the ASCII codes here 1 by 1. You have, for example, you have, for example, 44, 45, 54, and 49.
-
-This this four ones will go in the first integer. The least significant one is the first is the first character of the string because we are working with little engine architectures. So the things that you have to put is 44, then 45, then 54, and then 49. But that is not it's not it's not difficult, but it's not as easy as as it can be. Because I have here a suggestion, and this suggestion is the following.
-![alt text](image-1.png)
-Okay. You can define a new data type. Probably you have not yet used this union thing. When you have a structure, we have you have several fields, and the fields are, for example, consecutive in memory. When you have a union, these fields occupy the same space.
-
-They are overlap they overlap. That stuff overlaps. That is one over the other. So I can have this union thing and I can look at the contents of union as integers, 13 integers, but I can also look at them as, for example, 32 charters. So we we can write as charters and read as integers.
-
-K? So that's that's the best way to to to enter the information. I have here, for example, how you can initialize deticoin using a string. I declared here the the the variable. Okay?
-
-It's it's a coin. It's this of this type, and then I can place the text as a string in there. Okay? Instead of using s printf, I use snprintf because snprintf ensures that you cannot write more than 32 bytes. Okay?
-
-So even if you make a mistake and you put here more than 32 bytes, it will only store 32 bytes here in the in the array. Actually, if you do this in this exactly way and if this thing has exactly 32 bytes, this this function will will attempt to write 33 bytes because it will have to also it will also attempt to write the string terminator. This one will not allow that, and in the end, you have to write exactly 32 characters, not including the terminator. So if it is not 32, you have not initialized everything. If it's more, you have you have more characters than than than what's what's what's supposed to be.
-
-If you have less, okay, you are ending earlier. So put your text here. This is good for custom deti coins. Put your text here. Remember that you are going to try several patterns until you get a Lety coin.
-
-This is a simple way to do it. So you can utilize the coin in this way using a string, and then you can read it as integers. Okay. Of course, this thing here is you have you may have code to print or assign it to something else. This can be, for example, a comma.
-
-So this is the thing that  assesses the  coin as integers. Okay? I think doing things in this way will make things easier for you. Okay. So it's now time to go over how we handle variations in the coins.
+This will be 13 integers index 0 to 12. This part is fixed. The rest is arbitrary. 
 
 
 
-![alt text](image-2.png)
+
+
+
+
+HERE (how to initialize the coin):
+
+When you when you do it using SIMD instructions, you have, for example, using AVX. You have 4 lanes, you have to put the same information in each lane, but then you have to make variation.
+
+It cannot be exactly the same information because if it's exactly the same information, you would be computing the same thing several times. So that's not a good idea. So my suggestio, You can, for example, the first 10 bytes are mandatory "DETI coin "
+
+The next character, this one is the first one that is arbitrary, could be, for example, the lane number, lane 0, lane 1, lane 2, lane 3. So what you could put here ASCII code for 0, for 1, for 2, and for 3. But I am also asking you to do it using OpenMP or p threads.
+
+So you will have a multi threaded implementation. So if you have several threads, I also suggest that you place in the next character the number of the thread. Okay? For example, if you have 4 cores, the first thread will be, for example, thread number 0.
+
+You place lane 1 0, lane 2 0, lane 3 0 and lane 4 0 For the 1st thread. For the 2nd thread, you place here 1 1 1 1. If you do things in in this way, each thread  will be drawing coins that are different because this specific character will be different from thread to thread.
+
+And this one, of course, will be different from lane to lane. The rest is almost arbitrary. But as I said, please try to use ASCII or UTF 8 characters.
+
+To finish this part, let me explain then how you can enter the information here in a simple way.
+
+You can define a new data type. Probably you have not yet used this union thing. When you have a structure, you have several fields, and the fields are, for example, consecutive in memory. When you have a union, these fields occupy the same space.
+
+They overlap, That is one over the other. So I can have this union thing and I can look at the contents of union as integers, 13 integers, but I can also look at them as, for example, 52 charters. So we can write as charters and read as integers. So that's the best way to enter the information. I have here, for example, how you can initialize deticoin using a string. I declared here the variable. It's a coin of this type, and then I can place the text as a string in there. Instead of using s printf, I use snprintf because snprintf ensures that you cannot write more than 52 bytes. So even if you make a mistake and you put here more than 52 bytes, it will only store 52 bytes here in the array. Actually, if you do this in this exactly way and if this thing has exactly 52 bytes, this function will attempt to write 53 bytes because it will have attempt to write the string terminator. This one will not allow that, and in the end, you have to write exactly 52 characters, not including the terminator. So if it is not 52, you have not initialized everything. If it's more, you have more characters than what's supposed to be. If you have less, okay, you are ending earlier. So put your text here.
+
+This is a simple way to do it. So you can utilize the coin in this way using a string, and then you can read it as integers.
+
+So this is the thing that assesses the coin as integers. I think doing things in this way will make things easier for you. Okay. So it's now time to go over how we handle variations in the coins.
+
+a usefull data type
+typedef union
+{
+    u32_t coin_as_ints[13]; // 13 4-byte integers
+    char coin_as_chars[52]; // 52=13*4 bytes
+}
+coin_t;
+
+to initialize the coin as a string...
+coin_t coin;
+if(snprintf(coin.coin_as_chars,52,"DETI coi bla, bla, bla\n") != 52)
+{
+    fprintf(stderr,"not exactly 52 bytes...\n");
+    exit(1);
+}
+
+to read it as integers...
+for(idx = 0; idx < 13; idx++)
+    ... coin.coin_as_ints[idx] ...
+
+
+
+
+
+HERE (variations):
+
 So here, just to make things a little more complicated for you, I decided to initialize the coins, using a pointer to a character array.
 
-Initialize them 1 by 1. If you use this snprintf, you can do it all in one go. Okay? Easier. And then you have to do this several attempts.
+Initialize them 1 by 1. If you use this snprintf, you can do it all in one go. And then you have to do this several attempts (ciclo for). If youare doing this, for example, using SIMD instructions, you are doing 4 at a time, so the number of attempts should grow. Instead of adding 1, you should add 4 because in each loop iteration, you will do 4 at a time. You will probably need to put here something to to utilize the data structure in the appropriate way.
 
-Okay? If you if you are doing this, for example, using AVX instruct is SIMD instructions, you are doing 4 at a time, so the number of attempts should grow. Instead of adding 1, you should afford because in each loop iteration, you will do 4 at a time. You will probably need to put here, this part.
+I suggest that you have here somewhere, for example, here. For example, you  can have here 1 variable. I let's call them v1 and v2. You put here v1, v1, v1 and v1, v2, v2, v2 and v2.
 
-![alt text](image.png)
+And you start, for example, with v1 equal to v2 equal, for example, ox20202020 is 4 spaces because the ASCII code for a space is 32 and 32 is 20 in hexadecimal. So this is a space space space space. So your first attempt, you use spaces everywhere.
 
-You have to to initialize this thing, this data structure. This this will be kind of a matrix with 13 lines and 4 columns. So but you can get inspiration from this thing.
+And then you compute this (compute md5 hash), but actually, you'll get 4. You have here to put the for cycle from 0 to 4 to examine each one (byte-reverse each word), and then you have to update your point. So you should change one of these two variables (v1 or v2).
 
-![alt text](image-3.png)
+you have to do this with AVX, with AVX 2, and with CUDA. Okay. So if you have a, a general way of doing this, you can you can reuse it. That's why I have here.
 
-Right? Because this is done here. I did it here with an unidimensional array, but I could have done it also as a bidirectional array, for example, something like this. Layout in memory would be the same, but actually it is easier for me to handle things using an unidirectional array, me doing the index computations, because in CUDA, it's easier to do it that way. So as I was saying, you have to put here something to to utilize the data structure in the appropriate way.
+That's why I have here this include search utilities. It's just a suggestion. You can place, there a function that, for example, increments this variable (v1), but increments, for example, going over only ASCII codes. That's why also when I have this search utilities included, I also have a function called next value to try in ASCII and also I can create a function to test if it is working correctly.
 
-![alt text](image-4.png)
-I suggest that you have here somewhere, for example, here. Let me me do it in this way. For example, you you can have here 1 variable. I let's call them v 1 and v 2. You put here v 1, v 1, v 1, v 1, v 2, v 2, v 2, v 2.
+So imagine that you have this function, so you get you want to go over 20 20 20 20, which is a space, and ASCII codes start at 20, ends at 7e.
 
-Oops. And you start, for example, with v one equal to v 2 equal, for example, 20 20 20 20 is 4 spaces because the ASCII code for a space is 32 and 32 is 20 in a in in hexadecimal. So this is a space space space space. So your first attempt, you use spaces everywhere. Okay?
-![alt text](image-5.png)
-And then you try you have to try this. You compute this, but actually, you'll get 4. You you have here to put the 4 cycle from 0 to 4 to examine each one, and then you have to update update the the your point. So you should change one of these two variables. Okay.
+So you each one of these 4 bytes you want to go over all cases. So you can write a function that it's actually something like this. 
 
-So I'm going to do it. I'm going to explain it in a moment because I because you have to do this with AVX, with AVX 2, and with CUDA. Okay. So if you have a, a general way of doing this, you can you can reuse it. That's why I have here.
-![alt text](image-6.png)
-That's why I have here this includes such utilities. It's it's just a suggestion. You can place, in there a function that, for example, increments this variable, but increments, for example, going over only ASCII codes. That's why also but that's not necessary. When I have this search utilities included, I also I also have a function called next value to try in ASCII and also I can play I can create a function to test if it is working correctly.
-![alt text](image-7.png)
-So that I put it here because when when I write code, I also include code to test the functions that I am going to use. Okay. So let's go over that part, which is the following. So imagine that you have this function, so you get you want to go over 20 20 20 20, which is a space, and ASCII codes start at 20, ends at 7 e? ASCII?
+int next_value_to_try_ascii(u32_t v)
+{
+    v=v+1;
+    if((v&0x000000FF) != 0x0000007F) return v;
+    v+=0x000000A1;
+    if((v&0x0000FF00)!=0x00007F00) return v;
+    v+=0x0000A100;
+    ...
+    return 0x20202020;
+}
 
-So you each one of these 4 bytes you want to go over all cases. So you can write a function that it's actually something like this. Sorry. I made it here. It's not exactly perfect.
+It should return an int. Actually, it should be instead of int, it should be u32_t. So what I'm going to do here is is following.
 
-It should return an int. Actually, it should be instead of int, it should be 0 52d. Okay? And here also as well. So what I'm what I'm going to do here is is following.
+So let's start adding 1 to this least significant byte. Add 1 and then I'm going to test if this byte is 7F because 7F is the first value we do not want. So what I do is I apply here a mask, this mask is this and operator actually extracts the list from significant byte, places 0s in the other bytes, replaces them with zeros, and then I compare it with 7f. If it's not 7f, we have a valid code, for example, 21, 22 or even 7e.
 
-Okay. So let's start adding 1 to this least significant byte. Add 1 and then I'm going to test if this byte is 7 F because 7 F is the first value we do not want. So what I do is I apply here a mask, this mask with this and operator actually extracts the list from significant byte, places 0s in the other bytes, replaces them with zeros, and then I compare it with 7 f. If it's not 7 f, we have not we have a valid code, for example, 21, 22 or even 7e.
+So if it's not, if you do not have an overflow, I just return it. Otherwise, I have to replace the 7f that was here with 20 and I have to add 1 in the next position. The way to do it you just need to add A1, because you have 7F, if you have A1, 7F plus A1 is this thing (120), so it will place 20 here and add 1 in the next byte. And again, we isolate that byte using a mask which replaces all the other bytes with 0s and we compare it with 7f. If it's not 7f, okay, it's good. There is no overflow. Otherwise, we need to add something, but now shift it 1 byte and then we have to do it again, testing this one and testing this one. In the worst possible situation, we have 7e, 7e, 7e, 7e, add 1, add 1, add 1, add 1, and then this will go around and we will return 20 20 20 20, which is again, spaces. So how can you use this? 
 
-So if it's not, if if you do not have an overflow, I just return it. Otherwise, I have to replace the 7f that was here with 20 and I have to add 1 in the next position. The way to do it is just you just need to add a one, because you have 7F, if you have a one, 7F plus a one is this thing, so it will place 20 here and add 1 in the next byte. And again, we isolate that byte using a mask with which replaces all the other bytes with 0s and we compare it with 7f. If it's not 7f, okay, it's good.
+In this code you need to initialize the appropriate data structure with the contents of the coin.
 
-There is no overflow. Otherwise, we need to add something, but now shift it 1 byte and then we have to do it again, testing this one and testing this one. In the worst possible situation, we have 7e, 7e, 7e, 7e, add 1, add 1, add 1, add 1, and then this will go around and we will return 20 20 20 20, which is again, spaces. So how can you use this? 
+This can be, for example, index 5 and index 6 or whatever you like. 2 are enough, there's probably no need to have a v3 because if you do it things in this way, you will have 95 raised to 4 possibilities just for v1.
 
-In this code here, you try, you will try one combination, you need to initialize the appropriate data structure with the contents of the coin.
+And if you do it also for v2, it will be 95 raised to the 8th power and that's enough. This will keep the even good graphic cards occupied for hours. So there's no need for more.
 
-This  can be, for example, index 5 and index 6 or whatever you like. 2 are enough, there's probably no need to have a v3 because if you do it things in this way, you will have 95 sorry. You will have 95 raised to 4 possibilities just for v one.
+You call this function (next_value_to_try_ascii). You you do something like this.
 
-And if you do it also for v two, it will be 95 raised to the 8th power and that's enough. This will keep the even good graphic cards occupied for hours. Okay? So there's no need for more.
+v1 = next_value_to_try_ascii(v1);
+if(v1 == 0x20202020) v2 = next_value_to_try_ascii(v2;)
 
-You call this function. You do say things something like this. Let me do it here. You you do something like this. V one equal next value to try, v one.
+And then, of course, you do your data, whatever. For example:
 
-And then you do this if v one is equal 0x20202020. This means that it overflow. We do the same thing with v 2. Next, value to try. V 2.
+for(lane=0;lane<4;lane++)
+{
+    data[idx][lane]=v1;
+    data[idx+1][lane]=v2;
+    do for all lanes
+}
 
-And there's no need for the v three. And then, of course, you do your data, whatever whatever. For example, lane 6. Index 6. For example, 6 lane. If you do, of course, do it for lane equal to 0. Lane smaller than, for example, 4, laneplusplus. To do it for her, and then put here v one, and then you do the same thing, but for the next index.
-
-Lane equal to V 2. And you do it do this for all lanes, and you have now all the information ready for you to try the next potential coins. Okay? Because you have changed this here, and you have changed this here. And then you have different combination.
+and you have now all the information ready for you to try the next potential coins. Because you have changed this here, and you have changed this here. And then you have different combination.
 
 If you do this different lanes here, different numbers here. For threads, different numbers here. You are trying different coins in parallel. Okay? So that's the main thing.
-
-And that's it for this video.
