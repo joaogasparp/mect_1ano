@@ -1,4 +1,4 @@
-%% Exercise 12.a.
+%% 12.a.
 
 clear
 clc
@@ -60,7 +60,7 @@ fprintf('Average round-trip delay (unicast service) = %.2f ms\n', avgDelayUnicas
 fprintf('Worst round-trip delay (anycast service) = %.2f ms\n', maxDelayAnycast);
 fprintf('Average round-trip delay (anycast service) = %.2f ms\n', avgDelayAnycast);
 
-%% Exercise 12.b.
+%% 12.b.
 
 clear
 clc
@@ -127,7 +127,7 @@ for i = 1:nLinks
     fprintf('{%d-%d}: %.2f %.2f\n', Loads(i, 1), Loads(i, 2), Loads(i, 3), Loads(i, 4));
 end
 
-%% Exercise 12.c.
+%% 12.c.
 
 clear
 clc
@@ -222,7 +222,7 @@ fprintf('Average round-trip delay (unicast service) = %.2f ms\n', avgDelayUnicas
 fprintf('Worst round-trip delay (anycast service) = %.2f ms\n', maxDelayAnycast);
 fprintf('Average round-trip delay (anycast service) = %.2f ms\n', avgDelayAnycast);
 
-%% Exercise 12.d.
+%% 12.d.
 
 clear
 clc

@@ -1,4 +1,4 @@
-%% 9.b)
+%% 9.b.
 
 clear all
 close all
@@ -39,7 +39,8 @@ for flow = find(nSP==max(nSP))
     fprintf('\tFlow %d (%d -> %d)\n', flow, sP{flow}{sol(flow)}(1), sP{flow}{sol(flow)}(end));
 end
 
-%% 9.c)
+%% 9.c.
+
 clear all
 close all
 clc
@@ -169,7 +170,7 @@ end
 fprintf('Multi start hill climbing with greedy randomized (all possible paths):\n');
 fprintf('\t W = %.2f Gbps, No. sol = %d, Av. W = %.2f, time = %.2f sec\n', bestLoad, contador, somador/contador, bestLoadTime);
 
-%% 9.d)
+%% 9.d.
 
 clear all
 close all

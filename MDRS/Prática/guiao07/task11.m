@@ -1,4 +1,4 @@
-%% ex11.a.
+%% 11.a.
 
 clear
 clc
@@ -31,7 +31,7 @@ W = max(max(Loads(:, 3:4)));
 % Exibir os resultados
 fprintf('E = %.2f W = %.2f Gbps\n', E, W);
 
-%% ex11.c.
+%% 11.c.
 
 clear all
 close all
@@ -90,7 +90,7 @@ end
 fprintf('E = %.2f\tW = %.2f Gbps\tNo. sols = %d\ttime = %.2f\n', bestEnergy, bestLoad, contador, bestLoadTime);
 fprintf('List of links in sleeping mode:%s\n', sleepingNodes);
 
-%% ex11.d.
+%% 11.d.
 
 clear
 clc
@@ -146,7 +146,7 @@ end
 fprintf('E = %.2f\tW = %.2f Gbps\tNo. sols = %d\ttime = %.2f\n', bestEnergy, bestLoad, contador, bestLoadTime);
 fprintf('List of links in sleeping mode:%s\n', sleepingNodes);
 
-%% ex11.e.
+%% 11.e.
 
 clear
 clc
@@ -202,7 +202,7 @@ end
 fprintf('E = %.2f\tW = %.2f Gbps\tNo. sols = %d\ttime = %.2f\n', bestEnergy, bestLoad, contador, bestLoadTime);
 fprintf('List of links in sleeping mode:%s\n', sleepingNodes);
 
-%% ex11.f.
+%% 11.f.
 
 clear
 clc

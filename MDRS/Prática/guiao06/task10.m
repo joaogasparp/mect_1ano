@@ -1,4 +1,4 @@
-%% 10.a)
+%% 10.a.
 
 clear all
 close all
@@ -54,13 +54,13 @@ for f=1:nFlows
     fprintf('Flow %d: Availability = %.7f - Path = %s\n', f, av, num2str(sP{1, f}{1}));
 end
 
-%% 10.b)
+%% 10.b.
 
 clc
 
 fprintf('Average availability= %.7f\n', av_sum/nFlows);
 
-%% 10.c)
+%% 10.c.
 
 clear all
 close all
@@ -132,13 +132,13 @@ for f = 1 : nFlows
     fprintf('\t\t\t\t\tPath2 = %s\n', num2str(sP{2, f}{1}));
 end
 
-%% 10.d)
+%% 10.d.
 
 clc
 
 fprintf('Average availability= %.7f\n', av_sum/nFlows);
 
-%% 10.e)
+%% 10.e.
 
 clc
 
@@ -156,7 +156,7 @@ for i = 1 : length(Band)
     fprintf('{%d - %d}:\t%.2f\t%.2f\n', Band(i), Band(i+length(Band)), Band(i+length(Band)*2), Band(i+length(Band)*3))
 end
 
-%% 10.f)
+%% 10.f.
 
 clc
 
