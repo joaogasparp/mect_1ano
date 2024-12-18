@@ -1,5 +1,4 @@
-%% 9.b.
-
+%% 9.b)
 clear all
 close all
 clc
@@ -34,13 +33,12 @@ for flow = find(nSP==min(nSP))
 end
 
 % print the maximum no. of paths
-fprintf('Maximum no. of paths= %d\n', max(nSP));
+fprintf('\nMaximum no. of paths= %d\n', max(nSP));
 for flow = find(nSP==max(nSP))
     fprintf('\tFlow %d (%d -> %d)\n', flow, sP{flow}{sol(flow)}(1), sP{flow}{sol(flow)}(end));
 end
 
-%% 9.c.
-
+%% 9.c)
 clear all
 close all
 clc
@@ -62,8 +60,7 @@ end
 % sP{f}{i} is the i-th path of flow f
 % nSP(f) is the number of paths of flow f
 
-% Random Algorithm
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% Random Algorithm %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 t= tic;
 timeLimit= 10;
 bestLoad= inf;
@@ -89,8 +86,7 @@ end
 fprintf('Random algorithm (all possible paths):\n');
 fprintf('\t W = %.2f Gbps, No. sol = %d, Av. W = %.2f, time = %.2f sec\n', bestLoad, contador, somador/contador, bestLoadTime);
 
-% Greedy Randomized Algorithm
-
+%%%%%%%%%%%%%%%%%%%%%% Greedy Randomized Algorithm %%%%%%%%%%%%%%%%%%%%%%%
 t= tic;
 timeLimit= 10;
 bestLoad= inf;
@@ -112,8 +108,7 @@ end
 fprintf('Greedy randomized (all possible paths):\n');
 fprintf('\t W = %.2f Gbps, No. sol = %d, Av. W = %.2f, time = %.2f sec\n', bestLoad, contador, somador/contador, bestLoadTime);
 
-% Multi start hill climbing with random
-
+%%%%%%%%%%%%%%%%% Multi start hill climbing with random %%%%%%%%%%%%%%%%%%
 t= tic;
 timeLimit= 10;
 bestLoad= inf;
@@ -144,8 +139,7 @@ end
 fprintf('Multi start hill climbing with random (all possible paths):\n');
 fprintf('\t W = %.2f Gbps, No. sol = %d, Av. W = %.2f, time = %.2f sec\n', bestLoad, contador, somador/contador, bestLoadTime);
 
-% Multi start hill climbing with  greedy randomized
-
+%%%%%%%%%%% Multi start hill climbing with  greedy randomized %%%%%%%%%%%%
 t= tic;
 timeLimit= 10;
 bestLoad= inf;
@@ -170,8 +164,7 @@ end
 fprintf('Multi start hill climbing with greedy randomized (all possible paths):\n');
 fprintf('\t W = %.2f Gbps, No. sol = %d, Av. W = %.2f, time = %.2f sec\n', bestLoad, contador, somador/contador, bestLoadTime);
 
-%% 9.d.
-
+%% 9.d)
 clear all
 close all
 clc
@@ -193,8 +186,7 @@ end
 % sP{f}{i} is the i-th path of flow f
 % nSP(f) is the number of paths of flow f
 
-% Random Algorithm %
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% Random Algorithm %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 t= tic;
 timeLimit= 10;
 bestLoad= inf;
@@ -220,8 +212,7 @@ end
 fprintf('Random algorithm (6 paths per flow):\n');
 fprintf('\t W = %.2f Gbps, No. sol = %d, Av. W = %.2f, time = %.2f sec\n', bestLoad, contador, somador/contador, bestLoadTime);
 
-% Greedy Randomized Algorithm %
-
+%%%%%%%%%%%%%%%%%%%%%% Greedy Randomized Algorithm %%%%%%%%%%%%%%%%%%%%%%%
 t= tic;
 timeLimit= 10;
 bestLoad= inf;
@@ -243,8 +234,7 @@ end
 fprintf('Greedy randomized algorithm (6 paths per flow):\n');
 fprintf('\t W = %.2f Gbps, No. sol = %d, Av. W = %.2f, time = %.2f sec\n', bestLoad, contador, somador/contador, bestLoadTime);
 
-% Multi start hill climbing with random %
-
+%%%%%%%%%%%%%%%%% Multi start hill climbing with random %%%%%%%%%%%%%%%%%%
 t= tic;
 timeLimit= 10;
 bestLoad= inf;
@@ -275,8 +265,7 @@ end
 fprintf('Multi start hill climbing with random (6 paths per flow):\n');
 fprintf('\t W = %.2f Gbps, No. sol = %d, Av. W = %.2f, time = %.2f sec\n', bestLoad, contador, somador/contador, bestLoadTime);
 
-% Multi start hill climbing with  greedy randomized %
-
+%%%%%%%%%%% Multi start hill climbing with  greedy randomized %%%%%%%%%%%%
 t= tic;
 timeLimit= 10;
 bestLoad= inf;
