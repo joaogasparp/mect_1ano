@@ -62,7 +62,7 @@ end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% Random Algorithm %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 t= tic;
-timeLimit= 10;
+timeLimit= 5;
 bestLoad= inf;
 contador= 0;
 somador= 0;
@@ -88,7 +88,7 @@ fprintf('\t W = %.2f Gbps, No. sol = %d, Av. W = %.2f, time = %.2f sec\n', bestL
 
 %%%%%%%%%%%%%%%%%%%%%% Greedy Randomized Algorithm %%%%%%%%%%%%%%%%%%%%%%%
 t= tic;
-timeLimit= 10;
+timeLimit= 5;
 bestLoad= inf;
 contador= 0;
 somador= 0;
@@ -110,7 +110,7 @@ fprintf('\t W = %.2f Gbps, No. sol = %d, Av. W = %.2f, time = %.2f sec\n', bestL
 
 %%%%%%%%%%%%%%%%% Multi start hill climbing with random %%%%%%%%%%%%%%%%%%
 t= tic;
-timeLimit= 10;
+timeLimit= 5;
 bestLoad= inf;
 contador= 0;
 somador= 0;
@@ -141,7 +141,7 @@ fprintf('\t W = %.2f Gbps, No. sol = %d, Av. W = %.2f, time = %.2f sec\n', bestL
 
 %%%%%%%%%%% Multi start hill climbing with  greedy randomized %%%%%%%%%%%%
 t= tic;
-timeLimit= 10;
+timeLimit= 5;
 bestLoad= inf;
 contador= 0;
 somador= 0;
@@ -188,7 +188,7 @@ end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% Random Algorithm %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 t= tic;
-timeLimit= 10;
+timeLimit= 5;
 bestLoad= inf;
 contador= 0;
 somador= 0;
@@ -214,7 +214,7 @@ fprintf('\t W = %.2f Gbps, No. sol = %d, Av. W = %.2f, time = %.2f sec\n', bestL
 
 %%%%%%%%%%%%%%%%%%%%%% Greedy Randomized Algorithm %%%%%%%%%%%%%%%%%%%%%%%
 t= tic;
-timeLimit= 10;
+timeLimit= 5;
 bestLoad= inf;
 contador= 0;
 somador= 0;
@@ -236,7 +236,7 @@ fprintf('\t W = %.2f Gbps, No. sol = %d, Av. W = %.2f, time = %.2f sec\n', bestL
 
 %%%%%%%%%%%%%%%%% Multi start hill climbing with random %%%%%%%%%%%%%%%%%%
 t= tic;
-timeLimit= 10;
+timeLimit= 5;
 bestLoad= inf;
 contador= 0;
 somador= 0;
@@ -267,7 +267,7 @@ fprintf('\t W = %.2f Gbps, No. sol = %d, Av. W = %.2f, time = %.2f sec\n', bestL
 
 %%%%%%%%%%% Multi start hill climbing with  greedy randomized %%%%%%%%%%%%
 t= tic;
-timeLimit= 10;
+timeLimit= 5;
 bestLoad= inf;
 contador= 0;
 somador= 0;
