@@ -1,6 +1,6 @@
-%% 9.b)
-clear all
-close all
+%% 9.b.
+
+clear
 clc
 
 load('InputData2.mat')
@@ -38,9 +38,9 @@ for flow = find(nSP==max(nSP))
     fprintf('\tFlow %d (%d -> %d)\n', flow, sP{flow}{sol(flow)}(1), sP{flow}{sol(flow)}(end));
 end
 
-%% 9.c)
-clear all
-close all
+%% 9.c.
+
+clear
 clc
 
 load('InputData2.mat')
@@ -164,9 +164,9 @@ end
 fprintf('Multi start hill climbing with greedy randomized (all possible paths):\n');
 fprintf('\t W = %.2f Gbps, No. sol = %d, Av. W = %.2f, time = %.2f sec\n', bestLoad, contador, somador/contador, bestLoadTime);
 
-%% 9.d)
-clear all
-close all
+%% 9.d.
+
+clear
 clc
 
 load('InputData2.mat')
@@ -211,6 +211,8 @@ end
 
 fprintf('Random algorithm (6 paths per flow):\n');
 fprintf('\t W = %.2f Gbps, No. sol = %d, Av. W = %.2f, time = %.2f sec\n', bestLoad, contador, somador/contador, bestLoadTime);
+% Random algorithm (6 paths per flow):
+% W = 7.30 Gbps, No. sol = 417312, Av. W = 12.82, time = 1.78 sec
 
 %%%%%%%%%%%%%%%%%%%%%% Greedy Randomized Algorithm %%%%%%%%%%%%%%%%%%%%%%%
 t= tic;
@@ -233,6 +235,8 @@ end
 
 fprintf('Greedy randomized algorithm (6 paths per flow):\n');
 fprintf('\t W = %.2f Gbps, No. sol = %d, Av. W = %.2f, time = %.2f sec\n', bestLoad, contador, somador/contador, bestLoadTime);
+% Greedy randomized algorithm (6 paths per flow):
+% W = 6.70 Gbps, No. sol = 8040, Av. W = 7.91, time = 0.30 sec
 
 %%%%%%%%%%%%%%%%% Multi start hill climbing with random %%%%%%%%%%%%%%%%%%
 t= tic;
@@ -264,6 +268,8 @@ end
 
 fprintf('Multi start hill climbing with random (6 paths per flow):\n');
 fprintf('\t W = %.2f Gbps, No. sol = %d, Av. W = %.2f, time = %.2f sec\n', bestLoad, contador, somador/contador, bestLoadTime);
+% Multi start hill climbing with random (6 paths per flow):
+% W = 6.70 Gbps, No. sol = 1041, Av. W = 7.89, time = 0.36 sec
 
 %%%%%%%%%%% Multi start hill climbing with  greedy randomized %%%%%%%%%%%%
 t= tic;
@@ -289,3 +295,5 @@ end
 
 fprintf('Multi start hill climbing with greedy randomized (6 paths per flow):\n');
 fprintf('\t W = %.2f Gbps, No. sol = %d, Av. W = %.2f, time = %.2f sec\n', bestLoad, contador, somador/contador, bestLoadTime);
+% Multi start hill climbing with greedy randomized (6 paths per flow):
+% W = 6.70 Gbps, No. sol = 2409, Av. W = 7.47, time = 0.17 sec
