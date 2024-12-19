@@ -290,7 +290,6 @@ while toc(t) < timeLimit
         bestLoadTime = toc(t);
     end
     contador= contador + 1;
-    somador= somador + load;
 end
 
 fprintf('Multi start hill climbing with greedy randomized (6 paths per flow):\n');
