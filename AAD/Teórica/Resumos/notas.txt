@@ -1,0 +1,998 @@
+• Computer architecture - refere-se aos atributos de um sistema de computador que são visíveis para o programador, 
+ou seja, para aqueles atributos que têm impacto direto na execução lógica de um programa.
+Os atributos de arquitetura incluem o conjunto de instruções, o número e o tamanho dos registos internos do processador, 
+o formato dos diferentes tipos de dados, os modos de endereçamento da memória e os mecanismos de E/S.
+
+• Computer organization - refere-se ao papel das unidades operacionais internas e a maneira como eles se interconectam para 
+implementar a especificação arquitetônica.
+Atributos organizacionais incluem os detalhes de hardware que são transparentes para o programador, 
+como sinais de controle, interfaces entre processador e memória e entre o sistema do computador e dispositivos de E/S (periféricos) 
+e a tecnologia de memória utilizada.
+
+• structure - informa-nos quantos componentes existem e a maneira como eles são interligados.
+
+
+• function - informa-nos sobre a operação de cada componente individual como parte do todo.
+
+
+As funções básicas de um sistema de computador são: entrada de dados, saída de dados,processamento de dados, 
+armazenamento de dados e controle.
+
+No nível superior, a estrutura de um sistema de computador é composto por :
+1º - processor (or central processing unit – CPU) : controla a operação do computador e executa suas funções de 
+processamento de dados.
+2º - main memory: armazena dados durante o processamento; tem uma natureza volátil.
+3º - mass memory: armazena dados entre execuções de processamento e permite que grandes quantidades de dados sejam recuperadas e 
+eventualmente atualizadas durante o processamento; tem uma natureza não volátil e é percebido como um dispositivo especial de E/S.
+4º - I/O: move dados entre o sistema do computador e seu ambiente externo.
+5º - system interconnection: garante que a transferência de dados ocorra entre os componentes; 
+geralmente é implementado como um barramento.
+
+De forma simplificada, o próprio processador pode ser visto como constituído por uma unidade de controle, que cuida 
+principalmente das fases de busca e decodificação da instrução; de uma unidade aritmética/lógica-ALU, 
+que realiza as operações prescritas; de um banco de registos, que armazena dados temporários; e de buffers de E/S, 
+que possibilitam a comunicação com os demais componentes do sistema computacional.
+
+O conjunto de instruções de qualquer processador sempre compreende instruções do tipo:
+• data movement – transferência de dados entre algum registo do banco de registo e a memória principal ou algum controlador de E/S.
+• arithmetic / logic – instruções aritméticas (somar, subtrair, multiplicar, dividir), em formato de ponto fixo ou flutuante,
+instruções lógicas (not, and, or, x-or) e deslocamento/rotação do conteúdo do registo.
+• branching - modificando a estrita sequencialidade da execução da instrução, seja incondicionalmente ou dependente de alguma condição
+• subroutine calling – execução de subprogramas (segmentos de código autônomos dentro de todo o grupo de instruções fornecidas), 
+seja incondicionalmente ou dependente de alguma condição.
+
+
+data-level parallelism - DLP (paralelismo de nível de dados) – surge quando há vários itens de dados que podem ser processados 
+ao mesmo tempo.
+task-level parallelism - TLP (paralelismo em nível de tarefa) - surge quando a tarefa a ser realizada pode ser dividida em
+subtarefas que operam independentemente.
+
+O hardware do computador, por sua vez, pode explorar esses dois tipos de paralelismo de aplicativos de quatro maneiras diferentes
+• paralelismo em nível de instrução(instruction-level parallelism) - o paralelismo em nível de dados é explorado com a ajuda 
+do compilador usando ideias como pipeline, execução especulativa e vários problemas(issues).
+• por meio de hardware especial(through special hardware) - arquiteturas vetoriais e unidades de processador gráfico (GPUs) 
+exploram o paralelismo em nível de dados aplicando a mesma instrução a uma coleção de dados em paralelo.
+• paralelismo em nível de encadeamento/thread(thread-level parallelism) – o paralelismo em nível de dados e em nível de tarefa pode 
+ser explorado em um modelo fortemente acoplado que permite a interação entre encadeamentos/threads simultâneos.
+• paralelismo em nível de solicitação(request-level parallelism) – o paralelismo é explorado entre tarefas essencialmente 
+e fracamente acopladas especificadas pelo programador ou pelo sistema operacional.
+
+
+Na década de 1960, Michael Flynn estudou os esforços de computação paralela que foram feitos até agora e encontrou uma classificação que 
+ainda é popular hoje.Ele observou o paralelismo nas instruções e fluxos de dados exigidos pelas instruções no 
+componente mais restrito do multiprocessador e colocou todos os computadores em uma das quatro categorias:
+•single instruction – single data streams (SISD): corresponde ao uniprocessador; no entanto, 
+o paralelismo em nível de instrução ainda pode ser explorado.
+• single instruction – multiple data streams (SIMD):a mesma instrução é executada por várias unidades de processamento usando 
+diferentes fluxos de dados; esta categoria inclui arquiteturas vetoriais, extensões multimídia para conjuntos de instruções 
+padrão e GPUs.
+• multiple instruction – single data streams (MISD): várias instruções são executadas no mesmo dado; nenhum multiprocessador 
+comercial desse tipo foi construído ainda (embora se o dado for considerado um vetor de dados, então os arrays sistólicos 
+podem ser considerados como pertencentes a esta categoria).
+• multiple instruction – multiple data streams (MIMD): tem como alvo o paralelismo em nível de tarefa onde cada processador 
+executa seu próprio programa em seus próprios dados; o paralelismo em nível de dados também pode ser explorado, embora a
+sobrecarga provavelmente seja maior do que no SIMD; processadores multicore se enquadram nesta categoria.
+
+------------------------------------------------------------------------------------
+•Amdahl's Law
+O ganho de desempenho que pode ser obtido melhorando alguma característica de um sistema computacional que pode ser estimado 
+pela Lei de Amdahl. Amdahl afirmou em 1967 que a velocidade a ser obtida com a adoção de algum modo mais rápido de execução 
+é limitada pela fração de tempo de todas as operações que não podem ser aprimoradas e é expressa pela fórmula:
+speedup(overall)= execution time for the entire task without using the improvement/execution time for the entire task using the improvement
+speedup(overall)= 1/[(1-frac)+frac/speedup]
+frac: fraction enhanced
+speedup: speedup enhanced
+
+Princípios quantitativos de design de computador
+• tirar proveito do paralelismo – o paralelismo é um dos métodos mais importantes
+para melhorar o desempenho; pode-se recorrer à redundância para aumentar a capacidade de dependência e/ou às vezes tornar as operações mais rápidas 
+simplesmente adicionando mais recursos – escalabilidade ou elicitando a simultaneidade subjacente; isso pode ser feito em vários níveis de abstração: 
+sistema, processador individual ou design digital de baixo nível.
+• Tirar aproveito do princípio da localidade – programas tendem a reutilizar instruções e dados que foram usados recentemente.
+• foco no caso comum – ao fazer um trade-off de design, favoreça o caso frequente sobre o infrequente; o caso frequente é muitas vezes mais simples 
+de otimizar e pode ser mais recompensador; funciona bem não apenas para desempenho, mas também para alocação de recursos e energia.
+
+
+Potência e energia em circuitos integrados
+Microprocessadores modernos oferecem várias técnicas para melhorar a eficiência energética apesar das taxas de clock planas e tensões de alimentação constantes.
+• acompanhar as operações(keep track on operations) - a maioria dos microprocessadores atuais desliga o relógio de módulos inativos para economizar energia e energia dinâmica.
+• escala dinâmica de frequência de tensão(dynamic voltage-frequency scaling (DVFS)) – a maioria dos microprocessadores hoje oferece algumas frequências de clock e voltagens nas 
+quais operar para menor consumo de energia e energia(potência).
+• projeto para caso típico(design for typical case) – microprocessadores a serem usados na computação de desktop são projetado para um caso típico de uso intenso em altas
+temperaturas de operação, contando com sensores de temperatura no chip para detectar quando a atividade deve ser reduzida automaticamente para evitar superaquecimento.
+• over clocking – A Intel começou a oferecer o modo Turbo em 2008, onde o chip decide por si mesmo se é seguro correr em uma frequência mais alta, normalmente 10% acima do
+taxa de clock nominal, por um curto período de tempo, possivelmente em apenas alguns núcleos, até que a temperatura comece a subir.
+
+Dependability(Confiabilidade)
+A confiabilidade do módulo é uma medida da operação contínua do módulo conforme especificado, ou, em outras palavras, é uma medida do tempo que leva para um módulo falhar 
+contado a partir de um instante inicial de referência.
+Se uma coleção de módulos tiver tempos de vida distribuídos exponencialmente – o que significa que a idade de um módulo não é relevante para sua probabilidade de falha 
+e suas falhas são independentes, então a taxa de falha geral da coleção é a soma das taxas de falha do indivíduo módulos.
+module availability = MTTF/(MTTF+MTTR), onde
+MTTF - Mean Time To Failure
+MTTR - Mean Time To Repair
+FIT - Failure In Time
+MTBF - Mean Time Between Failure
+
+The processor performance equation
+CPU execution time = CPU clock cycles*clock cycle time
+CPU execution time = instruction count *CPI*clock cycle time
+CPU execution time = instruction count*sum((instruction count(i)/(instruction count)*CPI)*clock cycle time
+
+• instruction count – depende da arquitetura do computador e da tecnologia de compilador.
+• clock cycles per instruction – depende tanto da arquitetura do computador e a organização do computador.
+• clock cycle time - depende da tecnologia de hardware subjacente e na organização do computador.
+------------------------------------------------------------------------------------
+• Pipelining é uma técnica de implementação de arquiteturas 
+do set de instruções (ISA), através da qual múltiplas 
+instruções são executadas com algum grau de sobreposição temporal.
+O objetivo é aproveitar, de forma o mais eficiente possível, 
+os recursos disponibilizados pelo datapath, por forma a maximizar a eficiência global do processador.
+ou
+é uma técnica de implementação onde a execução de uma tarefa nos objetos de um fluxo é convertida em um conjunto de subtarefas independentes que operam 
+simultaneamente em objetos sucessivos do fluxo.
+
+
+Existe um conjunto de situações particulares que podem 
+condicionar a progressão das instruções no pipeline no próximo ciclo de relógio. Ou até mesmo reduzir o desempenho significativo dos programas no próximo ciclo de relógio.
+• Estas situações são designadas genericamente por hazards, e podem ser agrupadas em três classes distintas
+
+1º Structural hazards(Hazards estruturais) - eles surgem de conflitos de recursos quando o hardware não pode suportar 
+todas as combinações possíveis de instruções simultaneamente em execução sobreposta. Ou seja, ocorre quando mais do que uma 
+instrução necessita de aceder ao mesmo hardware.
+Ocorre quando: 1) apenas existe uma memória ou 2) há instruções no pipeline com diferentes tempos de execução.
+2º Data hazards(Hazards de dados) - surgem quando uma instrução depende dos resultados de uma
+instrução anterior de uma forma que é exposta pela sobreposição de instruções no pipeline.
+3º Control hazards(Hazards de controlo) - eles surgem do pipeline de instruções de salto e outras instruções que afetam o PC.
+ou
+Um hazard de controlo ocorre quando é necessário fazer o instruction fetch de uma nova instrução 
+e existe numa etapa mais avançada do pipeline uma instrução que pode alterar o fluxo de execução e que ainda não terminou.
+
+•Stalling ou Bubble (introduzir Nop)
+Nesta estratégia a unidade de controlo atrasa a entrada no pipeline da próxima instrução até saber o
+resultado do branch condicional. É uma solução conservativa que tem um preço em termos de tempo de execução.
+
+
+Solução para resolver hazards de controlo
+•Uma solução alternativa ao pipeline stalling é designada por predição (prediction)
+-Assume-se que a condição do branch é falsa (branch not taken), pelo que a próxima instrução a ser executada será a que 
+estiver em PC+4 – estratégia designada por predição estática not taken.
+-Se a previsão falhar, a instrução entretanto lida (a seguir ao branch) é descartada (convertida em nop),
+ continuando o instruction fetch na instrução correta.
+
+•Uma outra alternativa para resolver os hazards de controlo, adotada no MIPS, é designada por delayed branch/delayed branch slot(sucessor sequencial).
+O sucessor sequencial tem várias alternativas que deve ser posto em consideração tais como: from before, from target e from fall-through.
+Nesta abordagem, o processador executa sempre a instrução que se segue ao branch, independentemente de 
+a condição ser verdadeira ou falsa.
+Esta técnica é implementada com a ajuda do compilador/assembler que: 
+-organiza as instruções do programa por forma a trocar a ordem 
+do branch com uma instrução anterior (desde que não haja dependência entre as duas), ou
+-não sendo possível efetuar a troca de instruções introduz um NOP.
+
+•Branch-prediction buffer or branch-prediction table (BPB or BPT)
+é uma pequena memória indexada pela parte inferior do endereço da instrução de branch/desvio. 
+A memória tem um bit por posição que indica se o salto(branch) foi tirado recentemente ou não.
+
+Solução para resolver hazards de dados
+•Forwarding ou bypassing ou short-circuiting
+É uma técnica de disponibilizar um resultado para uma instrução subsequente, mais cedo na cadeia de pipelining.
+•Para resolver o problema, é preciso também em alguns casos adicionar hardware especial, chamado de pipeline interlock, para preservar o padrão de execução correto. Em geral, 
+o pipeline interlock detecta um hazard e introduz-se stalls no pipeline até que a anomalia desapareça.
+
+Há situações em que o forwarding, por si só, não resolve o hazard de dados
+• Um exemplo é o que ocorre quando uma instrução aritmética/lógica depende do resultado de uma instrução de 
+acesso à memória (LW) que ainda não terminou.
+•Para resolver essa situação, é necessário:
+-Fazer o stall do pipeline durante um ciclo de relógio
+-Fazer o forwarding do registo MEM/WB para o estágio EX, para a entrada da ALU
+*Parte das situações de hazards de dados podem ser 
+atenuadas ou resolvidas pelo compilador, através da reordenação de instruções
+*A reordenação não pode comprometer o resultado final.
+-------------------------------------------------------------------------
+
+Exceptions
+
+Exceptions or interrupts - são eventos que causam a quebra da sequência estrita de execução de instruções, exceto branches e jumps.
+Exemplo: solicitações de atenção por um controlador associado a um dispositivo de E/S;  falha de página em uma organização de memória virtual;
+	 mau funcionamento de hardware;  falha de energia, etc.
+
+Exceções individuais têm característics importantes que determinam qual ação o hardware deve executar. 
+Esses requisitos podem ser classificados em cinco categorias semi-independentes.
+
+1º• synchronous vs. asynchronous – diferentemente dos eventos assíncronos, os eventos síncronos ocorrem no mesmo local toda vez
+que o programa é executado com os mesmos dados e alocação de memória; eventos assíncronos, por outro lado, podem ocorrer 
+em qualquer lugar dentro do programa e geralmente podem ser tratados após a conclusão da instrução atual.
+
+2º• user requested vs. coerced – as exceções solicitadas pelo utilizador, sendo previsíveis, não são, em certo sentido, 
+exceções verdadeiras; elas só são tratados como tal porque o mesmo mecanismo, que é usado para salvar e restaurar o 
+estado do programa, também é aplicado a elas; como a única função da instrução que aciona esse tipo de exceção é causar 
+a própria exceção, elas sempre podem ser tratadas após a conclusão da instrução; as exceções coagidas, em contraste, 
+são causadas por algum evento de hardware que o programa não controla e são totalmente imprevisíveis.
+
+3º• maskable vs. non-maskable – algumas exceções permitem que o programa escolha o momento em que o hardware responde a elas.
+
+4º• within vs. between instructions – um evento pode impedir a conclusão de uma instrução em execução, quando é acionada por ela, 
+porque ocorreu algum mau funcionamento ou anomalia no nível de software/hardware; as exceções correspondentes são geralmente
+síncronas e difíceis de implementar porque a instrução deve ser interrompida e, eventualmente, reiniciada posteriormente; 
+exceções assíncronas que ocorrem dentro de instruções, por outro lado, surgem de situações catastróficas e sempre causam 
+o encerramento do programa.
+
+5º• resume vs. terminate – exceções que não exigem que o programa seja retomado depois de tratados, são mais fáceis 
+de implementar porque não há necessidade de reiniciar o programa.
+
+Para que o sistema operacional seja capaz de lidar com uma exceção, ele deve saber o motivo que a acionou, além da 
+instrução que a causou ou que seria executada se a exceção não fosse atendida. Existem dois métodos principais 
+para comunicar o motivo de uma exceção.
+• cause register – é um registrador(registo) de status que contém um campo que descreve a causa de uma exceção que ocorreu, sendo 
+seu valor definido pelo hardware após a sua detecção; quando as exceções são atendidas pelo mesmo endereço de ponto de entrada, 
+este é o meio que o sistema operacional tem para determinar a causa da exceção.
+• vectored exceptions – existem vários endereços de ponto de entrada para atendimento das exceções; em geral, cada endereço 
+de ponto de entrada está associado a uma exceção específica, de modo que a identificação da causa pelo sistema operacional 
+torna-se trivial.
+
+Para outras exceções, no entanto, como exceções de ponto flutuante, a instrução com falha em alguns processadores grava seu resultado
+antes que a exceção possa ser tratada.
+Para resolver/solucionar esse problema, muitos processadores recentes de alto desempenho introduziram dois modos de operação: um modo tem exceções precisas e o outro, 
+para ter melhor desempenho, não. De fato, o modo de exceção precisa deve ser mais lento porque tem que permitir muito menos sobreposição entre instruções de ponto flutuante.
+
+Típico dentro de exceções que podem ocorrer no pipeline clássico de 5 estágios.
+Instruction Fetch(IF):  falha de página na busca de instruções, acesso à memória desalinhado e violação de proteção de memória;
+Instruction Decode(ID): instrução indefinida ou não implementada;
+Execution(EX): exceção aritmética;
+Memory(MEM): falha de página na busca de instruções, acesso à memória desalinhado e violação de proteção de memória;
+Write Back(WB): nenhuma.
+--------------------------------------------------------------------
+
+Multicycle operations in classical 5-stage pipeline
+
+A estrutura de todo o pipeline pode ser generalizada para permitir o pipeline de algumas unidades funcionais de PF e permitir várias operações contínuas. 
+Para facilitar a forma como a descrição é feita, duas definições são introduzidas para as unidades funcionais EX:
+• latency – é o número de ciclos de clock intermediários entre uma instrução que produz um resultado e uma instrução 
+que usa o resultado.
+• initiation or repetition interval – é o número de ciclos de clock que devem decorrer entre a emissão de duas operações 
+do mesmo tipo.
+
+MIPS R4000 pipeline 
+
+A família de processadores MIPS R4000 implementa o conjunto de instruções MIPS64, mas implementa um pipeline mais profundo do que o 
+pipeline clássico de 5 estágios descrito, tanto para programas inteiros quanto FP.
+O pipeline mais profundo permite que o processador atinja uma taxa de clock mais alta fazendo uma decomposição em oito estágios, 
+em vez de cinco. Como o acesso à memória, mesmo pelo uso de caches, é particularmente crítico em termos de tempo, os estágios 
+extras do pipe estão relacionados à decomposição do acesso à memória. Esse tipo de pipelining mais profundo às vezes é chamado de 
+superpipelining. os 8 estágios são: IF,IS,RF,EX,DF,DS,TC,WB.
+
+A unidade de ponto flutuante MIPS R4000 consiste em três unidades funcionais nominais: um somador de ponto flutuante, 
+um multiplicador de ponto flutuante e um divisor de ponto flutuante. A lógica do somador é usada nos estágios finais de 
+uma operação de multiplicação ou divisão.
+As operações de precisão dupla podem levar de 2 ciclos (para uma negação) a 112 ciclos (para uma raiz quadrada).
+
+Existem quatro causas principais para introduzir-se stalls ou losses(perdas) de pipeline que impedem que a emissão de instruções na taxa 
+nominal seja alcançada:
+1º• load stalls - atrasos decorrentes do uso do valor de carga de um ou dois ciclos de clock após a execução da carga.
+2º• branch stalls and losses – dois atrasos de ciclo de clock após cada ramificação(branch) tomada e um atraso de ciclo de clock 
+se o slot de atraso de ramificação(branch) não puder ser tomado com uma instrução útil.
+3º• FP result stalls – atrasos que surgem porque um operando é necessário e ainda não foi calculado.
+4º• FP structural stalls – atrasos decorrentes porque as etapas de processamento necessárias no pipeline FP 
+não estão disponíveis quando necessário.
+------------------------------------------------------------------------------
+
+Memory Hierarchy Desing 
+
+Princípio de localidade
+
+Para lidar com esse problema, a abordagem seguida pelos projetistas de sistemas de memória é baseada em um fato observacional derivado do rastreamento da execução do 
+programa e é conhecido como princípio da localidade. Ele simplesmente afirma que, por períodos de tempo relativamente grandes, um programa tende a fazer referência a uma 
+fração muito definida de seu espaço de endereçamento. Assim, pode-se falar de
+• localidade espacial – quando uma palavra de memória é referenciada uma vez ou outra, que está armazenado nas proximidades, pode ser referenciado tão cedo quanto possível.
+• localidade temporal – quando uma palavra de memória é referenciada uma vez, ela pode ser referenciada novamente quão breve quanto possível.
+
+Hierarquia de memória
+A hierarquia da memória pode ser dividida em níveis distintos:
+1º- Banco de registo(Register bank): memória interna ao processador, o acesso é controlado pelas instruções.
+2º- Cache: memória externa ao processador, o acesso é controlado por instruções de busca/pesquisa e transferência de dados; 
+atualmente consiste em vários níveis de RAM estática, todos eles colocados dentro do circuito integrado do processador; 
+o primeiro nível está localizado dentro do chip do processador e é dividido em unidades de instrução e dados.
+3º- Memória principal(Main memory): memória externa ao processador; este implementa o conceito de programa armazenado 
+definindo o dispositivo onde as instruções e os dados de um programa em execução são principalmente armazenados; consiste em RAM dinâmica.
+4º- Área de troca(Swapping area): memória não volátil localizada no armazenamento em massa; funciona como uma extensão da memória principal 
+para implementar uma organização de memória controlada pelo sistema operacional, geralmente uma arquitetura paginada de memória virtual; 
+consiste principalmente em dispositivos de memória flash ou HDD.
+
+Importante lembrar que,
+Numa hierarquia de memória, quanto maior o nível, mais próximo do processador ela está localizada. As hierarquias de memória tiram vantagem da localidade temporal,
+mantendo instruções e dados acessados mais recentemente mais próximos do processador, e da localidade espacial, movendo blocos que consistem em várias palavras de 
+memória contíguas para níveis mais altos da hierarquia.
+
+A quantidade mínima de dados que podem estar presentes ou ausentes em uma hierarquia de dois níveis é chamada de bloco. 
+Dizemos que um "hit" ocorre quando os dados solicitados pelo processador aparecem em algum bloco no nível superior; 
+caso contrário, o pedido é chamado de "miss" e o nível inferior é então acessado para recuperar o bloco que contém os dados solicitados.
+
+O "hit rate" ou "hit ratio"(taxa de acertos ou razão de acertos) é a fração de referências de memória para dados encontrados no nível superior em todas as referências de memória. 
+Por outro lado, o "miss rate" ou "miss ratio"(taxa de falta/ausência ou razão de falta) é seu complemento de 1.
+
+Como o desempenho é o principal problema, o tempo necessário para atender "hits" e "misses" é relevante. O hit time, sendo o tempo para acessar o nível superior, compreende também 
+o tempo para afirmar se o acesso é um "hit" ou um "miss". A "miss penalty"(penalidade de falta/ausência), então, é o tempo para substituir um bloco no nível superior pelo bloco 
+que contém os dados solicitados pelo processador.
+------------------------------
+
+Cache principles - Princípios de cache
+
+Cache é o nome tradicionalmente dado aos níveis de hierarquia de memória localizados entre o processador e a memória principal. 
+Hoje em dia, no entanto, o termo tem um significado mais amplo: refere-se a qualquer dispositivo de armazenamento que seja gerenciado de maneira que tire proveito do 
+princípio da localidade.
+Ao lidar com o cache, o termo "Line"(linha) é usado especificamente para se referir à quantidade mínima de informação que é transferida entre qualquer par de níveis de 
+cache ou armazenada no nível de cache mais baixo. O "Block"(bloco) é reservado para se referir aos próprios dados armazenados em uma linha de cache ou na memória principal.
+
+Assumindo uma cache de nível único, a resposta às seguintes perguntas ajudará a esclarecer o funcionamento de uma cache:
+• onde está localizada uma linha na cache? (colocação de linha)
+• como é encontrado se estivesse presente lá? (identificação da linha)
+• qual linha deve ser alterada em caso de falha? (substituição de linha)
+• o que acontece em uma operação de gravação/escrita? (escrever estratégia).
+
+Quando a capacidade da memória principal é muito maior que o tamanho do cache, muitos blocos de memória se sobrepõem no mesmo local dentro do cache ao longo do tempo. 
+Existem várias maneiras de fazer isso, mas deve-se ter em mente que os principais objetivos são manter o hardware simples e todo o procedimento de armazenamento/acesso eficiente.
+Nesse sentido, o tamanho do bloco não deve ser completamente arbitrário. É importante que o número de bytes armazenados seja uma potência de 2 para que um endereço 
+de memória possa ser dividido trivialmente em um endereço de bloco e um deslocamento(offset).
+Nest caso a memória está organizada em:
+• mapeamento direto(direct mapping) – quando há um único local onde um bloco pode ser colocado.
+- cache line address = (block address) mod (number of lines in the cache)
+• totalmente associativa(fully associative) - quando um bloco pode ser colocado em qualquer local/lugar.
+- cache line address = any
+• conjunto associativo(set associative) – quando há um agregado de lugares, chamado de conjunto, onde um bloco pode ser colocado.
+- cache line address = (block address) mod (number of sets in the cache)
+
+Caracterização da memória/cache principal
+	memory address
+| block address (s bits) | offset (w bits) |
+
+comprimento do endereço = s + w bits
+número de unidades endereçáveis na memória principal = 2^(s+w) bytes
+número de blocos na memória principal = 2^s
+número de linhas no cache = m = 2^r
+tamanho do cache = 2^(r+w) bytes
+número de conjuntos no cache = v = 2^u
+número de linhas por conjunto = k = m / v = 2^(r−u)
+
+Sempre que o campo de tag(tag field) de um endereço de bloco não for o endereço de bloco inteiro, os bits restantes do endereço formam um segundo campo, 
+o campo de índice, cujo objetivo é selecionar um conjunto específico dentro da cache.
+	     block address
+| tag field (s-u bits) | index field (u bits) |
+
+
+•Direct mapping
+	     block address
+| tag field (s-r bits) | index field (r bits) |
+
+Quando o cache é organizado por meio de mapeamento direto, há uma única linha dentro do cache onde um determinado bloco de memória pode ser armazenado. 
+Isso significa que o número de linhas por conjunto é igual a um, o número de conjuntos é igual ao número de linhas e o campo de tag(tag field) contido em cada linha tem comprimento mínimo.
+
+Esta organização leva a implementações muito simples, rápidas e eficientes. A principal desvantagem é o risco de "thrashing": um fenômeno que surge 
+quando a fração do espaço de endereçamento referenciado pelo processador em um longo período de tempo contém grupos de dois ou mais endereços que são mapeados nas mesmas linhas de cache. 
+Quando isso acontece, a taxa de "hit" diminui bastante e a execução do programa torna-se bastante lenta porque nenhum benefício é retirado da localidade de referência.
+
+•Fully associativity
+	     block address
+| 	tag field (sbits)  	|
+
+Quando o cache é organizado por meio de associatividade total, todas as linhas dentro do cache ficam disponíveis para o armazenamento de um determinado bloco de memória. 
+Isso significa que o número de linhas por conjunto é igual ao número de linhas no cache, o número de conjuntos é igual a um e o campo de tag(tag field) contido em cada linha tem 
+comprimento máximo (o campo de índice não existe).
+Esta organização leva à minimização da taxa de miss, uma vez que em princípio um bloco de memória específico pode ser armazenado em qualquer uma das linhas da cache. 
+A principal desvantagem é a complexidade de projeto que isso implica e, por isso, para uma determinada tecnologia de implementação e um determinado orçamento de energia, 
+limita a velocidade de tomada de decisão por acerto ou erro.
+
+•Set associativity
+	     block address
+| tag field (s-u bits) | index field (u bits) |
+
+Quando a cache é organizada através de associatividade de conjuntos (cache k-way), existem exatamente k linhas dentro da cache onde um determinado bloco de memória pode ser armazenado. 
+Isso significa que o número de linhas por conjunto é igual a k e o número de conjuntos é igual a v.
+Esta organização tenta alcançar o melhor do mundo como retratado pelas duas organizações anteriores. Isso leva a implementações não muito complexas que ainda são rápidas 
+e eficientes e evita o risco de destruição, fornecendo alguma redundância para onde um bloco de memória pode ser armazenado.
+
+A estratégia óbvia, é aquela que minimiza o "miss rate"(a taxa de falta), é escolher a linha dentro do grupo cujos dados não serão mais referenciados ou, se for, a 
+referência acontecerá na maior distância do presente – o princípio da optimalidade . Infelizmente, essa regra não é causal, exigiria adivinhar o futuro e, 
+portanto, não pode ser implementada na prática.
+
+-----
+
+As principais estratégias empregadas para a seleção de linha são:
+•random – um gerador pseudo-aleatório é usado para distribuir a substituição uniformemente entre as linhas candidatas; isso potencializa um comportamento reprodutível.
+• menos usado recentemente (least recently used:LRU) – para aproximar o princípio da optimalidade, baseia-se no passado para prever o futuro; 
+assim, a linha candidata é aquela que não foi referenciada por mais tempo.
+• first in, first out (FIFO) – porque a LRU leva a uma implementação complexa, uma aproximação a ela que é mais simples, mas ainda conta com o passado para prever o futuro, 
+é considerar a linha cujo conteúdo permaneceu por mais tempo no cache.
+-----
+
+Para otimizar ainda mais os caches para operações de "leitura", as organizações contemporâneas conectam o par processador-cache via endereço, dados e linhas de controle. 
+As linhas de endereço e dados também se conectam a buffers de endereço e dados que medeiam o acesso ao barramento do sistema a partir do qual a memória principal é alcançada. 
+Quando ocorre um "hit", o endereço e os buffers de dados estão desativados e toda a comunicação é interna. 
+Quando ocorre um "miss", o endereço do bloco é carregado no barramento do sistema e os dados são retornados ao cache e ao processador.
+
+As operações de escrita/gravação são um pouco diferentes. A modificação do conteúdo do bloco só pode começar depois que a tag for verificada para determinar se há um "hit". 
+Assim, as operações de escrita geralmente demoram mais do que as operações de leitura. Além disso, embora o processador sempre especifique o tamanho e a localização dos dados, 
+apenas para operações de escrita isso é crítico porque uma parte definida do conteúdo do bloco é alterada; para operações de leitura, o acesso a mais bytes de dados 
+do que o necessário é irrelevante.
+
+Existem duas políticas básicas de escrita(nas operações de escrita)
+• write-through – os dados são gravados/escritos na linha de cache e no bloco no nível inferior.
+• write-back – os dados são escritos na linha de cache; o conteúdo do bloco de linha só é escrito/gravado no nível inferior quando o bloco é substituído.
+
+Quando a política de write-back é implementada, um recurso chave, conhecido como bloco sujo(dirty block), é comumente empregado para garantir que apenas os blocos modificados sejam 
+transferidos de volta na substituição. Quando um bloco é transferido pela primeira vez para o cache, seu bit de status assume o valor clean para sinalizar que seu conteúdo 
+não foi alterado; quando ocorre uma escrita, o bit de status assume então o valor sujo e o bloco deve ser escrito de volta na substituição.
+
+Vantagens do Write-through (gravação)
+• é mais simples de implementar; como todas as operações de escrita/gravação resultam em uma escrita/gravação no nível inferior, as linhas de cache estão sempre limpas.
+• o conteúdo do bloco atualizado está sempre presente no nível inferior, o que simplifica a garantia da coerência dos dados.
+• desempenha um papel importante no projeto/design de caches multinível; para os níveis superiores, as escritas/gravações precisam apenas se propagar para o próximo nível inferior, 
+e não até a memória principal.
+
+Vantagens do write-back
+• as operações de gravação para ocorrências ocorrem na velocidade do cache e várias gravações no mesmo bloco exigem apenas uma gravação de volta no nível inferior 
+quando o bloco é substituído.
+• menos largura de banda de memória é usada, tornando-a atraente para multiprocessadores.
+• a energia também é economizada, tornando-a atraente para aplicativos incorporados.
+
+
+O processador trava para a conclusão das operações de escritas/gravação durante um procedimento de gravação. Uma otimização comum para reduzir os bloqueios de escritas/gravação 
+é implementar um buffer de escrita, que permite que o processador continue assim que os dados são gravados no buffer, sobrepondo na verdade a execução do processador 
+com a atualização da memória.
+Um "miss" de escrita/gravação pode ser tratada das seguintes maneiras:
+• write allocate – uma linha é alocada sempre que ocorre um "miss", então a operação de escrita ocorre; no entanto, se o tamanho do bloco for maior que os dados a serem escritos/gravados, 
+o bloco deve primeiro ser recuperado do nível inferior.
+• non write allocate – o cache não é afetado por "misses", a operação de escritas/gravação ocorre apenas no nível inferior, o que significa que os blocos 
+ficam fora do cache até que o processador leia os dados deles.
+
+Qualquer uma das políticas de escrita/gravação "miss" pode ser usada com qualquer uma das políticas de escritas/gravação. No entanto, os caches de write-back geralmente 
+implementam a política de "write allocate" esperando que as escritas/gravações subsequentes nesse bloco sejam capturadas pelo cache. 
+Da mesma forma, caches write-through implementam a política de alocação sem escrita(non write allocate), pois todas as gravações/escritas devem ser escritas no nível inferior, 
+de modo que nenhum ganho é obtido pela alocação do bloco.
+------
+The Opteron data cache - exemplo: cache size = 64KB; store data block of 64 bytes
+
+	     Memory address
+| block address (34 bits) | offset (6 bits) |
+-> address lenght = 40 bits
+-> number of addressable units in main memory = 2^40 bytes / 2^37 words
+-> number of blocks in main memory = 2^34
+-> block size = 2^6 bytes
+
+Nº de linhas por cache : m
+m = (cache size)/(set associativity *⋅block size) = 2^16/(2*2^6) = 2^9 = 512
+
+<-------Cache performance
+total number of misses/instruction count = miss rate⋅ * (memory accesses/instruction count)
+
+average memory access time = hit time + (miss rate) *(⋅miss penalty clock cycles) * (⋅clock cycle time)
+
+memory stall cycles = (instruction count) * [⋅memory accesses/instruction] * ⋅ ⋅miss rate⋅ * (total miss penalty − overlapped miss latency)
+
+<------Cache optimization
+A abordagem tradicional para melhorar o comportamento de um cache é minimizar o miss rate(a taxa de falta). Erros/misses podem ser modelados em três categorias básicas:
+• compulsory misses(faltas/perdas compulsórias): misses que ocorrem mesmo que a cache tenha um tamanho infinito; o primeiro acesso a qualquer byte ou palavra sempre 
+se traduzirá num miss porque o bloco de memória onde o byte ou palavra reside deve ser trazido primeiro para o cache; eles também são conhecidos como erros de inicialização 
+a frio ou erros de primeira referência.
+• capacity misses(perda/falta de capacidade): misses(faltas) que ocorrem em um cache totalmente associativo; eles estão diretamente relacionados ao tamanho do cache, 
+se o cache não for grande o suficiente, os blocos de memória serão descartados durante a execução do programa e posteriormente serão recuperados porque são necessários novamente.
+• conflict misses(erros de conflito): misses(faltas) que ocorrem especificamente devido à organização interna da cache; deixando de lado o caso de um cache 
+totalmente associativo e considerando o cache mapeado diretamente como uma instância de um cache associativo de conjunto unidirecional, os blocos de memória podem 
+ser descartados e posteriormente recuperados simplesmente porque muitos blocos são mapeados em alguns dos conjuntos; eles também são conhecidos como erros de colisão.
+
+Uma maneira direta de reduzir a taxa de falta(miss rate) é aumentar o tamanho do bloco. Tamanhos de bloco maiores diminuirão as compulsory misses devido à localidade espacial. 
+No entanto, se o tamanho do bloco for muito grande em relação ao tamanho do cache, a redução no número de linhas de cache tende a aumentar a capacidade e as conflict misses 
+e piorar a taxa total de misses.
+
+miss penalty = (cache latency clock cycles)⋅ * (clock cycle time) + [block size / bandwidth (clock cycles)] * ⋅clock cycle time
+
+<--- Main memory
+A memória principal atende principalmente às demandas dos caches e serve como interface de E/S tanto para a área de troca em uma organização de memória virtual 
+quanto para os diferentes controladores de dispositivos, atuando como um destino para dados de entrada e uma fonte para dados de saída.
+A memória principal é construída em torno de chips DRAM. Atualmente, a latência da memória é expressa por meio de duas figuras de mérito.
+• access time – intervalo de tempo entre a emissão de uma solicitação de leitura/escrita e o instante em que os dados associados ficam disponíveis/são armazenados.
+• cycle time – intervalo de tempo mínimo entre solicitações de memória não relacionadas.
+
+<----- DRAM
+À medida que as RAMs dinâmicas aumentaram em capacidade, o custo do pacote com todos os pinos de endereço necessários tornou-se um problema. Para resolvê-lo, as linhas de endereço 
+foram multiplexadas: parte do endereço é travada(bloqueado) internamente durante a primeira fase de acesso à memória, com o sinal de controle de estroboscópio de acesso de linha, 
+e o endereço restante é travado posteriormente, durante a segunda fase, com o sinal de controle de estroboscópio de acesso de coluna.
+
+Asynchronous DRAM
+• Read operation
+- o sinal write enable é declarado alto(high) pelo controlador de memória para significar que uma operação de leitura está ocorrendo
+- um endereço de N-bits é colocado no barramento de endereço e é fixado/colocado no buffer de endereço de linha na borda descendente do strobe de acesso de linha declarado pelo 
+controlador de memória
+- os valores de dados armazenados na linha selecionada de células de memória são então detectados e mantidos na matriz de amplificadores de detecção para serem posteriormente 
+escrito de volta nas células de memória
+- um endereço de M-bit é colocado em seguida no barramento de endereço e é fixado/colocado no buffer de endereço da coluna na borda descendente do strobe de acesso à coluna afirmado 
+pelo controlador de memória
+- os valores de dados mantidos na coluna selecionada da matriz de amplificadores de detecção são armazenados no buffer de saída de dados para conduzir o barramento de dados
+• Write operation
+- o sinal write enable é declarado baixo(low) pelo controlador de memória para significar que uma operação de escrita está ocorrendo
+- um endereço de N-bits é colocado no barramento de endereço e é fixado/colocado no buffer de endereço de linha na borda descendente do strobe de acesso de linha declarado pelo 
+controlador de memória
+- os valores de dados armazenados na linha selecionada de células de memória são então detectados e mantidos na matriz de amplificadores de detecção para serem posteriormente 
+gravados de volta nas células de memória
+- um endereço de M-bit é colocado em seguida no barramento de endereço e é fixado/colocado no buffer de endereço da coluna na borda descendente do strobe de acesso à coluna afirmado 
+pelo controlador de memória
+- os valores de dados presentes no barramento de dados são fixados/colocados nos dados no buffer na borda descendente do strobe de acesso à coluna e substituem os valores armazenados
+na coluna selecionada da matriz de amplificadores de detecção antes da gravação de volta nas células de memória
+
+• Refresh operation(CAS before RAS), CAS-Column Access Strobe, RAS-Raw Access Strobe
+- o sinal strobe de acesso à coluna é declarado baixo(low) pelo controlador de memória antes do strobe de acesso à linha e o sinal write enable é declarado alto(high), 
+a lógica de controle dentro do chip interpreta esse arranjo como uma operação de atualização
+- entradas de linhas de endereço são ignoradas e o conteúdo do contador de atualização é fixado/colocado no buffer de endereço de linha na borda descendente do strobe de acesso de linha
+- os valores de dados armazenados na linha selecionada de células de memória são então detectados e mantidos na matriz de amplificadores de detecção para serem posteriormente escritos
+ de volta nas células de memória
+
+Synchronous DRAM
+A DRAM síncrona, ou SDRAM, muda de forma radical a forma como a interface de memória externa interage com o dispositivo. Os sinais de controle não têm mais um efeito 
+direto nas funções internas, mas um sinal de relógio controlado externamente é usado para gerenciar uma máquina de estado finito incorporada que age sobre os comandos recebidos.
+----------------------------------------------------------------------------------------------------------------------------------------
+
+Instruction-Level Parallelism (Complements)
+
+Efficiency of pipelining(Eficiência de pipelining)
+
+CPI_prog = CPI_ideal + structural stalls + data stalls + control stalls
+onde o CPI_ideal, ciclos de clock por instrução na situação ideal, é uma medida do desempenho máximo atingível pela implementação do pipeline e os diferentes tipos de stalls 
+são considerados valores médios por instrução.
+
+<-----Data dependences and hazards
+Se uma instrução depende de outra, haverá restrições de tempo obrigando sua execução, elas devem prosseguir em ordem e muitas vezes podem ser apenas parcialmente sobrepostas.
+Três tipos de dependências são relevantes:
+• dependências de dados, também chamadas de verdadeiras dependências de dados
+• dependências de nomes
+• dependências de controle.
+
+***Dependências de dados
+Diz-se que uma instrução j é dependente de dados de uma instrução i se e somente se qualquer uma das seguintes condições ocorrer
+• A instrução i produz um valor que é usado pela instrução j
+• A instrução j são dados dependentes de uma instrução k e a instrução k são dados dependentes da instrução i
+• As instruções j e i são conectadas por uma cadeia de dependências do segundo tipo.
+
+Uma dependência de dados transmite três ideias:
+• A possibilidade de um hazard(anomalia/perigo)
+• A especificação da ordem em que os resultados devem ser calculados
+• Um limite superior de quanto paralelismo pode ser explorado.
+
+A dependência pode ser resolvida/superada de duas maneiras diferentes
+• Manter uma dependência, mas evitar um hazard(uma anomalia).
+• Eliminar uma dependência transformando o código.
+
+***Dependências de nomes
+Uma dependência de nome está presente quando duas instruções usam o mesmo registo ou local de memória, chamado nome, mas sem que ocorra qualquer fluxo de informações entre elas.
+Existem dois tipos de dependências de nomes:
+• Uma antidependência entre uma instrução i e uma instrução j ocorre quando a instrução j escreve num registo ou local de memória que a instrução i lê 
+– a ordem original da instrução deve ser preservada para garantir que o valor correto seja lido.
+• Uma dependência de saída entre uma instrução i e uma instrução j ocorre quando ambas as instruções i e j escrevem um valor no mesmo registo ou local de memória 
+– a ordem original da instrução deve ser preservada para garantir que o valor finalmente escrito seja o correto.
+
+Essa renomeação pode ser feita mais prontamente para operandos de registos, onde é chamada de renomeação de registos. A renomeação de registos pode 
+ser realizada estaticamente pelo compilador ou dinamicamente pelo hardware.
+
+<-----Data hazards
+Existe um data hazard sempre que existe uma dependência de dados ou nomes entre as instruções e elas estão próximas o suficiente para gerar, por sua sobreposição no pipeline 
+durante a execução, uma alteração na ordem de acesso ao operando envolvido na dependência.
+
+Por conta da dependência, a ordem de execução do programa deve ser preservada, ou seja, a ordem de execução das instruções caso fossem tomadas uma de cada vez e executadas 
+sequencialmente conforme determinado pelo código fonte original. O objetivo das técnicas de software e hardware é explorar o paralelismo preservando a ordem do programa 
+somente quando isso afeta o resultado do programa e não em todas as circunstâncias.
+
+Os hazards de dados podem ser classificados em três categorias diferentes, dependendo da combinação de acessos a operandos presentes nas instruções. 
+É usada uma convenção de nomes que retrata a ordem de instrução que deve ser preservada pelo pipeline.
+Considere duas instruções i e j, com i precedendo j no programa, então os possíveis hazards são:
+• RAW (read after write) – j tenta ler o operando antes de i escrever um valor nele, então j obtém um valor errado; é a forma mais comum de hazards de dados e corresponde 
+a uma verdadeira dependência de dados.
+• WAW (write after write) – j tenta escrever um valor num operando antes de i escrever seu valor nele, então o valor final está errado; surge em pipelines que permitem escrever 
+em mais de um estágio de pipeline, ou permitem fora de ordem conclusão da instrução e corresponde a uma dependência de saída.
+• WAR (write after read) – j tenta escrever um valor num operando antes de i lê-lo, então i obtém um valor errado; não pode ocorrer na maioria dos pipelines de problemas estáticos, 
+mesmo em pipelines mais profundos ou pipelines de ponto flutuante, porque geralmente todas as leituras são antecipadas e todas as gravações são atrasadas; surge quando há algumas 
+instruções que escrevem resultados no início do pipeline e outras instruções que leem operandos tarde, ou quando a execução fora de ordem é permitida.
+
+***Dependências de controle
+Uma dependência de controle determina a ordem de uma instrução i em relação a um branch, de modo que a instrução i seja executada na ordem correta do programa e somente quando deveria ser.
+Toda instrução, exceto aquelas do primeiro bloco básico do programa, é dependente de controle de algum conjunto de branchs e, em geral, essas dependências de controle devem ser 
+preservadas para manter a ordem do programa.
+Duas restrições são geralmente impostas por dependências de controle:
+• Uma instrução que é dependente de controle de uma branch, não pode ser movida antes da branch para que sua execução não seja mais controlada pela branch.
+• Uma instrução que não é dependente de controle de uma branch não pode ser movida após a branch para que sua execução seja controlada pela branch.
+As duas propriedades críticas para programar:
+correctness - e normalmente preservado, mantendo os dados e o controle.
+dependences - são comportamento de exceção e fluxo de dados.
+
+<-----Basic compiler techniques for exposing ILP(Instruction Level Parallelism)
+Três efeitos diferentes limitam os ganhos do desenrolamento do loop:
+• Uma diminuição na quantidade de sobrecarga economizada com cada desenrolamento - conforme previsto pela Lei de Amdhal
+• Limitações de tamanho de código – para loops grandes, o crescimento do tamanho do código pode levar a um aumento na taxa de cache miss da instrução; além disso, 
+deve-se também estar preocupado com o potencial déficit nos registros, chamado de pressão de registro, que é criado pela aplicação de estratégias agressivas de 
+desenrolamento e escalonamento.
+• Limitações do compilador – o uso de transformações sofisticadas de alto nível, cujas melhorias potenciais são difíceis de medir antes da geração detalhada do código, levou 
+a aumentos significativos na complexidade dos compiladores modernos.
+
+<-------Advanced branch prediction
+
+***Correlating branch predictors
+correlating predictors são os preditores de branch que adicionam o comportamento de execução de outras branches, além da sua própria, para fazer uma previsão/predição.Em geral, 
+um preditor de branch (m,n) adiciona o comportamento de execução de m branches anteriores para escolher entre 2^m n-bit preditores de branch na previsão/predição de uma branch específica.
+[ver página 33 - ILP)
+
+Há um trade-off de projeto envolvido com tais preditores: preditores de branch correlacionados requerem pouca memória para o histórico global, o que lhes permite manter preditores 
+de branch de n bits para um grande número de grupos de branch diferentes (reduzindo assim a probabilidade de reutilização de instruções de branch o mesmo preditor). Por outro lado,
+os preditores de branh local requerem substancialmente mais memória para o histórico local e, por causa disso, são limitados para acompanhar um número relativamente menor de grupos
+de instruções de branch.
+2^m * n * 2^k = constant
+
+****Tournament predictors
+Os preditores de torneio levam esse insight(adicionando informações globais) para o próximo nível usando vários preditores, geralmente um baseado em informações globais e outro 
+em informações locais, e combinando-os com um seletor. Os preditores de torneio podem obter melhor precisão em tamanhos médios do buffer do preditor de branch e também fazer 
+uso efetivo de números muito grandes de bits de predição.
+Os preditores de torneio existentes usam um contador de histerese de 2 bits por branch para escolher entre dois preditores diferentes com base em qual preditor 
+(local, global ou uma mistura dos dois) foi o mais eficaz nas predições recentes. Um contador de histerese de 2 bits requer duas predições incorretas 
+em sucessão para alterar seu estado.
+A vantagem dos preditores de torneio é sua capacidade de selecionar o preditor certo para um branch específico, o que é especialmente crucial para programas inteiros. 
+Normalmente, eles selecionam o preditor global quase 40% do tempo para benchmarks inteiros e menos de 15% do tempo para benchmarks de ponto flutuante.
+
+<--------Dynamic scheduling
+Uma das principais limitações das técnicas simples de pipelining é que elas usam a emissão e execução de instruções em ordem.
+O agendamento dinâmico(ou calendarização dinâmica) é outra maneira de resolver o problema: o hardware reorganiza a execução da instrução enquanto mantém o fluxo de dados e o 
+comportamento de exceção para que as interrupções sejam minimizadas. Isso implica, no entanto, um aumento significativo na complexidade.
+São várias as vantagens resultantes da utilização desta técnica:
+• permite que o código que foi compilado com um pipeline em mente/memória seja executado com eficiência num pipeline diferente, eliminando a necessidade de vários binários.
+• permite lidar com alguns casos em que as dependências são desconhecidas em tempo de compilação, envolvendo, por exemplo, referências de memória e branches dependentes de 
+dados ou o uso de bibliotecas vinculadas dinamicamente.
+• permite que o processador lide com atrasos imprevisíveis, como cache misses, executando outro código enquanto aguarda a resolução de miss/falta.
+
+A limitação de desempenho criada por este hazard(data dependent) pode ser eliminado por não exigir instruções para executar na ordem do programa.
+Para atingir esse objetivo, o processo de emissão pode ser decomposto em duas partes: verificação de anomalias estruturais e espera pela ausência de uma anomalia de dados. 
+Assim, a emissão de instruções em ordem(in-order instruction) ainda é usada, mas a instrução pode iniciar a execução assim que seus operandos de dados estiverem disponíveis.
+Um pipeline com esses recursos realiza execução fora de ordem(out-of-order execution), o que também implica conclusão fora de ordem
+
+A execução fora de ordem introduz a possibilidade de hazards WAR e WAW, que não existiam no pipeline clássico de 5 estágios, o antigo, e apenas com operações de ponto 
+flutuante multiciclo que dão origem à conclusão fora de ordem , o último.
+
+Embora o comportamento da exceção deva ser preservado, os processadores agendados(calendarizados) dinamicamente podem gerar exceções imprecisas. 
+Exceções imprecisas podem ocorrer devido aos dois fatos abaixo:
+• o pipeline pode já ter concluído algumas instruções que tiveram sucesso na ordem do programa a instrução que causou a exceção e cujo resultado não pode ser revertido.
+• o pipeline pode ainda não ter concluído algumas instruções que precedem na ordem do programa a instrução que está causando a exceção.
+
+Para permitir a execução fora de ordem(out-of-order execution), o estágio de ID do pipeline clássico de 5 estágios é dividido em dois estágios:
+• problema(issue) - decodificação de instruções e verificação de anomalias estruturais
+• ler operandos(read operands) – aguardando até que todas as anomalias de dados sejam eliminados antes de ler os operandos.
+
+Em um pipeline agendado dinamicamente, todas as instruções passam pelo estágio de emissão em ordem. Podem, no entanto, ser paralisados e ultrapassados por outros 
+na etapa de leitura de operandos e entrar em execução fora de ordem.
+
+*Existem duas técnicas básicas que permitem que as instruções sejam executadas fora de ordem quando há recursos suficientes e nenhuma dependência de dados entre elas: 
+o scoreboarding foi a primeira técnica a ser introduzida, surgiu no projeto do supercomputador CDC 6600 em meados da década de 1960; O algoritmo de Tomasulo foi o segundo, 
+desenvolvido por Robert Tomasulo em 1967 e aplicado à unidade de ponto flutuante do IBM 360/91.
+
+A principal diferença entre eles é que o algoritmo de Tomasulo lida com antidependências e dependências de saída renomeando dinamicamente os registros. 
+Além disso, também pode ser estendido para lidar com a especulação, uma técnica destinada a reduzir o efeito das dependências de controle ao prever o resultado de uma branch 
+por meio da execução de instruções no endereço de destino previsto e tomar ações corretivas quando a previsão/predição estiver errada.
+
+<-------Scoreboarding [*************************]
+O objetivo de um scoreboard(placar) é tentar manter uma taxa de execução de uma instrução por ciclo de clock, desde que não haja anomalias estruturais(hazards estruturais). 
+Assim, as instruções são executadas o mais cedo possível. Quando uma instrução que foi emitida está parada, outras instruções na tabela de processamento, que não dependem de nenhuma 
+instrução ativa ou parada, são procuradas e, se for encontrada, serão executadas. O scoreboard assume o controle total dos problemas de instrução e execução, 
+incluindo a detecção de todos os hazards(todas as anomalias).
+
+Em um processador com arquitetura MIPS, os scoreboards(placares) fazem sentido principalmente na unidade de ponto flutuante, pois a latência das outras unidades funcionais é muito pequena. 
+Será assumido que há dois multiplicadores, um somador, um divisor e uma única unidade inteira para todas as referências de memória, branches e operações inteiras.
+
+As quatro etapas, que substituem ID, EX e WB no pipeline padrão, são as seguintes: Issue, Read operands, Execution e Write results.
+
+A estrutura interna de dados do scoreboard(placar) consiste em três elementos:
+• instruction status - é uma tabela com tantas entradas quanto o número de instruções em processamento; para cada instrução, ele especifica qual dos
+quatro estados em que a instrução está.
+• functional unit status - é uma tabela com tantas entradas quanto o número de unidades funcionais; cada entrada tem nove campos(busy,op,Fi,Fj,Fk,Qj,Qk,Rj,Rk) .
+*ocupado(busy) – indica se a unidade está ocupada ou livre
+*op – indica a operação a ser realizada na unidade
+*Fi – número do registro de destino
+* Fj, Fk – números dos registros origem/fonte
+*Qj, Qk – identificação das unidades funcionais cujo resultado será armazenado nos registros fonte Fj e Fk
+* Rj, Rk– flags sinalizando quando os registos de origem estão prontos para serem lidos e ainda não foram lidos
+• register result status - é uma tabela de entrada única com tantos campos quantos forem
+registros no banco de registros; indica qual unidade funcional escreverá no registro se uma instrução ativa tiver como destino o registro.
+
+Um scoreboard(placar) usa o ILP disponível para minimizar o número de stalls decorrentes das verdadeiras dependências de dados do programa. Ao eliminar stalls, 
+um scoreboard(placar) é limitado por vários fatores:
+• a quantidade de paralelismo inerente ao programa – este fator determina se instruções independentes podem ser encontradas; se cada instrução depende de sua predecessora, 
+nenhum esquema de escalonamento dinâmico pode reduzir o número de stalls.
+• o número de entradas do scoreboard(placar) - esse fator determina o quão longe o pipeline pode procurar por instruções independentes.
+• o número e os tipos de unidades funcionais - esse fator determina a relevância das anomalias estruturais, que podem aumentar quando o agendamento dinâmico é usado.
+• a presença de antidependências e dependências de saída – o que leva a anomalais de WAR e WAW e pode gerar mais stalls(paralisações).
+
+<----------Tomasulo's algorithm(algoritmo de Tomasulo)
+No esquema desenvolvido por Robert Tomasulo, os hazards(riscos) RAW são evitados executando-se uma instrução apenas quando seus operandos estão disponíveis, 
+exatamente o que o scorboard(placar) mais simples fornece. As anomalias WAR e WAW, que surgem de dependências de nome, são eliminados pela renomeação de registro. 
+A renomeação de registros, de fato, elimina esses hazards alterando o nome de todos os registros de destino, incluindo aqueles com uma 
+leitura ou escrita/gravação pendente de uma instrução anterior, para que a escrita fora de ordem não afete nenhuma instrução que dependa do valor mais antigo do operando.
+
+O uso de estações de reservas, em vez de um banco de registro centralizado, leva a duas propriedades importantes:
+• detecção de hazards e hazards de controle são distribuídos - as informações mantidas nas estações de reserva em cada unidade funcional determinam quando uma instrução 
+pode começar a execução naquela unidade.
+• os resultados são passados diretamente para as unidades funcionais das estações de reserva onde são armazenados em buffer, em vez de passarem pelos registros do banco de registros
+– esse bypassing(desvio) é feito usando um barramento de resultados comum que permite que todas as unidades aguardam que um operando seja carregado simultaneamente 
+(o barramento é chamado de barramento de dados comum no IBM 360/91); em pipelines com múltiplas unidades de execução e emissão de múltiplas instruções por ciclo de clock, 
+mais de um barramento de resultado é necessário.
+[ver o esqueama pág 61 do aula 04-AAD-ILP]
+As três etapas, que substituem ID, EX e WB no pipeline padrão, são as seguintes: Issue, Execute, Write result. 
+Cada estação de reserva ou buffer tem sete campos: busy, op, Qj, Qk, Vj, Vk, A.
+• ocupado(busy) – indica se a estação ou buffer de reserva está ocupado ou livre
+• op – indica a operação a ser realizada na unidade
+• Qj, Qk – identificação da estação de reserva, ou buffer, que produzirá o correspondente operando fonte; um valor igual a zero indica que a origem do operando já está disponível 
+nos registros Vj e Vk, ou é desnecessária
+• Vj, Vk – o valor dos operandos fonte; observe que apenas um dos campos, Q ou V, é válido para cada operando; para buffers de carga, o campo Vk é usado para manter 
+o campo de deslocamento(offset)
+• A – usado para manter o endereço de memória efetivo para uma instrução load ou store.
+
+Cada registro do banco registros possui um campo: 
+Qi - identificação da estação de reserva, ou buffer, que produzirá o resultado a ser armazenado no registro; um valor de zero indica que nenhuma instrução ativa 
+está calculando um valor a ser armazenado no registro.
+
+É importante lembrar que as tags do algoritmo de Tomasulo referem-se à unidade ou ao buffer que produz um resultado: os nomes dos registros são descartados 
+assim que uma instrução é emitida. Esta é, de fato, uma diferença fundamental entre o esquema de Tomasulo e o scoreboard(placar). No scoreboard, os operandos ficam nos registros do 
+banco de registros e só são lidos depois que as instruções produtoras são concluídas e a instrução consumidora está pronta para ser executada.
+
+<-----Hardware-based speculation(especulação baseada em hardware)
+A superação/resolução da dependência de controle é alcançada especulando sobre o resultado das branches e executando o código como se o palpite estivesse correto. Essa ideia representa 
+uma extensão sutil, mas crucial, sobre a predição de branch com escalonamento dinâmico: com a especulação, as instruções são buscadas, emitidas e executadas como se 
+fossem predições de branches estavam sempre certos; o agendamento dinâmico apenas busca e emite tais instruções.
+Claro, mecanismos são necessários para lidar com a situação em que a especulação se torna incorreta.
+
+A especulação baseada em hardware combina três ideias-chave:
+• previsão/predição de branch dinâmico, para selecionar quais instruções executar.
+• especulação, para permitir a execução de instruções antes que as dependências de controle sejam resolvidas (com o entendimento de que os efeitos produzidos por uma sequência 
+especulativa incorreta podem ser desfeitos).
+• escalonamento dinâmico, para lidar com a emissão de diferentes combinações de blocos básicos.
+
+Portanto, a especulação baseada em hardware segue o fluxo previsto de valores de dados para determinar quando executar as instruções. Esse método de execução é essencialmente 
+uma execução de fluxo de dados: as operações são executadas assim que seus operandos de origem ficam disponíveis.
+
+A fim de estender o algoritmo de Tomasulo para suportar a especulação, o bypassing(desvio) de resultados entre as instruções, que é necessário para executar as instruções especulativamente, 
+deve ser separado da conclusão real das instruções. Se tal mecanismo for realizada, uma instrução pode ser executada e desviar seu resultado para outras, sem permitir que a instrução 
+realize quaisquer atualizações que não possam ser revertidas até que seja estabelecido que a instrução não é mais especulativa.
+
+Somente quando a instrução não é mais especulativa, o registro específico do banco de registros, ou a referida localização de memória, pode ser atualizado – 
+esta etapa adicional na execução da instrução é chamada de commit da instrução(instruction commit).
+
+A introdução da fase de confirmação(commit) na execução da instrução requer um conjunto adicional de buffers de hardware que armazenam os resultados das instruções concluídas que 
+ainda não foram confirmadas. Esse banco de buffer, chamado de buffer de reordenação (ROB), também é usado para passar resultados entre as instruções.
+Cada entrada ROB contém cinco campos: 
+• busy – indica se a entrada está ocupada ou livre.
+• instruction type – sinaliza se a instrução é um branch, sem resultado de destino, um armazenamento, com um destino de memória, ou uma carga ou operação ALU, 
+com um destino de banco de registros.
+• destination location - fornece o endereço de memória, para armazenamentos, ou o número do registro, para carregamentos e operações da ALU, onde o resultado da instrução 
+deve ser escrito
+• value – contém o valor do resultado da instrução entre a conclusão da instrução e o commit da instrução.
+• ready - indica se a instrução concluiu a execução.
+
+As quatro etapas envolvidas na execução da instrução são as seguintes: Issue, Execute, Write result e, Commit.
+
+
+<------Exploiting ILP using multiple issue
+As técnicas que acabamos de descrever podem ser usadas para eliminar paradas/downtime resultantes de dependências de dados e controle e abordar um CPI ideal de um ao executar um 
+determinado programa.
+CPI_prog= CPI_ideal + structural stalls .
+Para melhorar ainda mais o desempenho, é necessário diminuir o CPI ideal para um valor menor que um, mas isso não pode ser feito se apenas uma instrução for emitida por ciclo de clock.
+Processadores de problemas múltiplos são de três tipos básicos:
+• processadores superescalares agendados estaticamente - um número variável de instruções são emitidas juntas em vários pipelines, cada uma agendada estaticamente.
+• Processadores VLIW (very long instruction word) – um número fixo de instruções formatadas como uma instrução grande ou um pacote de instruções fixo são emitidos juntos.
+• processadores superescalares agendados dinamicamente – um número variável de instruções é emitido em conjunto em vários pipelines, cada um agendado dinamicamente.
+
+<--------Statically scheduled superscalar processor(Processador superescalar agendado estaticamente)
+Um processador superescalar estaticamente agendado normalmente emite em ordem um número variável de instruções por ciclo de clock até um limite superior que corresponde 
+ao número de pipelines paralelos que são implementados.
+A razão pela qual o número de instruções emitidas por ciclo de clock é variável tem a ver principalmente com dois fatores:
+• Os múltiplos pipelines não são exatamente iguais, o que pode levar a hazards estruturais se qualquer combinação de instruções for considerada
+• Embora o encaminhamento seja usado de forma extensiva nos diferentes pipelines, não é possível, mesmo com a ajuda do compilador, evitar stalls devido a hazards
+de dados entre instruções sucessivas.
+
+<-------ARM Cortex-A8
+O A8 é um processador superescalar estaticamente agendado e de dupla edição com detecção dinâmica de problemas, o que permite emitir uma ou duas instruções por ciclo de clock.
+
+O A8 tem um CPI ideal de 0,5 devido à sua estrutura dupla. Os stalls do pipeline podem surgir de três fontes:
+• strutural hazards – ocorrem quando duas instruções adjacentes selecionadas para emissão simultaneamente requerem o mesmo pipeline funcional; como A8 é escalonado estaticamente, 
+é dever do compilador tentar evitar tais conflitos; quando eles não podem ser evitados, o A8 pode emitir no máximo uma instrução naquele ciclo de clock.
+• data hazards – são detectados no início do pipeline, no placar, e podem interromper ambas as instruções (se a primeira instrução não puder ser emitida, a segunda sempre será interrompida) 
+ou apenas a segunda de um par; novamente é dever do compilador tentar evitar tais stalls sempre que possível.
+•controle hazards - eles surgem apenas quando os branchs são mal previstos. Além das stalls devido a hazards, os cache misses L1 e L2 no pipeline de carregamento/armazenamento 
+também produzirão stalls.
+
+<-------Dynamically scheduled superscalar processor(Processador superescalar agendado dinamicamente)
+Para simplificar, será assumida uma taxa de emissão de duas instruções por ciclo de clock. Os conceitos-chave não são diferentes daqueles encontrados em processadores 
+modernos que emitem três ou mais instruções por ciclo de clock.
+O algoritmo de Tomasulo será estendido para suportar um pipeline superescalar especulativo de múltiplos problemas com inteiro separado, load/store e unidades funcionais de 
+ponto flutuante, cada uma das quais pode iniciar uma operação a cada ciclo de clock. Para obter todas as vantagens do escalonamento dinâmico, o pipeline pode emitir qualquer combinação 
+de duas instruções.
+
+A emissão de várias instruções no mesmo ciclo de clock em um processador escalonado dinamicamente, com ou sem especulação, é uma tarefa muito complexa, pois as instruções 
+podem depender umas das outras. Devido a este fato, as tabelas de controle devem ser atualizadas em paralelo; caso contrário, os valores estarão incorretos ou a dependência pode ser 
+perdida.
+Duas abordagens diferentes têm sido usadas. A primeira é executar o passo em uma fração de todo o ciclo de clock para cada instrução. Por exemplo, quando a largura de emissão é dois, 
+isso significa que ele é executado na metade do ciclo de clock. Infelizmente, não pode ser estendido de maneira direta para lidar com quatro instruções! A segunda é construir a lógica
+ necessária para executar simultaneamente duas ou mais instruções, incluindo as possíveis dependências entre elas.
+
+Processadores superescalares modernos que emitem quatro ou mais instruções por ciclo de clock podem incluir ambos: eles canalizam e ampliam a lógica de emissão.
+Esta etapa do problema é um dos gargalos mais fundamentais no desenvolvimento de processadores superescalares escalonados dinamicamente.
+
+<-------Intel Core i7
+O Intel Core i7 usa uma microarquitetura especulativa fora de ordem agressiva com pipelines razoavelmente profundos tendo como objetivo a obtenção de alto throughput de 
+instrução combinando vários problemas e altas taxas de clock.
+
+Alguns recursos do pipeline Intel Core i7 são apresentados a seguir:
+1. O processador usa um buffer de destino de ramificação multinível, localizado no estágio de busca de instrução, para obter um equilíbrio entre velocidade e precisão de previsão.
+Há também uma pilha de endereço de retorno para acelerar o retorno da função. Erros de previsão causam uma penalidade de cerca de 15 ciclos de clock. Usando o endereço previsto,
+ a unidade de busca de instrução busca 16 bytes do cache de instrução.
+2. Esses 16 bytes são colocados no buffer de instruções de pré-decodificação, onde é executado um procedimento chamado macro-op fusion. A fusão de macro-operações usa combinações de 
+instruções como uma comparação seguida por uma ramificação e gera uma única operação. O estágio de pré-decodificação também divide os 16 bytes em instruções x86 individuais. 
+As instruções x86 individuais, incluindo algumas instruções fundidas, são colocadas na fila de instruções de 18 entradas.
+3. As instruções x86 individuais são traduzidas em micro-operações, que são instruções simples do tipo MIPS executadas diretamente pelo pipeline. Essa abordagem foi introduzida no 
+Pentium Pro e tem sido usada desde então. Três dos decodificadores lidam com instruções x86 que se traduzem diretamente em um micro-op. Para instruções x86 que possuem semântica 
+mais complexa, há um mecanismo de microcódigo que produz a sequência de micro-operações correspondente: ele pode gerar até quatro micro-operações por ciclo de clock e continua até 
+que toda a sequência seja produzida. Os micro-ops são colocados no buffer micro-op de 28 entradas de acordo com a ordem das instruções x86.
+....
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+Data-Level Parallelism (DLP)
+
+O paralelismo em nível de dados (DLP) surge quando vários itens de dados são processados ao mesmo tempo. Dois tipos diferentes de arquiteturas de computador podem atender a esse objetivo: 
+SIMD e MIMD. Como uma única instrução pode iniciar muitas operações de dados, o SIMD é potencialmente mais eficiente em termos de energia do que o MIMD, onde uma instrução é buscada e 
+executada por operação de dados. Outra vantagem do SIMD sobre MIMD é que o programador ainda pode continuar pensando sequencialmente e, ainda assim, obter uma velocidade paralela 
+realizando operações de dados simultâneas independentes.
+
+Três variações do SIMD serão discutidas:
+• vector architectures – eles representam essencialmente uma execução em pipeline de muitas operações de dados; eles eram tradicionalmente direcionados para aplicações científicas 
+de ponta, onde os dados são bem estruturados e o número de cálculos é muito grande; supercomputadores do passado foram construídos desta forma.
+• multimedia instruction set extensions – eles representam essencialmente uma execução paralela de operações de dados e são encontrados hoje na maioria das arquiteturas de 
+conjunto de instruções que suportam aplicativos multimídia.
+• graphic processing units (GPUs) – compartilham muitas características com as arquiteturas vetoriais, mas há uma diferença fundamental: tipicamente, atuam como coprocessadores 
+em sistemas computacionais que incluem um processador convencional e sua memória associada, além da GPU e da memória gráfica, dando origem ao que hoje se denomina computação heterogênea.
+
+Os principais componentes da arquitetura do conjunto de instruções VMIPS são:
+• vector registers – cada registro vetorial é em si um banco de comprimento fixo um único vetor; VMIPS tem oito registros vetoriais, cada um contendo 64 elementos de 64 bits; 
+o banco de registros vetoriais fornece portas de entrada/saída suficientes para alimentar todas as unidades funcionais vetoriais com alto grau de sobreposição; 
+existem 16 portas de leitura e 8 portas de gravação conectadas às unidades funcionais por um switch de barra cruzada.
+• vector functional units – cada unidade está totalmente em pipeline e pode iniciar uma nova operação a cada ciclo de clock; é preciso uma unidade de controle para detectar riscos, 
+tanto riscos estruturais para alocação de unidades funcionais quanto riscos de dados no acesso ao registro.
+• vector load / store unit - a unidade de load/store do vetor carrega ou armazena na memória um vetor de dados; A unidade VMIPS é totalmente pipeline para que as 
+palavras sejam movidas entre os registradores vetoriais e a memória com uma largura de banda de uma palavra por ciclo de clock, após a latência inicial; esta unidade também lidará
+com cargas e armazenamentos escalares.
+• scalar registers – registros escalares também podem fornecer entrada para as unidades funcionais vetoriais; destinam-se também a armazenar os endereços a serem passados 
+para a unidade de load/store do vetor; O VMIPS tem os habituais 32 registros de uso geral e os 32 registros de ponto flutuante do MIPS, todos com largura de 64 bits.
+[ver arquitetura página 8]
+
+O tempo de execução de uma sequência de operações vetoriais depende principalmente de três fatores:
+• do comprimento dos operandos vetoriais
+• do número de anomalias estruturais, e seu tipo, subjacentes às operações
+• das dependências de dados entre operações sucessivas.
+
+A noção de comboio(convoy) também será introduzida para simplificar a discussão sobre execução e desempenho de vetores. Um comboio(convoy) deve ser entendido como um conjunto de
+ instruções vetoriais que podem potencialmente ser executadas juntas. As instruções em um comboio(convoy) não devem conter nenhuma anomalia estrutural. Se tais hazards estivessem presentes,
+ eles precisariam ser serializados e iniciados em diferentes comboios(convoy).
+-----------------------------
+
+Multiple lanes: beyond one element per clock cycle (Múltiplas pistas: além de um elemento por ciclo de clock)
+
+Uma vantagem crítica de um conjunto de instruções vetoriais é que ele permite que o programa passe uma grande quantidade de trabalho paralelo para o hardware usando apenas 
+uma única instrução curta. Esta instrução inclui dezenas de operações independentes, mas codificadas no mesmo número de bits que uma instrução escalar convencional.
+[ver o esquema na página 20 - DLP]
+
+Passar de uma para quatro pistas(lanes) reduz o número de ciclos de clock para um carrilhão de 64 para 16. No entanto, para que uma implementação de várias pistas seja eficaz, tanto
+os aplicativos quanto a arquitetura devem suportar vetores longos; caso contrário, a execução será tão rápida que corre-se o risco de esgotar a largura de banda da instrução e, 
+assim, exigir técnicas de ILP para alimentar instruções vetoriais suficientes.
+
+Cada pista(lane) contém uma parte do banco de registros de vetor e um pipeline de execução de cada unidade funcional de vetor. As unidades funcionais vetoriais, portanto, 
+executam instruções vetoriais na taxa de um grupo de elementos por ciclo de clock. Evitar a comunicação entre pistas reduz o custo de fiação e o número de portas do banco de 
+registros necessárias para construir uma unidade de execução altamente paralela.
+Adicionar várias pistas é uma técnica popular para melhorar o desempenho do vetor, pois requer pouco aumento na complexidade do controle e não implica alterações no código de 
+máquina existente. Ele também permite que os projetistas negociem a área da matriz, a taxa de clock e a energia sem sacrificar o desempenho máximo (se, por exemplo, a taxa de clock for
+metade, dobrar o número de faixas manterá o mesmo desempenho potencial).
+-------------------------
+
+Vector length registers: handling loops not equal to the register size(Registros de comprimento vetorial: loops de manipulação não iguais ao tamanho do registros)
+
+Um processador vetorial tem um comprimento vetorial natural determinado pelo número de elementos em cada registro vetorial. É improvável que esse comprimento corresponda ao 
+comprimento real do vetor em um programa. Além disso, o comprimento de uma determinada operação vetorial em um programa real geralmente é desconhecido em tempo de compilação. 
+De fato, um único trecho de código pode até exigir diferentes comprimentos de vetores, como acontece se for incluído em um procedimento que tenha como parâmetro exatamente o número de 
+iterações do loop.
+
+A solução para esses problemas é criar um registro de comprimento vetorial (VL). O VL controla o comprimento de qualquer operação vetorial, incluindo cargas e armazenamentos. 
+O valor armazenado em VL, no entanto, não pode ser maior que o comprimento dos registros vetoriais, portanto soluções baseadas em VL só funcionam quando o comprimento real do vetor 
+é menor ou igual ao comprimento máximo do vetor (MVL), um parâmetro baseado na arquitetura que especifica o número de elementos de dados nos registradores vetoriais para o atual.
+
+Quando o comprimento real do vetor é maior que o comprimento máximo do vetor (MVL), uma técnica conhecida como mineração de tiras(strip mining) é aplicada.
+--------------------------
+
+Vector mask registers: handling conditional statements in vector loops(Registros de máscara vetorial: manipulando instruções condicionais em loops vetoriais)
+
+A extensão comum para esse recurso é chamada de controle de máscara comum. Os registros de máscara fornecem execução condicional de cada operação elementar em uma operação vetorial. 
+O controle de máscara vetorial usa um vetor booleano para controlar a execução de uma instrução vetorial, assim como as instruções executadas condicionalmente usam um booleano
+condição para afirmar se uma instrução escalar deve ser executada.
+Quando o registro de máscara de vetor (VM) está habilitado, qualquer instrução de vetor opera apenas nos elementos de vetor cujas entradas correspondentes em VM são uma. 
+Os elementos do vetor cujas entradas correspondentes no VM são zero, permanecem inalterados.
+A limpeza da VM, ou seja, a definição de todos os seus bits para um, faz com que as instruções de vetor subsequentes operem em todos os elementos do vetor.
+--------------------------
+
+Memory banks: supporting bandwidth for vector load / store units(Bancos de memória: largura de banda de suporte para unidades de load/store de vetores)
+
+O comportamento de uma unidade vetorial de load/store é muito mais complicado do que o de uma unidade funcional aritmética. O tempo de inicialização para uma operação de 
+load ou stor é o tempo necessário para obter a primeira palavra da memória para um registro ou de um registro para a memória. Se o restante do vetor puder ser 
+fornecido sem parar, então a taxa de iniciação do vetor é igual à taxa na qual novas palavras são buscadas ou armazenadas.
+Ao contrário das unidades funcionais mais simples, a taxa de iniciação pode não ser necessariamente um ciclo de clock porque as paradas do banco de memória podem reduzir a taxa de 
+transferência efetiva.
+
+Normalmente, as penalidades para partidas em unidades de load/store são muito maiores do que as das unidades aritméticas, acima de 100 ciclos de clock em muitos 
+processadores. Para VMIPS, um tempo de inicialização de 12 ciclos de clock é assumido (o mesmo que para Cray-1). O armazenamento em cache está sendo usado pelos processadores de vetores
+ mais recentes para reduzir o tempo de latência de carregamentos e armazenamentos de vetores.
+--------------------------
+
+Widening the application area(Ampliando a área de aplicação)
+
+----Stride: handling multidimensional arrays(Stride: manipulando matrizes multidimensionais)
+A distância que separa os elementos a serem reunidos em um único registro é chamada de passo. Uma vez que um vetor é carregado em um registrador vetorial, ele age como se seus
+elementos sucessivos fossem adjacentes, isto é, um processador vetorial pode lidar com passos maiores que um desde que existam instruções de carregamento e armazenamento com 
+capacidade de passo. Essa capacidade de acessar locais de memória não sequenciais e remodelar seu conteúdo em uma estrutura densa é uma das principais vantagens de um processador vetorial.
+O passo do vetor, como o endereço inicial do vetor, pode ser carregado em um registrador de uso geral e usado em instruções especiais de carregamento e armazenamento. No VMIPS, 
+a instrução LVWS (load vector with stride) busca os elementos do vetor, separados na memória por um passo maior que um, em um registrador vetorial. Da mesma forma, a instrução 
+SVWS (store vector with stride - armazenar vetor com passo) faz o mesmo na direção inversa.
+
+Apoiar passos maiores que um complica o sistema de memória. Uma vez introduzidos passos não unitários, torna-se possível solicitar acessos do mesmo banco de memória com frequência. 
+Quando vários acessos disputam um determinado banco, ocorre um conflito de banco de memória, portanto, paralisando todos menos um dos acessos.
+(number of banks)/g.c.d(stride, number of banks) < bank busy time
+
+Quando o comprimento real do vetor é maior que o comprimento máximo do vetor (MVL - maximum vector length), é aplicada uma técnica conhecida como strip-mining(mineração de tiras).
+------------------------
+
+Gather-scatter: handling sparse matrices (Gather-scatter: manipulação de matrizes esparsas)
+
+O principal mecanismo em processadores vetoriais para suportar matrizes esparsas é a implementação de operações de coleta-difusão usando vetores de índice. O objetivo dessas operações 
+é permitir a movimentação entre uma representação comprimida (zeros elementos não estão incluídos) e uma representação normal (zeros elementos sãoincluído).
+Uma operação de coleta pega um vetor de índice e busca o vetor cujos elementos estão nos endereços fornecidos adicionando um endereço base aos deslocamentos armazenados no índice
+vetor. O resultado é um vetor denso armazenado em um registrador vetorial. Os elementos são então operados nesta forma densa e o resultado é enviado de volta à memória pela operação
+de dispersão usando o mesmo vetor de índice.
+-----------------------
+
+Programming vector architectures(Arquiteturas vetoriais de programação)
+
+Uma vantagem das arquiteturas vetoriais é que os compiladores podem informar aos programadores em tempo de compilação se uma parte específica do código será vetorizada ou não, 
+geralmente fornecendo dicas sobre por que ela não foi vetorizada. Esse modelo de execução direto permite que especialistas em outros domínios aprendam como melhorar o desempenho, 
+revisando o código ou avisando o compilador quando pode assumir operações de loop independentes, como no caso de coleta e dispersão para transferências de dados. É precisamente essa 
+interação entre o compilador e o programador que simplifica a programação de computadores vetoriais.
+--------------------------
+
+SIMD instruction set extensions for multimedia(Extensões do conjunto de instruções SIMD para multimídia)
+
+As extensões multimídia SIMD surgiram após a observação de que muitos aplicativos de mídia operam em tipos de dados mais restritos do que os processadores de 32 bits foram otimizados. 
+Muitos sistemas gráficos usavam 8 bits para representar cada uma das três cores primárias mais 8 bits para transparência. Dependendo da aplicação, as amostras de áudio geralmente são 
+representadas em 8 ou 16 bits. Ao particionar as cadeias de transportedentro de um somador de 256 bits, um processador pode executar operações simultâneas em vetores curtos de 32 
+operandos de 8 bits, 16 operandos de 16 bits, 8 operandos de 32 bits ou 4 operandos de 64 bits. O custo adicional de tais somadores particionados era pequeno.
+
+Assim como as instruções vetoriais, uma instrução SIMD especifica a mesma operação em vetores de dados. Ao contrário das máquinas vetoriais com grandes bancos de registradores, 
+as instruções SIMD tendem a especificar menos operandos e, portanto, usam bancos de registradores muito menores.
+
+
+
+
+----------------------------------------------------
+O registro de máscara vetorial é um registro especial usado no processamento de vetores para especificar quais elementos de um vetor devem ser processados e quais devem ser ignorados.
+ É usado em loops de vetores para controlar o fluxo de processamento de diferentes elementos de um vetor de maneira paralela.
+
+Por exemplo, considere uma operação de adição de vetor onde apenas os elementos do vetor que são maiores que um determinado limite devem ser processados.
+ O registrador de máscara vetorial pode ser usado para especificar quais elementos devem ser processados e quais devem ser ignorados nesta operação. 
+O registrador de máscara vetorial é definido como 1 para elementos que devem ser processados e como 0 para elementos que devem ser ignorados. 
+A operação vetorial é então executada usando o registro de máscara vetorial para determinar quais elementos devem ser processados. 
+Isso resulta em uma operação vetorial mais rápida e eficiente, pois apenas os elementos necessários são processados.
+-------------------------------------------------------
+Strip-mining é uma técnica aplicada pelo computador em arquiteturas vetoriais quando o tamanho do loop (N) é superior ao tamanho do vector registers (K). 
+Neste caso, é criado um novo loop com ceil(N/K) iterações para que seja possível aproveitar ao máximo os registos presentes no vector registers. 
+Num loop de tamanho 50 e um vector registers de tamanho 8, ao aplicar strip-mining irá ser criado um loop com 7 iterações sendo que nas 6 primeiras serão utilizados todos 
+os registos do vector registers enquanto que na última serão utilizados apenas 2.
+-------------------------------------------------------
+O registrador de comprimento do vetor (VLR) é um componente chave no controle e gerenciamento do loop vetorial. Ele define o número de elementos do vetor que precisam ser 
+processados pelo loop do vetor. O valor armazenado no VLR determina o número de iterações do loop que precisam ser executadas.
+
+Por exemplo, considere um loop vetorial que multiplica duas matrizes de números de ponto flutuante. O VLR armazenaria o comprimento dos arrays, que seria o número 
+de elementos a serem processados pelo loop. O loop do vetor iria iterar sobre as matrizes, executando a instrução do vetor para cada elemento. O comprimento do vetor ditaria 
+quantas iterações do loop precisam ser executadas, com base no comprimento das matrizes.
