@@ -1,0 +1,159 @@
+V01:DETI coin KIC//     JXR>/                          
+V00:DETI coin |ecp0     |vt"1                          
+V02:DETI coin mf{U@     }'=v@                          
+V01:DETI coin e@0mF     zgW5G                          
+V01:DETI coin KIC//     JXR>/                          
+V00:DETI coin |ecp0     |vt"1                          
+V01:DETI coin KIC//     JXR>/                          
+V00:DETI coin |ecp0     |vt"1                          
+V01:DETI coin KIC//     JXR>/                          
+V00:DETI coin |ecp0     |vt"1                          
+V01:DETI coin KIC//     JXR>/                          
+V00:DETI coin |ecp0     |vt"1                          
+V01:DETI coin KIC//     JXR>/                          
+V00:DETI coin |ecp0     |vt"1                          
+V01:DETI coin KIC//     JXR>/                          
+V00:DETI coin |ecp0     |vt"1                          
+V01:DETI coin KIC//     JXR>/                          
+V00:DETI coin |ecp0     |vt"1                          
+V01:DETI coin KIC//     JXR>/                          
+V00:DETI coin |ecp0     |vt"1                          
+V01:DETI coin KIC//     JXR>/                          
+V00:DETI coin |ecp0     |vt"1                          
+V01:DETI coin KIC//     JXR>/                          
+V00:DETI coin |ecp0     |vt"1                          
+V01:DETI coin KIC//     JXR>/                          
+V00:DETI coin |ecp0     |vt"1                          
+V01:DETI coin KIC//     JXR>/                          
+V00:DETI coin |ecp0     |vt"1                          
+V02:DETI coin &p8gb                                    
+V01:DETI coin k0KG@!                                   
+V00:DETI coin |zB4\!                                   
+V02:DETI coin >:J l!                                   
+V00:DETI coin +u!l""                                   
+V01:DETI coin -mP[p"                                   
+V02:DETI coin duWY2#                                   
+V01:DETI coin }JWii#                                   
+V01:DETI coin ^}aaq#                                   
+V01:DETI coin `vY5R$                                   
+V01:DETI coin KIC//     JXR>/                          
+V00:DETI coin |ecp0     |vt"1                          
+V02:DETI coin mf{U@     }'=v@                          
+V01:DETI coin e@0mF     zgW5G                          
+V02:DETI coin :m\Yf     nUEBg                          
+V03:DETI coin b&Qs-!    _6a$/!                         
+V01:DETI coin 3Pv9<!    =n5X=!                         
+V00:DETI coin ;6kyA!    NZ0?C!                         
+V01:DETI coin @s''F!    U<POG!                         
+V00:DETI coin Ji5IN!    g:fyO!                         
+V01:DETI coin pW<qT!    50tIV!                         
+V01:DETI coin KQf4c!    8Mzd!                         
+V00:DETI coin `(.8*"    Y6<F,"                         
+V01:DETI coin lld|;"    x-&>>"                         
+V01:DETI coin {~%<D"    /HNdF"                         
+V00:DETI coin YM*OW"    "+g,Z"                         
+V01:DETI coin KIC//     JXR>/                          
+V00:DETI coin |ecp0     |vt"1                          
+V02:DETI coin mf{U@     }'=v@                          
+V01:DETI coin e@0mF     zgW5G                          
+V02:DETI coin :m\Yf     nUEBg                          
+V03:DETI coin b&Qs-!    _6a$/!                         
+V01:DETI coin 3Pv9<!    =n5X=!                         
+V00:DETI coin ;6kyA!    NZ0?C!                         
+V01:DETI coin @s''F!    U<POG!                         
+V00:DETI coin Ji5IN!    g:fyO!                         
+V01:DETI coin pW<qT!    50tIV!                         
+V01:DETI coin KQf4c!    8Mzd!                         
+V00:DETI coin `(.8*"    Y6<F,"                         
+V01:DETI coin lld|;"    x-&>>"                         
+V01:DETI coin {~%<D"    /HNdF"                         
+V01:DETI coin KIC//     JXR>/                          
+V00:DETI coin |ecp0     |vt"1                          
+V02:DETI coin mf{U@     }'=v@                          
+V01:DETI coin e@0mF     zgW5G                          
+V02:DETI coin :m\Yf     nUEBg                          
+V03:DETI coin b&Qs-!    _6a$/!                         
+V01:DETI coin 3Pv9<!    =n5X=!                         
+V00:DETI coin ;6kyA!    NZ0?C!                         
+V01:DETI coin @s''F!    U<POG!                         
+V00:DETI coin Ji5IN!    g:fyO!                         
+V01:DETI coin pW<qT!    50tIV!                         
+V01:DETI coin KQf4c!    8Mzd!                         
+V00:DETI coin `(.8*"    Y6<F,"                         
+V01:DETI coin lld|;"    x-&>>"                         
+V01:DETI coin {~%<D"    /HNdF"                         
+V01:DETI coin KIC//     JXR>/                          
+V00:DETI coin |ecp0     |vt"1                          
+V02:DETI coin mf{U@     }'=v@                          
+V01:DETI coin e@0mF     zgW5G                          
+V02:DETI coin :m\Yf     nUEBg                          
+V03:DETI coin b&Qs-!    _6a$/!                         
+V01:DETI coin 3Pv9<!    =n5X=!                         
+V00:DETI coin ;6kyA!    NZ0?C!                         
+V01:DETI coin @s''F!    U<POG!                         
+V00:DETI coin Ji5IN!    g:fyO!                         
+V01:DETI coin pW<qT!    50tIV!                         
+V01:DETI coin KQf4c!    8Mzd!                         
+V00:DETI coin `(.8*"    Y6<F,"                         
+V01:DETI coin lld|;"    x-&>>"                         
+V01:DETI coin {~%<D"    /HNdF"                         
+V01:DETI coin KIC//     JXR>/                          
+V00:DETI coin |ecp0     |vt"1                          
+V02:DETI coin mf{U@     }'=v@                          
+V01:DETI coin e@0mF     zgW5G                          
+V02:DETI coin :m\Yf     nUEBg                          
+V03:DETI coin b&Qs-!    _6a$/!                         
+V01:DETI coin 3Pv9<!    =n5X=!                         
+V00:DETI coin ;6kyA!    NZ0?C!                         
+V01:DETI coin @s''F!    U<POG!                         
+V00:DETI coin Ji5IN!    g:fyO!                         
+V01:DETI coin pW<qT!    50tIV!                         
+V01:DETI coin KQf4c!    8Mzd!                         
+V00:DETI coin `(.8*"    Y6<F,"                         
+V01:DETI coin lld|;"    x-&>>"                         
+V01:DETI coin {~%<D"    /HNdF"                         
+V00:DETI coin BRAINS OUT Xx3fB                         
+V00:DETI coin BRAINS OUT hWpgB                         
+V00:DETI coin BRAINS OUT n&zV8!                        
+V00:DETI coin BRAINS OUT ?[:|f"                        
+V00:DETI coin BRAINS OUT R+>^,#                        
+V01:DETI coin BRAINS OUT qw$k4#                        
+V01:DETI coin BRAINS OUT >2qh6#                        
+V02:DETI coin BRAINS OUT na]u/$                        
+V平籇ETI coin Y_uY"     Haw["                          
+V00:DETI coin Ti*d%     En/i%                          
+V01:DETI coin KIC//     JXR>/                          
+V平籇ETI coin J6t30     EF%D0                          
+V瓶籇ETI coin |#tB1     z4&T1                          
+V平籇ETI coin p6|"3     nI063                          
+V平籇ETI coin r/P33     nBcF3                          
+V00:DETI coin Z?-u;     b[I2<                          
+V02:DETI coin mf{U@     }'=v@                          
+V01:DETI coin e@0mF     zgW5G                          
+V平籇ETI coin :Wf0G     P/XG                          
+V平籇ETI coin ylc!J     /8/LJ                          
+V平籇ETI coin WW#oJ     m#O;K                          
+V瓶籇ETI coin >*`WK     SV-%L                          
+V平籇ETI coin 0l-3N     K;\aN                          
+V枪籇ETI coin U7pZr     8,eOs                          
+V02:DETI coin `{`Uu     CsXMv                          
+V平籇ETI coin 4Yrjx     vSmey                          
+V乒籇ETI coin 5:#G~     $;$H !                         
+V平籇ETI coin tt2]!!    _w5`"!                         
+V平籇ETI coin 80*o!!    %3-r"!                         
+V00:DETI coin ^YEd"!    K]Ih#!                         
+V03:DETI coin b&Qs-!    _6a$/!                         
+V01:DETI coin *G>;0!    'YPM1!                         
+V01:DETI coin QzKc1!    M._v2!                         
+V平籇ETI coin ajy*6!    g#3C7!                         
+V平籇ETI coin !ms|:!    ,+2;<!                         
+V00:DETI coin -{%@;!    59C]<!                         
+V00:DETI coin ;6kyA!    NZ0?C!                         
+V01:DETI coin @s''F!    U<POG!                         
+V00:DETI coin F_aDN!    _03uO!                         
+V00:DETI coin Ji5IN!    g:fyO!                         
+V02:DETI coin #/r{O!    @aEOQ!                         
+V01:DETI coin pW<qT!    50tIV!                         
+V平籇ETI coin g"0BY!    /^k}Z!                         
+V平籇ETI coin K.-7Z!    ojis[!                         
+V01:DETI coin 8<C&s!    x2:|t!                         
