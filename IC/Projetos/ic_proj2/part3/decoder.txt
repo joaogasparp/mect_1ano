@@ -1,0 +1,86 @@
+[Testing Decoder]
+
+Time elapsed: 3419.12 ms
+
+Time elapsed: 3277.98 ms
+
+Time elapsed: 3323.92 ms
+
+Time elapsed: 3313.16 ms
+
+Time elapsed: 3246.18 ms
+
+Time elapsed: 1777.03 ms
+
+Time elapsed: 1840.73 ms
+
+Time elapsed: 1832.95 ms
+
+Time elapsed: 1759.54 ms
+
+Time elapsed: 1733.03 ms
+
+Time elapsed: 2001.53 ms
+
+Time elapsed: 2035.13 ms
+
+Time elapsed: 1940.05 ms
+
+Time elapsed: 1998.12 ms
+
+Time elapsed: 2010.8 ms
+
+Time elapsed: 3138.21 ms
+
+Time elapsed: 3130.72 ms
+
+Time elapsed: 3109.14 ms
+
+Time elapsed: 3128.62 ms
+
+Time elapsed: 3171.79 ms
+
+Time elapsed: 1568.67 ms
+
+Time elapsed: 1589.09 ms
+
+Time elapsed: 1662.65 ms
+
+Time elapsed: 1557.05 ms
+
+Time elapsed: 1682.47 ms
+
+Time elapsed: 1995.88 ms
+
+Time elapsed: 1946.02 ms
+
+Time elapsed: 1980.91 ms
+
+Time elapsed: 1923.41 ms
+
+Time elapsed: 2231.79 ms
+
+Time elapsed: 2616.36 ms
+
+Time elapsed: 2196.53 ms
+
+Time elapsed: 1738.34 ms
+
+Time elapsed: 1280.76 ms
+
+Time elapsed: 1293.74 ms
+
+Time elapsed: 1036.01 ms
+
+Time elapsed: 820.232 ms
+
+Time elapsed: 678.547 ms
+
+Time elapsed: 1672.29 ms
+
+Time elapsed: 1260.21 ms
+
+Time elapsed: 1013.74 ms
+
+Time elapsed: 824.578 ms
+

@@ -1,0 +1,52 @@
+[Lossy Encoder]
+
+Testing with auto M and block size 2048
+Testing quantization values (2, 4, 6, 8)
+Audio File: sample01.wav
+Times:
+	2206.64
+	1721.86
+	1271.38
+	892.607
+Sizes:
+	3118920
+	2477357
+	1852182
+	1344138
+SNRs:
+	5.92928 dB
+	5.92906 dB
+	5.9267 dB
+	5.89722 dB
+Audio File: sample02.wav
+Times:
+	993.07
+	855.246
+	641.579
+	479.701
+Sizes:
+	1506832
+	1182070
+	886360
+	719497
+SNRs:
+	5.6067 dB
+	5.80774 dB
+	5.82553 dB
+	5.8109 dB
+Audio File: sample03.wav
+Times:
+	1266.9
+	971.784
+	714.585
+	536.52
+Sizes:
+	1814612
+	1392235
+	1058876
+	900505
+SNRs:
+	5.86621 dB
+	5.86813 dB
+	5.86687 dB
+	5.85286 dB

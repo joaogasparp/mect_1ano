@@ -1,0 +1,119 @@
+[Lossless Encoder]
+
+Testing with fixed M values (128, 256, 512, 1024, 2048)
+Audio File: sample01.wav
+Times:
+	2756
+	2647.25
+	2613.01
+	2784.25
+	2668.57
+Sizes:
+	3926374
+	3886298
+	3847444
+	3895562
+	3889359
+SNRs:
+	inf dB
+	inf dB
+	inf dB
+	inf dB
+	inf dB
+Audio File: sample02.wav
+Times:
+	1506.25
+	1474.18
+	1398.44
+	1438.53
+	1480.55
+Sizes:
+	2142869
+	2146811
+	2149989
+	2152320
+	2142007
+SNRs:
+	inf dB
+	inf dB
+	inf dB
+	inf dB
+	inf dB
+Audio File: sample03.wav
+Times:
+	1537.95
+	1431.59
+	1469.37
+	1525.63
+	1599.05
+Sizes:
+	2368513
+	2534842
+	2407369
+	2377242
+	2360368
+SNRs:
+	inf dB
+	inf dB
+	inf dB
+	inf dB
+	inf dB
+
+Testing with auto M and different block sizes (128, 512, 1024, 2048, 16384)
+Audio File: sample01.wav
+Times:
+	2402.38
+	2516.54
+	2554.47
+	2563.29
+	2519.11
+Sizes:
+	3784196
+	3755851
+	3757466
+	3763947
+	3745832
+SNRs:
+	28.3482 dB
+	26.9002 dB
+	21.3085 dB
+	20.0039 dB
+	12.9381 dB
+Audio File: sample02.wav
+Times:
+	1207.42
+	1205.99
+	1244.24
+	1196.28
+	1324.81
+Sizes:
+	1814487
+	1819817
+	1839074
+	1830186
+	1990891
+SNRs:
+	22.3847 dB
+	16.6834 dB
+	12.8023 dB
+	15.1589 dB
+	4.36765 dB
+Audio File: sample03.wav
+Times:
+	1567.32
+	1461.12
+	1536.73
+	1570.03
+	1734.56
+Sizes:
+	2222943
+	2212948
+	2226099
+	2265106
+	2944286
+SNRs:
+	30.554 dB
+	24.5411 dB
+	21.4736 dB
+	20.1078 dB
+	10.8121 dB
