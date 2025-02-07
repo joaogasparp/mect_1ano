@@ -1,0 +1,42 @@
+Jan 31 11:41:33.683 HYPERVISOR: Release 0.2.23-amd64/Linux (tag 2023010200)
+Jan 31 11:41:33.683 HYPERVISOR: Started on IP = 127.0.0.1, TCP port = 44897.
+Jan 31 11:41:33.695 HYPERVISOR: exec_cmd: hypervisor version 
+Jan 31 11:41:33.696 HYPERVISOR: exec_cmd: hypervisor working_dir /home/joao/Desktop/projeto_ac_deles/project-files/dynamips 
+Jan 31 11:41:33.696 GENERAL: working_dir=/home/joao/Desktop/projeto_ac_deles/project-files/dynamips
+Jan 31 11:41:33.696 HYPERVISOR: exec_cmd: hypervisor working_dir /home/joao/Desktop/projeto_ac_deles/project-files/dynamips/0a010183-8c2e-4e6f-8131-5470119a6aea 
+Jan 31 11:41:33.696 GENERAL: working_dir=/home/joao/Desktop/projeto_ac_deles/project-files/dynamips/0a010183-8c2e-4e6f-8131-5470119a6aea
+Jan 31 11:41:33.697 HYPERVISOR: exec_cmd: vm create Core1 3 c7200 
+Jan 31 11:41:33.697 VM: VM Core1 created.
+Jan 31 11:41:33.698 HYPERVISOR: exec_cmd: vm set_con_tcp_port Core1 5017 
+Jan 31 11:41:33.698 HYPERVISOR: exec_cmd: c7200 get_mac_addr Core1 
+Jan 31 11:41:33.699 HYPERVISOR: exec_cmd: vm get_status Core1 
+Jan 31 11:41:33.699 HYPERVISOR: exec_cmd: vm slot_add_binding Core1 0 0 C7200-IO-FE 
+Jan 31 11:41:33.700 HYPERVISOR: exec_cmd: vm set_disk0 Core1 0 
+Jan 31 11:41:33.701 HYPERVISOR: exec_cmd: vm get_status Core1 
+Jan 31 11:41:33.702 HYPERVISOR: exec_cmd: vm set_idle_pc Core1 0x63184bc8 
+Jan 31 11:41:33.703 HYPERVISOR: exec_cmd: vm set_ios Core1 /home/joao/GNS3/images/IOS/c7200-advipservicesk9-mz.152-4.S5.image 
+Jan 31 11:41:33.704 HYPERVISOR: exec_cmd: c7200 set_mac_addr Core1 ca03.37b3.0000 
+Jan 31 11:41:33.705 HYPERVISOR: exec_cmd: vm set_nvram Core1 512 
+Jan 31 11:41:33.705 HYPERVISOR: exec_cmd: vm set_ram Core1 512 
+Jan 31 11:41:33.706 HYPERVISOR: exec_cmd: vm get_status Core1 
+Jan 31 11:41:33.707 HYPERVISOR: exec_cmd: vm slot_remove_binding Core1 0 0 
+Jan 31 11:41:33.707 HYPERVISOR: exec_cmd: vm get_status Core1 
+Jan 31 11:41:33.708 HYPERVISOR: exec_cmd: vm slot_add_binding Core1 0 0 C7200-IO-2FE 
+Jan 31 11:41:33.709 HYPERVISOR: exec_cmd: vm get_status Core1 
+Jan 31 11:41:33.709 HYPERVISOR: exec_cmd: vm slot_add_binding Core1 1 0 PA-2FE-TX 
+Jan 31 11:41:33.710 HYPERVISOR: exec_cmd: vm get_status Core1 
+Jan 31 11:41:33.710 HYPERVISOR: exec_cmd: vm slot_add_binding Core1 2 0 PA-2FE-TX 
+Jan 31 11:41:33.711 HYPERVISOR: exec_cmd: vm get_status Core1 
+Jan 31 11:41:33.712 HYPERVISOR: exec_cmd: vm slot_add_binding Core1 3 0 PA-2FE-TX 
+Jan 31 11:41:36.117 HYPERVISOR: exec_cmd: nio create_udp udp-c8b0ff67-14f7-49b7-b5af-3a2a42d56e1b 10016 127.0.0.1 10017 
+Jan 31 11:41:36.326 HYPERVISOR: exec_cmd: vm slot_add_nio_binding Core1 0 0 udp-c8b0ff67-14f7-49b7-b5af-3a2a42d56e1b 
+Jan 31 11:41:36.327 HYPERVISOR: exec_cmd: vm get_status Core1 
+Jan 31 11:41:36.511 HYPERVISOR: exec_cmd: nio create_udp udp-8f07db84-5fe1-43ec-9197-c57d7316c5e1 10020 127.0.0.1 10021 
+Jan 31 11:41:36.512 HYPERVISOR: exec_cmd: vm slot_add_nio_binding Core1 0 1 udp-8f07db84-5fe1-43ec-9197-c57d7316c5e1 
+Jan 31 11:41:36.512 HYPERVISOR: exec_cmd: vm get_status Core1 
+Jan 31 11:41:36.582 HYPERVISOR: exec_cmd: nio create_udp udp-e1159142-ba11-464d-9a6f-49676dc7e776 10026 127.0.0.1 10027 
+Jan 31 11:41:36.583 HYPERVISOR: exec_cmd: vm slot_add_nio_binding Core1 1 0 udp-e1159142-ba11-464d-9a6f-49676dc7e776 
+Jan 31 11:41:36.583 HYPERVISOR: exec_cmd: vm get_status Core1 
+Jan 31 11:41:36.654 HYPERVISOR: exec_cmd: nio create_udp udp-4ff23cfb-6b0e-4104-b98e-f8f19c25b5ea 10032 127.0.0.1 10033 
+Jan 31 11:41:36.655 HYPERVISOR: exec_cmd: vm slot_add_nio_binding Core1 1 1 udp-4ff23cfb-6b0e-4104-b98e-f8f19c25b5ea 
+Jan 31 11:41:36.655 HYPERVISOR: exec_cmd: vm get_status Core1 

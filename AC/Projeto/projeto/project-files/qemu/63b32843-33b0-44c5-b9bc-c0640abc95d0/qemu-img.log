@@ -1,0 +1,2 @@
+qemu-img: Could not open '/home/joao/GNS3/images/QEMU/LabComServer_22_23.qcow2': Failed to get "write" lock
+Is another process using the image [/home/joao/GNS3/images/QEMU/LabComServer_22_23.qcow2]?

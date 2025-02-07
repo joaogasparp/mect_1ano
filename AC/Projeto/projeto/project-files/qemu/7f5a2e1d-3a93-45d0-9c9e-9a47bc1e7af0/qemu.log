@@ -1,0 +1,7 @@
+Start QEMU with /usr/bin/qemu-system-x86_64 -name SNMP -m 1024M -smp cpus=1,sockets=1 -enable-kvm -machine smm=off -boot order=c -drive file=/home/joao/Desktop/AC/ac_proj/projeto/project-files/qemu/7f5a2e1d-3a93-45d0-9c9e-9a47bc1e7af0/hda_disk.qcow2,if=ide,index=0,media=disk,id=drive0 -uuid 7f5a2e1d-3a93-45d0-9c9e-9a47bc1e7af0 -spice addr=localhost,port=5018,disable-ticketing -vga qxl -monitor tcp:127.0.0.1:38837,server,nowait -net none -device e1000,mac=0c:5a:2e:1d:00:00,netdev=gns3-0 -netdev socket,id=gns3-0,udp=127.0.0.1:10117,localaddr=127.0.0.1:10116 -device e1000,mac=0c:5a:2e:1d:00:01,netdev=gns3-1 -netdev socket,id=gns3-1,udp=127.0.0.1:10119,localaddr=127.0.0.1:10118
+
+Execution log:
+qemu-system-x86_64: -spice addr=localhost,port=5018,disable-ticketing: warning: short-form boolean option 'disable-ticketing' deprecated
+Please use disable-ticketing=on instead
+qemu-system-x86_64: warning: host doesn't support requested feature: CPUID.80000001H:ECX.svm [bit 2]
+qemu-system-x86_64: terminating on signal 15 from pid 34934 (/usr/share/gns3/gns3-server/bin/python)

@@ -1,0 +1,40 @@
+Dec 24 14:22:32.122 HYPERVISOR: Release 0.2.23-amd64/Linux (tag 2023010200)
+Dec 24 14:22:32.130 HYPERVISOR: Started on IP = 127.0.0.1, TCP port = 51163.
+Dec 24 14:22:32.131 HYPERVISOR: exec_cmd: hypervisor version 
+Dec 24 14:22:32.131 HYPERVISOR: exec_cmd: hypervisor working_dir /home/fribeiro/GNS3/projects/Projeto_AC/project-files/dynamips 
+Dec 24 14:22:32.131 GENERAL: working_dir=/home/fribeiro/GNS3/projects/Projeto_AC/project-files/dynamips
+Dec 24 14:22:32.132 HYPERVISOR: exec_cmd: hypervisor working_dir /home/fribeiro/GNS3/projects/Projeto_AC/project-files/dynamips/b12c879b-2658-4142-86d5-47b1029f0abb 
+Dec 24 14:22:32.132 GENERAL: working_dir=/home/fribeiro/GNS3/projects/Projeto_AC/project-files/dynamips/b12c879b-2658-4142-86d5-47b1029f0abb
+Dec 24 14:22:32.132 HYPERVISOR: exec_cmd: vm create R1 1 c7200 
+Dec 24 14:22:32.132 VM: VM R1 created.
+Dec 24 14:22:32.132 HYPERVISOR: exec_cmd: vm set_con_tcp_port R1 5015 
+Dec 24 14:22:32.132 HYPERVISOR: exec_cmd: c7200 get_mac_addr R1 
+Dec 24 14:22:32.132 HYPERVISOR: exec_cmd: vm get_status R1 
+Dec 24 14:22:32.132 HYPERVISOR: exec_cmd: vm slot_add_binding R1 0 0 C7200-IO-FE 
+Dec 24 14:22:32.132 HYPERVISOR: exec_cmd: vm set_disk0 R1 0 
+Dec 24 14:22:32.132 HYPERVISOR: exec_cmd: vm get_status R1 
+Dec 24 14:22:32.132 HYPERVISOR: exec_cmd: vm set_idle_pc R1 0x63184bc8 
+Dec 24 14:22:32.132 HYPERVISOR: exec_cmd: vm set_ios R1 /home/fribeiro/GNS3/images/IOS/c7200-advipservicesk9-mz.152-4.S5.image 
+Dec 24 14:22:32.132 HYPERVISOR: exec_cmd: c7200 set_mac_addr R1 ca01.376f.0000 
+Dec 24 14:22:32.133 HYPERVISOR: exec_cmd: vm set_nvram R1 512 
+Dec 24 14:22:32.133 HYPERVISOR: exec_cmd: vm set_ram R1 512 
+Dec 24 14:22:32.133 HYPERVISOR: exec_cmd: vm get_status R1 
+Dec 24 14:22:32.133 HYPERVISOR: exec_cmd: vm slot_remove_binding R1 0 0 
+Dec 24 14:22:32.133 HYPERVISOR: exec_cmd: vm get_status R1 
+Dec 24 14:22:32.133 HYPERVISOR: exec_cmd: vm slot_add_binding R1 0 0 C7200-IO-2FE 
+Dec 24 14:22:32.133 HYPERVISOR: exec_cmd: vm get_status R1 
+Dec 24 14:22:32.133 HYPERVISOR: exec_cmd: vm slot_add_binding R1 1 0 PA-2FE-TX 
+Dec 24 14:22:32.133 HYPERVISOR: exec_cmd: vm get_status R1 
+Dec 24 14:22:32.133 HYPERVISOR: exec_cmd: vm slot_add_binding R1 2 0 PA-2FE-TX 
+Dec 24 14:22:32.133 HYPERVISOR: exec_cmd: vm get_status R1 
+Dec 24 14:22:32.133 HYPERVISOR: exec_cmd: vm slot_add_binding R1 3 0 PA-2FE-TX 
+Dec 24 14:22:32.134 HYPERVISOR: exec_cmd: vm set_con_tcp_port R1 5015 
+Dec 24 14:22:42.244 HYPERVISOR: exec_cmd: vm get_status R1 
+Dec 24 14:22:42.244 HYPERVISOR: exec_cmd: vm extract_config R1 
+Dec 24 14:22:42.247 HYPERVISOR: exec_cmd: vm get_status R1 
+Dec 24 14:22:42.247 HYPERVISOR: exec_cmd: vm extract_config R1 
+Dec 24 14:22:42.248 HYPERVISOR: exec_cmd: vm delete R1 
+Dec 24 14:22:42.248 VM: VM R1 destroyed.
+Dec 24 14:22:42.248 HYPERVISOR: exec_cmd: hypervisor stop 
+Dec 24 14:22:42.641 HYPERVISOR: Stopped.
+Dec 24 14:22:42.641 GENERAL: reset done.

@@ -1,0 +1,2 @@
+set pcname A2_Vlan30
+ip 10.30.0.2 24
