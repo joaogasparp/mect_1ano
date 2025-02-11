@@ -1,0 +1,4 @@
+/home/joao/Desktop/mect_1ano/CLE/Prática/aula01/weather-stations/build/CMakeFiles/cle-ws.dir
+/home/joao/Desktop/mect_1ano/CLE/Prática/aula01/weather-stations/build/CMakeFiles/cle-samples.dir
+/home/joao/Desktop/mect_1ano/CLE/Prática/aula01/weather-stations/build/CMakeFiles/edit_cache.dir
+/home/joao/Desktop/mect_1ano/CLE/Prática/aula01/weather-stations/build/CMakeFiles/rebuild_cache.dir
