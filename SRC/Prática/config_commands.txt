@@ -1,0 +1,86 @@
+# ESW1
+
+vlan database
+vlan 1
+vlan 2
+vlan 3
+exit
+conf t
+interface range f1/12 - 15
+switchport mode trunk
+switchport trunk encapsulation dot1q
+end
+write
+
+conf t
+interface range FastEthernet 1/12 - 14 
+channel-group 1 mode on 
+interface Port-channel 1
+switchport mode trunk
+end
+write
+
+# ESW2
+
+vlan database
+vlan 1
+vlan 2
+vlan 3
+exit
+conf t
+ip routing
+interface range f1/12 - 15
+switchport mode trunk
+switchport trunk encapsulation dot1q
+interface vlan 1
+no shutdown
+ip address 10.0.0.1 255.255.255.0
+ip ospf 1 area 0
+interface vlan 2
+no shutdown
+ip address 10.0.2.1 255.255.255.0
+ip ospf 1 area 0
+interface vlan 3
+no shutdown
+ip address 10.0.3.1 255.255.255.0
+ip ospf 1 area 0
+interface f0/1
+no shutdown
+ip address 10.1.1.1 255.255.255.0
+ip ospf 1 area 0
+end
+write
+
+conf t
+interface range FastEthernet 1/12 - 14 
+channel-group 1 mode on 
+interface Port-channel 1
+switchport mode trunk
+end
+write
+
+# R2
+
+configure terminal
+interface fastethernet0/0
+no shutdown
+ip address 10.1.1.2 255.255.255.0
+ip ospf 1 area 0
+interface fastethernet0/1
+no shutdown
+ip address 10.2.2.2 255.255.255.0
+ip ospf 1 area 0
+end
+write
+
+# PC1
+ip 10.0.0.101/24 10.0.0.1
+
+# PC2
+ip 10.0.2.102/24 10.0.2.1
+
+# PC3
+ip 10.2.2.103/24 10.2.2.2
+
+# PC4
+ip 10.0.3.104/24 10.0.3.1
