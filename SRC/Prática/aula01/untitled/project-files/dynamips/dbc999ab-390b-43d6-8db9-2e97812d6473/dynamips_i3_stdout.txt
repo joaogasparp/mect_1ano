@@ -1,0 +1,60 @@
+C3725 'Ghost': generic_nvram_extract_config: Unknown error -61605
+Cisco Router Simulation Platform (version 0.2.23-amd64/Linux stable)
+Copyright (c) 2005-2011 Christophe Fillot.
+Build date: Jan  2 2023 12:00:00
+
+Log file: writing to dynamips_i3_log.txt
+Console binding address set to 127.0.0.1
+ILT: loaded table "mips64j" from cache.
+ILT: loaded table "mips64e" from cache.
+ILT: loaded table "ppc32j" from cache.
+ILT: loaded table "ppc32e" from cache.
+Hypervisor TCP control server started (IP 127.0.0.1 port 51929).
+CPU0: carved JIT exec zone of 64 Mb into 2048 pages of 32 Kb.
+NVRAM is empty, setting config register to 0x2142
+C3725 instance 'Ghost' (id 0):
+  VM Status  : 0
+  RAM size   : 128 Mb
+  NVRAM size : 112 Kb
+  IOS image  : /home/joao/GNS3/images/IOS/c3725-advipservicesk9-mz.124-21.image
+
+Loading ELF file '/home/joao/GNS3/images/IOS/c3725-advipservicesk9-mz.124-21.image'...
+ELF entry point: 0x80008000
+
+C3725 'Ghost': starting simulation (CPU0 PC=0xffffffffbfc00000), JIT enabled.
+
+C3725 'Ghost': stopping simulation.
+CPU0: carved JIT exec zone of 64 Mb into 2048 pages of 32 Kb.
+C3725 instance 'SWL3A' (id 1):
+  VM Status  : 0
+  RAM size   : 128 Mb
+  NVRAM size : 256 Kb
+  IOS image  : /home/joao/GNS3/images/IOS/c3725-advipservicesk9-mz.124-21.image
+
+Loading ELF file '/home/joao/GNS3/images/IOS/c3725-advipservicesk9-mz.124-21.image'...
+ELF loading skipped, using a ghost RAM file.
+ELF entry point: 0x80008000
+
+C3725 'SWL3A': starting simulation (CPU0 PC=0xffffffffbfc00000), JIT enabled.
+NIO udp-deb3034d-6000-4fd3-af4a-8646adc56a51: capturing to file '/home/joao/Desktop/mect_1ano/SRC/Prática/aula01/untitled/project-files/captures/SWL3A_FastEthernet114_to_SWL3B_FastEthernet114.pcap'
+
+C3725 'SWL3A': stopping simulation.
+NIO udp-deb3034d-6000-4fd3-af4a-8646adc56a51: ending packet capture.
+CPU0: carved JIT exec zone of 64 Mb into 2048 pages of 32 Kb.
+C3725 instance 'SWL3A' (id 1):
+  VM Status  : 0
+  RAM size   : 128 Mb
+  NVRAM size : 256 Kb
+  IOS image  : /home/joao/GNS3/images/IOS/c3725-advipservicesk9-mz.124-21.image
+
+Loading ELF file '/home/joao/GNS3/images/IOS/c3725-advipservicesk9-mz.124-21.image'...
+ELF loading skipped, using a ghost RAM file.
+ELF entry point: 0x80008000
+
+C3725 'SWL3A': starting simulation (CPU0 PC=0xffffffffbfc00000), JIT enabled.
+
+C3725 'SWL3A': stopping simulation.
+Hypervisor: closing control sockets.
+Hypervisor: closing remote client connections.
+Shutdown in progress...
+Shutdown completed.
