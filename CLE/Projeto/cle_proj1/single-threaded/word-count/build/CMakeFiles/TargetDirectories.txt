@@ -1,3 +1,0 @@
-/home/joao/Desktop/mect_1ano/CLE/Prática/aula02/word-count/build/CMakeFiles/cle-wc.dir
-/home/joao/Desktop/mect_1ano/CLE/Prática/aula02/word-count/build/CMakeFiles/edit_cache.dir
-/home/joao/Desktop/mect_1ano/CLE/Prática/aula02/word-count/build/CMakeFiles/rebuild_cache.dir
