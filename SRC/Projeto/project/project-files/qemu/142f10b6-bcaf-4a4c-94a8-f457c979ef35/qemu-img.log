@@ -1,0 +1,1 @@
+Formatting '/home/joao/Desktop/mect_1ano/SRC/Projeto/project/project-files/qemu/142f10b6-bcaf-4a4c-94a8-f457c979ef35/hda_disk.qcow2', fmt=qcow2 cluster_size=65536 extended_l2=off compression_type=zlib size=8589934592 backing_file=/home/joao/GNS3/images/QEMU/LabComServer_22_23.qcow2 backing_fmt=qcow2 lazy_refcounts=off refcount_bits=16
