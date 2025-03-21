@@ -1,82 +1,80 @@
+// não funciona. acredito que haja uma limitação interna do gdma 
+// no chip esp32c3 que não permite a transferência
+
 #include <stdio.h>
+#include <string.h>
 #include "esp_timer.h"
-#include "esp_err.h"
-#include "esp_async_memcpy.h"
+#include "soc/gdma_reg.h"
+#include "soc/gdma_struct.h"
+#include "soc/system_reg.h"
 
-#define buffer_size 4096
-#define repeat_count 10000
+#define BUFFER_SIZE 1024
+#define REPEAT_COUNT 10000
 
-static uint32_t srcbuffer[buffer_size] __attribute__((aligned(4)));
-static uint32_t dstbuffer[buffer_size] __attribute__((aligned(4)));
+static uint32_t srcBuffer[BUFFER_SIZE];
+static uint32_t dstBuffer[BUFFER_SIZE];
 
-static volatile bool transfer_done = false;
-
-// callback da copia dma
-static bool async_memcpy_callback(async_memcpy_handle_t handle, async_memcpy_event_t *event, void *args)
+typedef struct
 {
-    transfer_done = true;
-    return true;
-}
+    uint32_t dw0;
+    uint32_t buffer_addr;
+    uint32_t next_desc_addr;
+} gdma_descriptor_t;
 
-// inicializa o dma
-static async_memcpy_handle_t dma_init(void)
-{
-    async_memcpy_config_t config = ASYNC_MEMCPY_DEFAULT_CONFIG();
-    async_memcpy_handle_t dma_chan = NULL;
-    esp_err_t err = esp_async_memcpy_install(&config, &dma_chan);
-
-    if (err != ESP_OK)
-    {
-        printf("Error initializing DMA: %d\n", err);
-        return NULL;
-    }
-
-    return dma_chan;
-}
-
-// copia de memoria via dma
-static void dma_memcpy(async_memcpy_handle_t dma_chan, void *dst, const void *src, size_t size)
-{
-    transfer_done = false;
-    esp_async_memcpy(dma_chan, dst, (void *)src, size, async_memcpy_callback, NULL);
-    while (!transfer_done)
-        ;
-}
+static gdma_descriptor_t tx_desc __attribute__((aligned(4)));
+static gdma_descriptor_t rx_desc __attribute__((aligned(4)));
 
 void app_main(void)
 {
-    int i, j;
-    for (i = 0; i < buffer_size; i++)
+    for (int i = 0; i < BUFFER_SIZE; i++)
     {
-        srcbuffer[i] = i;
+        srcBuffer[i] = i;
     }
 
-    async_memcpy_handle_t dma_chan = dma_init();
-    if (dma_chan == NULL)
-    {
-        return;
-    }
+    REG_SET_BIT(SYSTEM_PERIP_CLK_EN0_REG, SYSTEM_DMA_CLK_EN);
+    REG_CLR_BIT(SYSTEM_PERIP_RST_EN0_REG, SYSTEM_DMA_RST);
+    REG_SET_BIT(GDMA_INT_ENA_CH0_REG, GDMA_IN_SUC_EOF_CH0_INT_ENA);
 
     int64_t startTime = esp_timer_get_time();
+    uint32_t transfer_bytes = BUFFER_SIZE * sizeof(uint32_t);
 
-    for (j = 0; j < repeat_count; j++)
+    for (int j = 0; j < REPEAT_COUNT; j++)
     {
-        dma_memcpy(dma_chan, dstbuffer, srcbuffer, buffer_size * sizeof(uint32_t));
+        REG_SET_BIT(GDMA_OUT_CONF0_CH0_REG, GDMA_OUT_RST_CH0);
+        REG_CLR_BIT(GDMA_OUT_CONF0_CH0_REG, GDMA_OUT_RST_CH0);
+        REG_SET_BIT(GDMA_IN_CONF0_CH0_REG, GDMA_IN_RST_CH0);
+        REG_CLR_BIT(GDMA_IN_CONF0_CH0_REG, GDMA_IN_RST_CH0);
+
+        tx_desc.dw0 = (1 << 31) | (1 << 30) | ((transfer_bytes & 0xFFF) << 12) | (transfer_bytes & 0xFFF);
+        rx_desc.dw0 = (1 << 31) | (1 << 30) | ((transfer_bytes & 0xFFF) << 12) | (transfer_bytes & 0xFFF);
+
+        tx_desc.buffer_addr = (uint32_t)srcBuffer;
+        tx_desc.next_desc_addr = 0;
+
+        rx_desc.buffer_addr = (uint32_t)dstBuffer;
+        rx_desc.next_desc_addr = 0;
+
+        REG_SET_BIT(GDMA_IN_CONF0_CH0_REG, GDMA_MEM_TRANS_EN_CH0);
+        REG_WRITE(GDMA_OUT_LINK_CH0_REG, ((uint32_t)&tx_desc) & 0xFFFFF);
+        REG_WRITE(GDMA_IN_LINK_CH0_REG, ((uint32_t)&rx_desc) & 0xFFFFF);
+        REG_SET_BIT(GDMA_OUTLINK_START_CH0, GDMA_OUTLINK_START_CH0);
+        REG_SET_BIT(GDMA_INLINK_START_CH0, GDMA_INLINK_START_CH0);
+
+        while (!(REG_READ(GDMA_INT_RAW_CH0_REG) & GDMA_IN_SUC_EOF_CH0_INT_RAW))
+            ;
+        REG_WRITE(GDMA_INT_CLR_CH0_REG, GDMA_IN_SUC_EOF_CH0_INT_CLR);
     }
 
     int64_t endTime = esp_timer_get_time();
-
     printf("Elapsed time: %lld microseconds\n", (endTime - startTime));
 
-    for (i = 0; i < buffer_size; i++)
+    for (int i = 0; i < BUFFER_SIZE; i++)
     {
-        if (dstbuffer[i] != i)
+        if (dstBuffer[i] != i)
         {
-            printf("Destination buffer verification failed!\n");
+            printf("Destination buffer verification failed at i=%d!\n", i);
             return;
         }
     }
-
     printf("Destination buffer verification succeeded!\n");
-    esp_async_memcpy_uninstall(dma_chan);
 }
