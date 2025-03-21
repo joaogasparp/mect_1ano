@@ -28,13 +28,13 @@ static void ConfigureGPIOs(void)
    gpio_reset_pin(GPIO_LED);
    gpio_set_direction(GPIO_LED, GPIO_MODE_OUTPUT);
    
-   gpio_isr_register(Sw_ISR, NULL, ESP_INTR_FLAG_LOWMED, NULL);
+   gpio_isr_register(Sw_ISR, NULL, ESP_INTR_FLAG_LOWMED, NULL);  // Register ISR as interrupt handler
    
    gpio_reset_pin(GPIO_SW);
    gpio_set_direction(GPIO_SW, GPIO_MODE_INPUT);
    gpio_intr_disable(GPIO_SW);
-   gpio_set_intr_type(GPIO_SW, GPIO_INTR_POSEDGE);
-   gpio_intr_enable(GPIO_SW);   
+   gpio_set_intr_type(GPIO_SW, GPIO_INTR_POSEDGE); // Configure interrupt on rising edge
+   gpio_intr_enable(GPIO_SW); // Enable interrupt
 }
 
 static void ConfigureUART(void)
