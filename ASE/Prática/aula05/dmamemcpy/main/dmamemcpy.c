@@ -8,7 +8,7 @@
 #include "soc/gdma_struct.h"
 #include "soc/system_reg.h"
 
-#define BUFFER_SIZE 1024
+#define BUFFER_SIZE 1024 // 1024 * 4 = 4KB
 #define REPEAT_COUNT 10000
 
 static uint32_t srcBuffer[BUFFER_SIZE];
