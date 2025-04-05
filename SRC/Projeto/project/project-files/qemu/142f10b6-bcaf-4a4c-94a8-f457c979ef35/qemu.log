@@ -1,5 +1,0 @@
-Start QEMU with /bin/qemu-system-x86_64 -name DMZ -m 1024M -smp cpus=1,sockets=1 -enable-kvm -machine smm=off -boot order=c -drive file=/home/joao/Desktop/mect_1ano/SRC/Projeto/project/project-files/qemu/142f10b6-bcaf-4a4c-94a8-f457c979ef35/hda_disk.qcow2,if=ide,index=0,media=disk,id=drive0 -uuid 142f10b6-bcaf-4a4c-94a8-f457c979ef35 -vnc 127.0.0.1:0 -monitor tcp:127.0.0.1:35111,server,nowait -net none -device e1000,mac=0c:2f:10:b6:00:00,netdev=gns3-0 -netdev socket,id=gns3-0,udp=127.0.0.1:10025,localaddr=127.0.0.1:10024 -machine usb=on -device usb-tablet
-
-Execution log:
-qemu-system-x86_64: warning: host doesn't support requested feature: CPUID.80000001H:ECX.svm [bit 2]
-qemu-system-x86_64: terminating on signal 15 from pid 9829 (/usr/share/gns3/gns3-server/bin/python)
