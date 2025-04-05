@@ -174,33 +174,29 @@ int main(int argc, char *argv[])
 
     if (exercise == 1)
     {
-        if (rank == 0)
-            std::cout << "[ Exercício 3.1 - Ring Communication ]\n";
+        std::cout << "[ Exercício 3.1 - Ring Communication ]\n";
         exercise_3_1(rank, size);
     }
     else if (exercise == 2)
     {
-        if (rank == 0)
-            std::cout << "[ Exercício 3.2 - Alive and Well ]\n";
+        std::cout << "[ Exercício 3.2 - Alive and Well ]\n";
         exercise_3_2(rank, size);
     }
     else if (exercise == 3)
     {
-        if (rank == 0)
-            std::cout << "[ Exercício 3.3 - Global Min and Max ]\n";
+        std::cout << "[ Exercício 3.3 - Global Min and Max ]\n";
         exercise_3_3(rank, size);
     }
     else if (exercise == 4)
     {
-        if (rank == 0)
-            std::cout << "[ Exercício 3.4 - Parallel Matrix Product ]\n";
+        std::cout << "[ Exercício 3.4 - Parallel Matrix Product ]\n";
         exercise_3_4(rank, size);
     }
     else
     {
         if (rank == 0)
         {
-            std::cout << "Exercício inválido: " << exercise << std::endl;
+            std::cout << "Exercício inválido" << exercise << std::endl;
             std::cout << "Usage: mpirun -np <num_processes> ./build/sendRecData <exercise_number>\n";
         }
     }
