@@ -1,1 +1,0 @@
-/usr/bin/c++ -O3 -DNDEBUG "CMakeFiles/cle-wc.dir/src/main.cpp.o" "CMakeFiles/cle-wc.dir/src/utf-8.cpp.o" "CMakeFiles/cle-wc.dir/src/word_count.cpp.o" -o cle-wc 

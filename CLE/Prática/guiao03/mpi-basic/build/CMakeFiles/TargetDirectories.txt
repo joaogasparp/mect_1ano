@@ -1,6 +1,0 @@
-/home/joao/Desktop/mect_1ano/CLE/Prática/guiao03/mpi-basic/build/CMakeFiles/hello.dir
-/home/joao/Desktop/mect_1ano/CLE/Prática/guiao03/mpi-basic/build/CMakeFiles/error.dir
-/home/joao/Desktop/mect_1ano/CLE/Prática/guiao03/mpi-basic/build/CMakeFiles/error-return.dir
-/home/joao/Desktop/mect_1ano/CLE/Prática/guiao03/mpi-basic/build/CMakeFiles/sendRecData.dir
-/home/joao/Desktop/mect_1ano/CLE/Prática/guiao03/mpi-basic/build/CMakeFiles/edit_cache.dir
-/home/joao/Desktop/mect_1ano/CLE/Prática/guiao03/mpi-basic/build/CMakeFiles/rebuild_cache.dir
