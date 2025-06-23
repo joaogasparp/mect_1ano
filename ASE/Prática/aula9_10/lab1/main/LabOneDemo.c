@@ -12,37 +12,57 @@
 
 static uint8_t tempBuffer[TEMP_BUFFER_SIZE] = {0};
 static uint8_t tempIndex = 0;
+static bool bufferFull = false;
 static TimerHandle_t tempTimer;
 static i2c_master_dev_handle_t sensorHandle;
 
-void collect_and_print_temperature(TimerHandle_t xTimer)
+// Timer callback - coleta temperatura a cada segundo
+void collect_temperature_timer(TimerHandle_t xTimer)
 {
     uint8_t temperature;
-    tc74_read_temp_after_cfg(sensorHandle, &temperature);
+    tc74_read_temp_after_temp(sensorHandle, &temperature);
 
+    // Armazenar no buffer circular
     tempBuffer[tempIndex] = temperature;
     tempIndex = (tempIndex + 1) % TEMP_BUFFER_SIZE;
 
-    printf("Current Temperature: %d ºC\n", temperature);
+    if (tempIndex == 0)
+    {
+        bufferFull = true; // Buffer foi preenchido completamente
+    }
+
+    printf("Temperature collected: %d ºC\n", temperature);
 }
 
-void check_keypress_and_calculate_average(void *pvParameters)
+// Task - verifica tecla pressionada e calcula média
+void keypress_task(void *pvParameters)
 {
     while (1)
     {
         int c = fgetc(stdin);
         if (c != EOF)
         {
-            uint8_t sum = 0;
-            for (int i = 0; i < TEMP_BUFFER_SIZE; i++)
+            // Calcular média dos últimos 3 valores
+            if (bufferFull || tempIndex > 0)
             {
-                sum += tempBuffer[i];
-            }
-            uint8_t averageTemp = sum / TEMP_BUFFER_SIZE;
+                uint16_t sum = 0;
+                uint8_t count = bufferFull ? TEMP_BUFFER_SIZE : tempIndex;
 
-            printf("[Key Pressed] Average Temperature: %d ºC\n", averageTemp);
+                for (int i = 0; i < count; i++)
+                {
+                    sum += tempBuffer[i];
+                }
+
+                uint8_t averageTemp = sum / count;
+                printf("[KEY PRESSED] Average of last %d temperatures: %d ºC\n",
+                       count, averageTemp);
+            }
+            else
+            {
+                printf("[KEY PRESSED] No temperature data available yet\n");
+            }
         }
-        vTaskDelay(pdMS_TO_TICKS(100));
+        vTaskDelay(pdMS_TO_TICKS(50)); // Check every 50ms
     }
 }
 
@@ -50,17 +70,46 @@ void app_main(void)
 {
     i2c_master_bus_handle_t busHandle;
 
+    printf("TC74 Temperature System with Timer and Task\n");
+    printf("Press any key to see average temperature\n\n");
+
+    // Inicializar sensor TC74
     tc74_init(&busHandle, &sensorHandle, TC74_A5_SENSOR_ADDR,
               TC74_SDA_IO, TC74_SCL_IO, TC74_SCL_DFLT_FREQ_HZ);
-    tc74_wakeup(sensorHandle);
 
-    tempTimer = xTimerCreate("TempTimer", pdMS_TO_TICKS(1000), pdTRUE, NULL, collect_and_print_temperature);
+    // Fazer primeira leitura para configurar o ponteiro do registrador
+    tc74_wakeup(sensorHandle);
+    vTaskDelay(pdMS_TO_TICKS(250)); // Aguardar estabilização
+
+    uint8_t temp;
+    tc74_read_temp_after_cfg(sensorHandle, &temp);
+
+    // Criar timer para coleta de temperatura (1 segundo)
+    tempTimer = xTimerCreate("TempTimer",
+                             pdMS_TO_TICKS(1000), // 1 segundo
+                             pdTRUE,              // Auto-reload
+                             NULL,
+                             collect_temperature_timer);
+
     if (tempTimer == NULL)
     {
-        printf("Failed to create timer\n");
+        printf("Failed to create temperature timer\n");
         return;
     }
-    xTimerStart(tempTimer, 0);
 
-    xTaskCreate(check_keypress_and_calculate_average, "CheckKeypressTask", 2048, NULL, 5, NULL);
+    // Criar task para verificar tecla pressionada
+    if (xTaskCreate(keypress_task, "KeypressTask", 2048, NULL, 5, NULL) != pdPASS)
+    {
+        printf("Failed to create keypress task\n");
+        return;
+    }
+
+    // Iniciar timer
+    if (xTimerStart(tempTimer, 0) != pdPASS)
+    {
+        printf("Failed to start temperature timer\n");
+        return;
+    }
+
+    printf("System started successfully!\n");
 }

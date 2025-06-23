@@ -16,40 +16,14 @@ void app_main(void)
     tc74_init(&busHandle, &sensorHandle, TC74_A5_SENSOR_ADDR,
               TC74_SDA_IO, TC74_SCL_IO, TC74_SCL_DFLT_FREQ_HZ);
 
-    while (1)
-    {
-        tc74_wakeup(sensorHandle);
-        vTaskDelay(500 / portTICK_PERIOD_MS);
-    }
-
-    /*
     tc74_wakeup(sensorHandle);
-    vTaskDelay(100 / portTICK_PERIOD_MS);
-
-    while (1)
-    {
-        tc74_read_temp_after_cfg(sensorHandle, &temperature);
-        vTaskDelay(500 / portTICK_PERIOD_MS);
-    }
-    */
-
-    /*
-    tc74_wakeup(sensorHandle);
-    vTaskDelay(100 / portTICK_PERIOD_MS);
     tc74_read_temp_after_cfg(sensorHandle, &temperature);
 
     while (1)
     {
         tc74_read_temp_after_temp(sensorHandle, &temperature);
-        vTaskDelay(500 / portTICK_PERIOD_MS);
-    }
-    */
+        printf("Temperature: %d ºC\n", temperature);
 
-    /*
-    while (1)
-    {
-        tc74_standy(sensorHandle);
-        vTaskDelay(500 / portTICK_PERIOD_MS);
+        vTaskDelay(3000 / portTICK_PERIOD_MS); // 3 segundos em active mode
     }
-    */
 }
