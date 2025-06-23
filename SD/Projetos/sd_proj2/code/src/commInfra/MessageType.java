@@ -1,0 +1,20 @@
+package commInfra;
+
+public enum MessageType {
+    CONDUCT_EXIT_POLL,
+    CONDUCT_RANDOM_POLL,
+    IS_ACTIVE,
+    DEACTIVATE,
+    ENTER_QUEUE,
+    VALIDATE_ID,
+    CAST_VOTE,
+    EXIT_STATION,
+    HAS_VOTERS,
+    PROCESS_NEXT_VOTER,
+    OPEN_STATION,
+    CLOSE_STATION,
+    RESPONSE,
+    SIMULATION_ENDED,
+    PRINT_STATISTICS,
+    ERROR
+}
