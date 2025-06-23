@@ -1,0 +1,6 @@
+
+/single-threaded/weather-stations/build
+/single-threaded/word-count/build
+/mpi-implementations/weather-stations/build
+/mpi-implementations/word-count/build
+mpi-implementations/weather-stations/samples-10000000.txt
