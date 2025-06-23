@@ -1,0 +1,6 @@
+pandas
+numpy
+dnspython
+geoip2
+matplotlib
+pyarrow
