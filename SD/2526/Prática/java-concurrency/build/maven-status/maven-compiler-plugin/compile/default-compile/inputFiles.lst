@@ -1,0 +1,13 @@
+/home/joaogasparp/Secretária/mect_1ano/SD/2526/Prática/java-concurrency/src/main/java/deti/sd/ex1/AtomicCounter.java
+/home/joaogasparp/Secretária/mect_1ano/SD/2526/Prática/java-concurrency/src/main/java/deti/sd/ex1/Counter.java
+/home/joaogasparp/Secretária/mect_1ano/SD/2526/Prática/java-concurrency/src/main/java/deti/sd/ex1/CounterTest.java
+/home/joaogasparp/Secretária/mect_1ano/SD/2526/Prática/java-concurrency/src/main/java/deti/sd/ex1/MutexCounter.java
+/home/joaogasparp/Secretária/mect_1ano/SD/2526/Prática/java-concurrency/src/main/java/deti/sd/ex1/UnsafeCounter.java
+/home/joaogasparp/Secretária/mect_1ano/SD/2526/Prática/java-concurrency/src/main/java/deti/sd/ex2/Gateway.java
+/home/joaogasparp/Secretária/mect_1ano/SD/2526/Prática/java-concurrency/src/main/java/deti/sd/ex2/HeavyTask.java
+/home/joaogasparp/Secretária/mect_1ano/SD/2526/Prática/java-concurrency/src/main/java/deti/sd/ex3/DataPacket.java
+/home/joaogasparp/Secretária/mect_1ano/SD/2526/Prática/java-concurrency/src/main/java/deti/sd/ex3/DataProcessor.java
+/home/joaogasparp/Secretária/mect_1ano/SD/2526/Prática/java-concurrency/src/main/java/deti/sd/ex3/DistributedBufferSystem.java
+/home/joaogasparp/Secretária/mect_1ano/SD/2526/Prática/java-concurrency/src/main/java/deti/sd/ex3/NetworkProducer.java
+/home/joaogasparp/Secretária/mect_1ano/SD/2526/Prática/java-concurrency/src/main/java/deti/sd/ex4/DistributedWorker.java
+/home/joaogasparp/Secretária/mect_1ano/SD/2526/Prática/java-concurrency/src/main/java/deti/sd/ex4/SystemController.java
