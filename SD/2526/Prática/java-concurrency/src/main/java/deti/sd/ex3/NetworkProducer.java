@@ -13,9 +13,8 @@ public class NetworkProducer implements Runnable {
     public void run() {
         try {
             for (int i = 1; i <= 20; i++) {
-                // TODO: Put the packet into the buffer.
-                // Note: put() will block if the buffer is full.
-                DataPacket packet = null;
+                DataPacket packet = new DataPacket(i, "Data-" + i);
+                buffer.put(packet);
                 System.out.println("Producer: Received and queueing " + packet);
 
                 Thread.sleep(100); // Simulate network arrival delay

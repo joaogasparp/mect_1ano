@@ -6,8 +6,7 @@ public class SystemController {
     private static final int NUM_WORKERS = 4;
 
     public static void main(String[] args) {
-        // TODO: Initialize a CountDownLatch with a count equal to the number of workers
-        CountDownLatch latch = null;
+        CountDownLatch latch = new CountDownLatch(NUM_WORKERS);
 
         System.out.println("Controller: Waiting for " + NUM_WORKERS + " workers to initialize...");
 
@@ -16,8 +15,7 @@ public class SystemController {
         }
 
         try {
-            // TODO: Block the controller thread until the latch count reaches zero
-            throw new InterruptedException(); // <- remove
+            latch.await();
         } catch (InterruptedException e) {
             System.err.println("Controller: Startup sequence interrupted.");
         }

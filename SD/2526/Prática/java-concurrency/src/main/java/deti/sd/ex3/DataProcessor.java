@@ -13,9 +13,7 @@ public class DataProcessor implements Runnable {
     public void run() {
         try {
             while (true) {
-                // TODO: Take a packet from the buffer.
-                // Note: take() will block if the buffer is empty.
-                DataPacket packet = null;
+                DataPacket packet = buffer.take();
 
                 if (packet != null && packet.getSequenceNumber() == -1) break;
 

@@ -7,18 +7,24 @@ public class AtomicCounter implements Counter {
 
     @Override
     public void increment() {
-        // TODO: Use AtomicInteger methods to increment
+        value.incrementAndGet();
     }
 
     @Override
     public int getValue() {
-        // TODO: Retrieve the atomic value
-        return 0;
+        return value.get();
     }
 
     @Override
     public boolean incrementIfEven() {
-        // TODO: Use compareAndSet in a loop for a lock-free update
-        return false;
+        while (true) {
+            int current = value.get();
+            if (current % 2 != 0) {
+                return false;
+            }
+            if (value.compareAndSet(current, current + 1)) {
+                return true;
+            }
+        }
     }
 }

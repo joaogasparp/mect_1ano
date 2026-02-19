@@ -8,18 +8,35 @@ public class MutexCounter implements Counter {
 
     @Override
     public void increment() {
-        // TODO: Implement using the ReentrantLock
+        lock.lock();
+        try {
+            value++;
+        } finally {
+            lock.unlock();
+        }
     }
 
     @Override
     public int getValue() {
-        // TODO: Implement thread-safe read
-        return 0;
+        lock.lock();
+        try {
+            return value;
+        } finally {
+            lock.unlock();
+        }
     }
 
     @Override
     public boolean incrementIfEven() {
-        // TODO: Implement conditional update using the lock
-        return false;
+        lock.lock();
+        try {
+            if (value % 2 == 0) {
+                value++;
+                return true;
+            }
+            return false;
+        } finally {
+            lock.unlock();
+        }
     }
 }

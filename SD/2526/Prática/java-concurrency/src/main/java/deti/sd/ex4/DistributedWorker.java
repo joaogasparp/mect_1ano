@@ -1,7 +1,7 @@
 package deti.sd.ex4;
 
-import java.util.concurrent.CountDownLatch;
 import java.util.Random;
+import java.util.concurrent.CountDownLatch;
 
 public class DistributedWorker implements Runnable {
     private final int workerId;
@@ -22,7 +22,7 @@ public class DistributedWorker implements Runnable {
 
             System.out.println("Worker " + workerId + ": Status READY.");
 
-            // TODO: Signal to the latch that this worker has finished initialization
+            latch.countDown();
 
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
