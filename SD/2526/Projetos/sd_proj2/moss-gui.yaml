@@ -1,0 +1,7 @@
+# moss dashboard configuration
+# pre-filled values for easy startup
+
+manager_url: "localhost:4081"
+object_node_url: "localhost:4281"
+default_bucket: "sd"
+polling_interval_ms: 5000

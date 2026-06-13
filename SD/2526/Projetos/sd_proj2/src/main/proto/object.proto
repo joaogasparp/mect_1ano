@@ -1,0 +1,51 @@
+
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "deti.sd.moss.infra.rpc.object";
+option java_outer_classname = "ObjectProto";
+
+package deti.sd.moss.infra.rpc;
+
+service Object {
+  rpc put(ProtoPutRequest) returns (ProtoPutReply) {}
+  rpc get(ProtoGetRequest) returns (ProtoGetReply) {}
+  rpc list(ProtoListRequest) returns (ProtoListReply) {}
+}
+
+message ProtoPutRequest {
+  string bucket = 1;
+  string path = 2;
+  bytes data = 3;
+}
+
+message ProtoPutReply {
+  int32 status = 1;
+}
+
+message ProtoGetRequest {
+  string bucket = 1;
+  string path = 2;
+}
+
+message ProtoGetReply {
+  int32 status = 1;
+  bytes data = 2;
+}
+
+message ProtoListRequest {
+  string bucket = 1;
+}
+
+message ProtoObjectInfo {
+  string bucket = 1;
+  string path = 2;
+  int64 size = 3;
+  int64 timestamp = 4;
+}
+
+message ProtoListReply {
+  int32 status = 1;
+  repeated ProtoObjectInfo objects = 2;
+}
+

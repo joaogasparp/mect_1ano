@@ -1,0 +1,10 @@
+/home/joaogasparp/Secretária/2526-tp1-group09/src/main/java/deti/sd/mt/ct/Simulation.java
+/home/joaogasparp/Secretária/2526-tp1-group09/src/main/java/deti/sd/mt/ct/core/ChargingStation.java
+/home/joaogasparp/Secretária/2526-tp1-group09/src/main/java/deti/sd/mt/ct/core/CityMap.java
+/home/joaogasparp/Secretária/2526-tp1-group09/src/main/java/deti/sd/mt/ct/core/Intersection.java
+/home/joaogasparp/Secretária/2526-tp1-group09/src/main/java/deti/sd/mt/ct/core/Vehicle.java
+/home/joaogasparp/Secretária/2526-tp1-group09/src/main/java/deti/sd/mt/ct/model/Collision.java
+/home/joaogasparp/Secretária/2526-tp1-group09/src/main/java/deti/sd/mt/ct/model/Coordinate.java
+/home/joaogasparp/Secretária/2526-tp1-group09/src/main/java/deti/sd/mt/ct/model/Direction.java
+/home/joaogasparp/Secretária/2526-tp1-group09/src/main/java/deti/sd/mt/ct/model/MoveType.java
+/home/joaogasparp/Secretária/2526-tp1-group09/src/main/java/deti/sd/mt/ct/ui/SimulationGUI.java
